@@ -26,6 +26,7 @@
     "phone" : "87652533",
     "email" : "cornelia@example.com",
     "address" : "10th street",
+    "remark" : "",
     "tagged" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
