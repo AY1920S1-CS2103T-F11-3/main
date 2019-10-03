@@ -718,27 +718,153 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>Actor</strong> is the <code>user</code>, the precondition is that <code>user</code> needs to be <strong>logged in</strong>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<div class="paragraph">
+<p>System: <code>PasswordSys</code>, <code>FileSys</code>, <code>NoteSys</code>, <code>CardSys</code></p>
+</div>
+<h3 id="use-case" class="discrete">Use case:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>UC01 - Access password window</p>
+</li>
+<li>
+<p>UC02 - Access file window</p>
+</li>
+<li>
+<p>UC03 - Access note window</p>
+</li>
+<li>
+<p>UC04 - Access credit card window</p>
+</li>
+</ol>
+</div>
+<hr>
+<h3 id="use-case-2" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC01 - Access password window.</code></p>
+</div>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User request to access password window</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
-</li>
-<li>
-<p>User requests to delete a specific person in the list</p>
-</li>
-<li>
-<p>AddressBook deletes the person</p>
+<p>PasswordSys checks if user is logged in and gives access to user</p>
 <div class="paragraph">
 <p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-3" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC02 - Access file window</code></p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User request to access file window</p>
+</li>
+<li>
+<p>FileSys checks if user is logged in and gives access to user</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-4" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC03 - Access note window</code></p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User request to access note window</p>
+</li>
+<li>
+<p>NoteSys checks if user is logged in and gives access to user</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-5" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC02 - Access credit card window</code></p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User request to access credit card window</p>
+</li>
+<li>
+<p>CardSys checks if user is logged in and gives access to user</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<hr>
+<div class="paragraph">
+<p>System: <code>PasswordSys</code></p>
+</div>
+<h3 id="use-case-6" class="discrete">Use case:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>UC11 - Add a password</p>
+</li>
+<li>
+<p>UC12 - Delete a password</p>
+</li>
+<li>
+<p>UC13 - Update a password</p>
+</li>
+<li>
+<p>UC14 - Generate a password</p>
+</li>
+<li>
+<p>UC15 - Analyse all password</p>
+</li>
+</ol>
+</div>
+<hr>
+<h3 id="use-case-7" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC11 - Add a password</code></p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses to add password</p>
+</li>
+<li>
+<p>User enters details</p>
+</li>
+<li>
+<p>PasswordSys adds the password</p>
+<div class="paragraph">
+<p>Use case ends</p>
 </div>
 </li>
 </ol>
@@ -749,28 +875,428 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. The list is empty.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-<li>
-<p>3a. The given index is invalid.</p>
+<p>2a. Not all details are entered.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>2a1. PasswordSys shows an error message</p>
 <div class="paragraph">
-<p>Use case resumes at step 2.</p>
+<p>Use case end.</p>
 </div>
 </li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-8" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC12 - Delete a password</code></p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses to delete a password</p>
+</li>
+<li>
+<p>User enters description of password</p>
+</li>
+<li>
+<p>PasswordSys removes the password</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Description entered is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. PasswordSys shows an error message</p>
+<div class="paragraph">
+<p>Use case end.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-9" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC13 - Update a password</code></p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses to update a password</p>
+</li>
+<li>
+<p>User enters description of password and details of changed password</p>
+</li>
+<li>
+<p>PasswordSys updates the password</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Description entered is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. PasswordSys shows an error message</p>
+<div class="paragraph">
+<p>Use case end.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-10" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC14 - Generate a password</code></p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses to generate a password</p>
+</li>
+<li>
+<p>User enters description of password</p>
+</li>
+<li>
+<p>PasswordSys generates a password
+Use case ends</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. No description entered</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. PasswordSys shows an error message</p>
+<div class="paragraph">
+<p>Use case end.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. Description entered already exists</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. PasswordSys shows an error message</p>
+<div class="paragraph">
+<p>Use case end.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-11" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC15 - Analyse all password</code></p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses to analyse passwords</p>
+</li>
+<li>
+<p>PasswordSys shows report of analysis</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. No passwords available</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. PasswordSys shows an error message</p>
+<div class="paragraph">
+<p>Use case end.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p>System: <code>NoteSys</code></p>
+</div>
+<h3 id="use-case-12" class="discrete">Use case:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>UC31 - Add a note</p>
+</li>
+<li>
+<p>UC32 - Delete a note</p>
+</li>
+<li>
+<p>UC33 - Update a note</p>
+</li>
+</ol>
+</div>
+<hr>
+<h3 id="use-case-13" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC31 - Add a note</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Guarantees:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Note will be created after step 2 has been executed</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses to add a note</p>
+</li>
+<li>
+<p>User enters description of note</p>
+</li>
+<li>
+<p>NoteSys opens a new note</p>
+</li>
+<li>
+<p>User enters note details</p>
+</li>
+<li>
+<p>User submits the note</p>
+</li>
+<li>
+<p>NoteSys saves the note</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Description entered already exists</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. NoteSys shows an error message</p>
+</li>
+<li>
+<p>2a2. NoteSys requests for a new description</p>
+</li>
+<li>
+<p>2a3. User enters new description</p>
+</li>
+<li>
+<p>Steps 2a1-2a3 are repeated until the description entered is valid</p>
+</li>
+<li>
+<p>Use case resumes from step 4</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>5a. No text entered</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>5a1. NoteSys shows a warning message</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 5</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-14" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC32 - Delete a note</code></p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses to delete a note</p>
+</li>
+<li>
+<p>User enters description of note</p>
+</li>
+<li>
+<p>NoteSys removes the note</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Description entered is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. NoteSys shows an error message</p>
+<div class="paragraph">
+<p>Use case end.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-15" class="discrete">Use case:</h3>
+<div class="paragraph">
+<p><code>UC33 - Update a note</code></p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses to update a note</p>
+</li>
+<li>
+<p>User enters description of password</p>
+</li>
+<li>
+<p>NoteSys opens the note</p>
+</li>
+<li>
+<p>User edits note details</p>
+</li>
+<li>
+<p>User submits the note</p>
+</li>
+<li>
+<p>NoteSys saves the note</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. Description entered is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. NoteSys shows an error message</p>
+<div class="paragraph">
+<p>Use case end.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>5a. No text entered</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>5a1. NoteSys shows an error message</p>
+<div class="paragraph">
+<p>Use case end.</p>
 </div>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -958,4 +1484,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-03 05:27:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-03 08:03:58 UTC</div></div></div></body></html>
