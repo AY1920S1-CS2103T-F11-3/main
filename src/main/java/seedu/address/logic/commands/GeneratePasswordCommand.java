@@ -7,15 +7,31 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
+import seedu.address.commons.util.CollectionUtil;
 import seedu.address.model.Model;
 
 public class GeneratePasswordCommand extends Command{
     public static final String COMMAND_WORD = "generate";
-
     public static final String MESSAGE_USAGE = "Password Generated: %s" + "\n" + "Password has been copied to your clipboard!";
+    public static final String MESSAGE_REQUIRE_CHECK_AT_LEAST_ONE = "At least one field is required to be true to generate password. ";
 
-    public GeneratePasswordCommand() {
+    private int length;
+    private boolean lower;
+    private boolean upper;
+    private boolean num;
+    private boolean special;
+
+    public GeneratePasswordCommand(int length, boolean lower, boolean upper, boolean num, boolean special) {
+        this.length = length;
+        this.lower = lower;
+        this.upper = upper;
+        this.num = num;
+        this.special = special;
     }
 
     /**
@@ -57,7 +73,7 @@ public class GeneratePasswordCommand extends Command{
 
         // init
         characterSet = setCharacterSet(lowAlpha, highAlpha, specialChars, numbers);
-        passwordLength = 8; // hardcoded passwordLength TODO: make it dynamic based on user input
+        passwordLength = length;
         randomNumGen = new SecureRandom();
         StringBuilder password = new StringBuilder();
 
@@ -72,16 +88,46 @@ public class GeneratePasswordCommand extends Command{
     }
 
     private ArrayList<String[]> setCharacterSet(String[] lowAlpha, String[] highAlpha, String[] specialChars, String[] numbers) {
-        // for now, password will allow lower, upper, numerical, special characters.
-        // TODO: let the user set if which characterSet he wants to include into his random password.
+
         ArrayList<String[]> characterSet = new ArrayList<>();
-        characterSet.add(lowAlpha);
-        characterSet.add(highAlpha);
-        characterSet.add(specialChars);
-        characterSet.add(numbers);
 
+        if (lower && !characterSet.contains(lowAlpha))
+        {
+            characterSet.add(lowAlpha);
+        }
+        else if (!lower && characterSet.contains(lowAlpha))
+        {
+            characterSet.remove(lowAlpha);
+        }
+
+        if (upper && !characterSet.contains(highAlpha))
+        {
+            characterSet.add(highAlpha);
+        }
+        else if (!upper && characterSet.contains(highAlpha))
+        {
+            characterSet.remove(highAlpha);
+        }
+
+        if (special && !characterSet.contains(specialChars))
+        {
+            characterSet.add(specialChars);
+        }
+        else if (!special && characterSet.contains(specialChars))
+        {
+            characterSet.remove(specialChars);
+        }
+
+        if (num && !characterSet.contains(numbers))
+        {
+            characterSet.add(numbers);
+        }
+        else if (!num && characterSet.contains(numbers))
+        {
+            characterSet.remove(numbers);
+        }
+        //TODO: check at least oen field is checked
         return characterSet;
-
 
     }
 
@@ -100,4 +146,56 @@ public class GeneratePasswordCommand extends Command{
         //Copy & Write the selected text to the user's clipboard
         clipboard.setContents(selectedText, user);
     }
+    /**
+     * Stores the details of password requirements.
+     */
+    public static class PasswordGeneratorDescriptor {
+        private int length;
+        private boolean lower;
+        private boolean upper;
+        private boolean num;
+        private boolean special;
+
+        public PasswordGeneratorDescriptor() {}
+
+        /**
+         * Returns true if at least one requirement is true.
+         */
+        public boolean isAnyFieldChecked() {
+            return lower == true || upper == true || num == true || special == true;
+        }
+
+        public void setLength(int length) {
+            this.length = length;
+        }
+        public void setLower(boolean lower) {
+            this.lower = lower;
+        }
+        public void setUpper(boolean upper) {
+            this.upper = upper;
+        }
+        public void setNum(boolean num) {
+            this.num = num;
+        }
+        public void setSpecial(boolean special) {
+            this.special = special;
+        }
+
+        public int getLength() {
+            return length;
+        }
+        public boolean getLower() {
+            return lower;
+        }
+        public boolean getUpper() {
+            return upper;
+        }
+        public boolean getNum() {
+            return num;
+        }
+        public boolean getSpecial() {
+            return special;
+        }
+    }
 }
+
