@@ -13,12 +13,16 @@ import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
 public class GeneratePasswordCommand extends Command{
     public static final String COMMAND_WORD = "generate";
-    public static final String MESSAGE_USAGE = "Password Generated: %s" + "\n" + "Password has been copied to your clipboard!";
+    public static final String MESSAGE_SUCCESS = "Password Generated: %s" + "\n" + "Password has been copied to your clipboard!";
     public static final String MESSAGE_REQUIRE_CHECK_AT_LEAST_ONE = "At least one field is required to be true to generate password. ";
+    public static final String MESSAGE_REQUIRE_INTEGER_LENGTH = "Please enter a whole number for password length";
+    public static final String MESSAGE_USAGE = "e.g. generate length/8 lower/true upper/true num/true special/true";
+    public static final String MESSAGE_REQUIRE_POSITIVE_LENGTH = "Please enter a valid password length. It has to be a non-zero positive integer.";
 
     private int length;
     private boolean lower;
@@ -41,13 +45,17 @@ public class GeneratePasswordCommand extends Command{
      */
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         // TODO: Integrate with CP PasswordModelManger
         // TODO: Following method should be abstracted to a separate PasswordModelManager
+        if (length < 0) {
+            throw new CommandException(MESSAGE_REQUIRE_POSITIVE_LENGTH + "\n" +
+                                        MESSAGE_USAGE);
+        }
         String password = generateRandomPassword();
         copyToClipboard(password, null);
-        return new CommandResult(String.format(MESSAGE_USAGE, password));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, password));
     }
 
     private String generateRandomPassword() {
@@ -91,42 +99,16 @@ public class GeneratePasswordCommand extends Command{
 
         ArrayList<String[]> characterSet = new ArrayList<>();
 
-        if (lower && !characterSet.contains(lowAlpha))
-        {
+        if (lower) {
             characterSet.add(lowAlpha);
-        }
-        else if (!lower && characterSet.contains(lowAlpha))
-        {
-            characterSet.remove(lowAlpha);
-        }
-
-        if (upper && !characterSet.contains(highAlpha))
-        {
+        } if (upper) {
             characterSet.add(highAlpha);
-        }
-        else if (!upper && characterSet.contains(highAlpha))
-        {
-            characterSet.remove(highAlpha);
-        }
-
-        if (special && !characterSet.contains(specialChars))
-        {
+        } if (special) {
             characterSet.add(specialChars);
-        }
-        else if (!special && characterSet.contains(specialChars))
-        {
-            characterSet.remove(specialChars);
-        }
-
-        if (num && !characterSet.contains(numbers))
-        {
+        } if (num) {
             characterSet.add(numbers);
         }
-        else if (!num && characterSet.contains(numbers))
-        {
-            characterSet.remove(numbers);
-        }
-        //TODO: check at least oen field is checked
+
         return characterSet;
 
     }

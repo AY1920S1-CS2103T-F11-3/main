@@ -38,14 +38,15 @@ public class GeneratePasswordCommandParser implements Parser {
                 description.setLower(Boolean.valueOf(argMultimap.getValue(PREFIX_SPECIAL).get()));
             }
             if (!description.isAnyFieldChecked()) {
-                throw new ParseException(GeneratePasswordCommand.MESSAGE_REQUIRE_CHECK_AT_LEAST_ONE);
+                throw new ParseException(GeneratePasswordCommand.MESSAGE_REQUIRE_CHECK_AT_LEAST_ONE + "\n"
+                                            + GeneratePasswordCommand.MESSAGE_USAGE);
             }
 
             return new GeneratePasswordCommand(description.getLength(), description.getLower(), description.getUpper(),
                     description.getNum(), description.getSpecial());
-        } catch (Exception e) {
-            //TODO : check if length is positive number, more than 0, not a decimal
-            return null;
+        } catch (NumberFormatException e) { //check if length is an integer, and booleans are passed to other prefixes.
+            throw new ParseException(GeneratePasswordCommand.MESSAGE_REQUIRE_INTEGER_LENGTH + "\n"
+                    + GeneratePasswordCommand.MESSAGE_USAGE);
         }
     }
 }
