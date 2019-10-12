@@ -32,10 +32,10 @@ public class GeneratePasswordCommandParser implements Parser {
                 description.setUpper(Boolean.valueOf(argMultimap.getValue(PREFIX_UPPER).get()));
             }
             if (argMultimap.getValue(PREFIX_NUM).isPresent()) {
-                description.setLower(Boolean.valueOf(argMultimap.getValue(PREFIX_NUM).get()));
+                description.setNum(Boolean.valueOf(argMultimap.getValue(PREFIX_NUM).get()));
             }
             if (argMultimap.getValue(PREFIX_SPECIAL).isPresent()) {
-                description.setLower(Boolean.valueOf(argMultimap.getValue(PREFIX_SPECIAL).get()));
+                description.setSpecial(Boolean.valueOf(argMultimap.getValue(PREFIX_SPECIAL).get()));
             }
             if (!description.isAnyFieldChecked()) {
                 throw new ParseException(GeneratePasswordCommand.MESSAGE_REQUIRE_CHECK_AT_LEAST_ONE + "\n"
