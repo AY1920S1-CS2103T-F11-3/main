@@ -28,7 +28,12 @@ public class AnalysePasswordCommand extends Command{
     @Override
     public CommandResult execute(Model model) throws CommandException {
         checkUniquePassword(accountList);
+        unleet(accountList);
         return new CommandResult("");
+    }
+
+    private void unleet(ArrayList<MockPassword> accountList) {
+
     }
 
     private void checkUniquePassword(ArrayList<MockPassword> accountList) {
