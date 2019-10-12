@@ -89,4 +89,7 @@ public interface Model {
     ObservableList<Password> getFilteredPasswordList();
 
     void addPassword(Password password);
+
+    /** Returns the PasswordBook */
+    PasswordBook getPasswordBook();
 }

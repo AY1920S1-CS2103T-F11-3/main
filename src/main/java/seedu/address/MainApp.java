@@ -27,7 +27,9 @@ import seedu.address.model.util.SampleDataPasswordUtil;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonPasswordBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.PasswordBookStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.TestStorage;
@@ -68,7 +70,9 @@ public class MainApp extends Application {
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage =
                 new JsonAddressBookStorage(userPrefs.getAddressBookFilePath(), password);
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, password);
+        PasswordBookStorage passwordBookStorage =
+                new JsonPasswordBookStorage(userPrefs.getPasswordBookFilePath(), password);
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, passwordBookStorage, password);
 
         initLogging(config);
 
@@ -87,25 +91,46 @@ public class MainApp extends Application {
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
-        //Optional<PasswordBook> passwordBookOptional;
-        PasswordBook initialDataPassword = SampleDataPasswordUtil.getSamplePasswordBook();
         try {
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample AddressBook");
             }
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
-            //initialData = passwordBookOptional.orElseGet(SampleDataPasswordUtil::getSamplePasswordBook);
+
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
             initialData = new AddressBook();
-            //initialData = new PasswordBook();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
             initialData = new AddressBook();
-            //initialData = new PasswordBook();
         }
+        PasswordBook initialDataPassword = initPasswordBook(storage);
         return new ModelManager(initialDataPassword, initialData, userPrefs);
+    }
+
+    /**
+     * Returns a {@code Password} with the data from {@code storage}'s password book. <br>
+     * The data from the sample password book will be used instead if {@code storage}'s password book is not found,
+     * or an empty password book will be used instead if errors occur when reading {@code storage}'s password book.
+     */
+    private PasswordBook initPasswordBook(Storage storage) {
+        Optional<PasswordBook> passwordBookOptional;
+        PasswordBook initialDataPassword = SampleDataPasswordUtil.getSamplePasswordBook();
+        try {
+            passwordBookOptional = storage.readPasswordBook();
+            if (!passwordBookOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample PasswordBook");
+            }
+            initialDataPassword = passwordBookOptional.orElseGet(SampleDataPasswordUtil::getSamplePasswordBook);
+        } catch (DataConversionException e) {
+            logger.warning("Data file not in the correct format. Will be starting with an empty PasswordBook");
+            initialDataPassword = new PasswordBook();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with an empty PasswordBook");
+            initialDataPassword = new PasswordBook();
+        }
+        return initialDataPassword;
     }
 
     private void initLogging(Config config) {

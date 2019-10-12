@@ -43,12 +43,14 @@ public class LogicManager implements Logic {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
+        //TODO: depending on what mode it is on, it will use different parser/storage to execute different command
         Command command = addressBookParser.parseCommand(commandText);
         //Command command = passwordBookParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
-            storage.saveAddressBook(model.getAddressBook());
+            storage.savePasswordBook(model.getPasswordBook());
+            //storage.saveAddressBook(model.getAddressBook());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
