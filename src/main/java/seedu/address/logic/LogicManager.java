@@ -11,9 +11,11 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
+import seedu.address.logic.parser.PasswordBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.password.Password;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
 
@@ -27,11 +29,13 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
+    private final PasswordBookParser passwordBookParser;
 
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
         addressBookParser = new AddressBookParser();
+        passwordBookParser = new PasswordBookParser();
     }
 
     @Override
@@ -39,7 +43,8 @@ public class LogicManager implements Logic {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
-        Command command = addressBookParser.parseCommand(commandText);
+        //Command command = addressBookParser.parseCommand(commandText);
+        Command command = passwordBookParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
@@ -74,5 +79,10 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public ObservableList<Password> getFilteredPasswordList() {
+        return model.getFilteredPasswordList();
     }
 }

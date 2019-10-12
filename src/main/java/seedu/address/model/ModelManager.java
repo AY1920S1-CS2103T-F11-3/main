@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.password.Password;
 import seedu.address.model.person.Person;
 
 /**
@@ -22,24 +23,29 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final PasswordBook passwordBook;
+    private final FilteredList<Password> filteredPasswords;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(PasswordBook passwordBook, ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(passwordBook, addressBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
-
+        this.passwordBook = new PasswordBook(passwordBook);
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredPasswords = new FilteredList<>(this.passwordBook.getPasswordList());
     }
 
+
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new PasswordBook(), new AddressBook(), new UserPrefs());
     }
+
 
     //=========== UserPrefs ==================================================================================
 
@@ -127,6 +133,18 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<Password> getFilteredPasswordList() {
+        return filteredPasswords;
+    }
+
+    //=========== PasswordBook List Accessors =============================================================
+
+    @Override
+    public void addPassword(Password password) {
+        passwordBook.addPassword(password);
     }
 
     @Override
