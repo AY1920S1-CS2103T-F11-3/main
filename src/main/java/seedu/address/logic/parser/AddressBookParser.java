@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AnalysePasswordCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
@@ -67,6 +68,10 @@ public class AddressBookParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case AnalysePasswordCommand.COMMAND_WORD:
+            return new AnalysePasswordCommand();
+            //return new AnalysePasswordCommandParser().parse(arguments); TODO: add Parser class.
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
