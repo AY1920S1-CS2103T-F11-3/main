@@ -2,7 +2,9 @@ package seedu.address.logic.commands;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import seedu.address.commons.util.leetUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
@@ -18,22 +20,30 @@ public class AnalysePasswordCommand extends Command{
         accountList = new ArrayList<>(); //MOCK_UP for accountList
         accountList.add(new MockPassword("facebook", "user1", "password"));
         accountList.add(new MockPassword("google", "user2", "password1"));
-        accountList.add(new MockPassword("goodgle", "user3", "password2"));
-        accountList.add(new MockPassword("fabook", "user4", "password3"));
+        accountList.add(new MockPassword("goodgle", "user3", "pa55word2"));
+        accountList.add(new MockPassword("fabook", "user4", "p4ssword3"));
         accountList.add(new MockPassword("face", "user5", "asdfghjkl"));
-        accountList.add(new MockPassword("facebook", "user6", "password"));
+        accountList.add(new MockPassword("facebook", "user6", "p@ssword"));
         accountList.add(new MockPassword("f", "user7", "pass"));
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         checkUniquePassword(accountList);
-        unleet(accountList);
+        searchForVariation("password", accountList);
         return new CommandResult("");
     }
 
-    private void unleet(ArrayList<MockPassword> accountList) {
-
+    private void searchForVariation(String search, ArrayList<MockPassword> accountList) {
+        for (MockPassword acc : accountList) {
+            List<String> unleetList = leetUtil.translateLeet(acc.password.toLowerCase());
+            for (String variation : unleetList) {
+                if (variation.contains(search)) {
+                    System.out.println(acc.purpose + " | " + acc.username + " | "
+                            + acc.password + " | " + search + " appears in the password: " + acc.password);
+                }
+            }
+        }
     }
 
     private void checkUniquePassword(ArrayList<MockPassword> accountList) {
