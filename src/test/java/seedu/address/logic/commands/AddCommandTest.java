@@ -161,6 +161,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void deletePassword(Password password) {
+
+        }
+
+        @Override
         public PasswordBook getPasswordBook() {
             return null;
         }

@@ -163,6 +163,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deletePassword(Password password) {
+        passwordBook.removePassword(password);
+    }
+
+    @Override
     public PasswordBook getPasswordBook() {
         return passwordBook;
     }
