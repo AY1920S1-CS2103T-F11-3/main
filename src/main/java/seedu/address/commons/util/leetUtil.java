@@ -63,6 +63,7 @@ public class leetUtil {
         return translations;
 
     }
+    
 
     // Internal function to recursively build the list of un-leet possibilities.
     private static void replaceAtIndex(final TreeMap<Integer, Character[]> replacements, Integer current_index, char[] password, List<String> final_passwords)
