@@ -38,6 +38,7 @@ public class MainWindow extends UiPart<Stage> {
     private NoteListPanel noteListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private EditObjectWindow editObjectWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -70,6 +71,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        editObjectWindow = new EditObjectWindow();
     }
 
     public Stage getPrimaryStage() {
@@ -156,6 +158,15 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    @FXML
+    public void handleShowWindow() {
+        if (!editObjectWindow.isShowing()) {
+            editObjectWindow.show();
+        } else {
+            editObjectWindow.focus();
+        }
+    }
+
     void show() {
         primaryStage.show();
     }
@@ -196,6 +207,16 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.isShowWindow()) {
+                //TODO optimise this
+                String[] tempFeedBack = commandResult.getFeedbackToUser().split("//");
+                editObjectWindow.setTitle(tempFeedBack[0]);
+                editObjectWindow.setContent(tempFeedBack[1]);
+                editObjectWindow.setLogic(logic);
+                editObjectWindow.setIndex(tempFeedBack[2]);
+                handleShowWindow();
             }
 
             return commandResult;
