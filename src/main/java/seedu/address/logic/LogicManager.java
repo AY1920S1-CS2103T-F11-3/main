@@ -11,9 +11,13 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
+import seedu.address.logic.parser.NoteBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
+import seedu.address.model.NoteBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyNoteBook;
+import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
 
@@ -27,23 +31,29 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
+    private final NoteBookParser noteBookParser;
 
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
         addressBookParser = new AddressBookParser();
+        noteBookParser = new NoteBookParser();
     }
 
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
+//        CommandResult commandResult;
+//        Command command = addressBookParser.parseCommand(commandText);
+//        commandResult = command.execute(model);
         CommandResult commandResult;
-        Command command = addressBookParser.parseCommand(commandText);
+        Command command = noteBookParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
-            storage.saveAddressBook(model.getAddressBook());
+//            storage.saveAddressBook(model.getAddressBook());
+            storage.saveNoteBook(model.getNoteBook());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -57,8 +67,18 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ReadOnlyNoteBook getNoteBook() {
+        return model.getNoteBook();
+    }
+
+    @Override
     public ObservableList<Person> getFilteredPersonList() {
         return model.getFilteredPersonList();
+    }
+
+    @Override
+    public ObservableList<Note> getFilteredNoteList() {
+        return model.getFilteredNoteList();
     }
 
     @Override
@@ -66,6 +86,10 @@ public class LogicManager implements Logic {
         return model.getAddressBookFilePath();
     }
 
+    @Override
+    public Path getNoteBookFilePath() {
+        return model.getNoteBookFilePath();
+    }
     @Override
     public GuiSettings getGuiSettings() {
         return model.getGuiSettings();

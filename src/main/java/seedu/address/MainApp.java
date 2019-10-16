@@ -19,13 +19,17 @@ import seedu.address.logic.LogicManager;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.NoteBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyNoteBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonNoteBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.NoteBookStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.TestStorage;
@@ -55,6 +59,7 @@ public class MainApp extends Application {
 
     /**
      * Initialises SecureIT app with the given password.
+     *
      * @param password the master password used to encrypt data.
      */
     private void initWithPassword(String password) {
@@ -66,7 +71,8 @@ public class MainApp extends Application {
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage =
                 new JsonAddressBookStorage(userPrefs.getAddressBookFilePath(), password);
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, password);
+        NoteBookStorage noteBookStorage = new JsonNoteBookStorage(userPrefs.getNoteBookFilePath(), password);
+        storage = new StorageManager(addressBookStorage, noteBookStorage, userPrefsStorage, password);
 
         initLogging(config);
 
@@ -82,24 +88,53 @@ public class MainApp extends Application {
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
+//    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+//        Optional<ReadOnlyAddressBook> addressBookOptional;
+//        ReadOnlyAddressBook initialData;
+//        try {
+//            addressBookOptional = storage.readAddressBook();
+//            if (!addressBookOptional.isPresent()) {
+//                logger.info("Data file not found. Will be starting with a sample AddressBook");
+//            }
+//            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+//        } catch (DataConversionException e) {
+//            logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
+//            initialData = new AddressBook();
+//        } catch (IOException e) {
+//            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+//            initialData = new AddressBook();
+//        }
+//
+//        return new ModelManager(initialData, userPrefs);
+//    }
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+        Optional<ReadOnlyNoteBook> noteBookOptional;
+        ReadOnlyNoteBook initialNoteData;
         Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialData;
+        ReadOnlyAddressBook initialAddressData;
+
+
         try {
+            noteBookOptional = storage.readNoteBook();
             addressBookOptional = storage.readAddressBook();
+            if (!noteBookOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample AddressBook");
+            }
             if (!addressBookOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample AddressBook");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialNoteData = noteBookOptional.orElseGet(SampleDataUtil::getSampleNoteBook);
+            initialAddressData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            logger.warning("Data file not in the correct format. Will be starting with an empty file");
+            initialNoteData = new NoteBook();
+            initialAddressData = new AddressBook();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            logger.warning("Problem while reading from the file. Will be starting with an empty file");
+            initialNoteData = new NoteBook();
+            initialAddressData = new AddressBook();
         }
-
-        return new ModelManager(initialData, userPrefs);
+        return new ModelManager(initialAddressData, initialNoteData, userPrefs);
     }
 
     private void initLogging(Config config) {
