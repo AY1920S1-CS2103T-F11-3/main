@@ -4,11 +4,12 @@ import java.util.List;
 
 import seedu.address.model.password.Password;
 import seedu.address.model.password.analyser.match.Match;
+import seedu.address.model.password.analyser.match.SequenceMatch;
 
-public class SequenceAnalysisObject extends BaseAnalysisObject {
-    private List<Match> matches;
+public class SequenceResult extends BaseResult {
+    private List<SequenceMatch> matches;
 
-    public SequenceAnalysisObject(Password password, String description, List<Match> matches) {
+    public SequenceResult(Password password, String description, List<SequenceMatch> matches) {
         super(password, description);
         this.matches = matches;
     }

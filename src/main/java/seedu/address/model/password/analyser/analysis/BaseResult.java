@@ -1,14 +1,12 @@
 package seedu.address.model.password.analyser.analysis;
 
-import java.util.Objects;
-
 import seedu.address.model.password.Password;
 
-public abstract class BaseAnalysisObject implements AnalysisObject {
+public abstract class BaseResult implements Result {
     protected Password password;
     protected String description;
 
-    public BaseAnalysisObject(Password password, String description) {
+    public BaseResult(Password password, String description) {
         this.password = password;
         this.description = description;
     }
@@ -27,7 +25,7 @@ public abstract class BaseAnalysisObject implements AnalysisObject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BaseAnalysisObject that = (BaseAnalysisObject) o;
+        BaseResult that = (BaseResult) o;
         return password.equals(that.password);
     }
 

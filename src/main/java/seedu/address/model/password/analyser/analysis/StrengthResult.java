@@ -2,7 +2,7 @@ package seedu.address.model.password.analyser.analysis;
 
 import seedu.address.model.password.Password;
 
-public class StrengthAnalysisObject extends BaseAnalysisObject {
+public class StrengthResult extends BaseResult {
 
     boolean hasMinimumLength = false;
     boolean hasLower = false;
@@ -10,7 +10,7 @@ public class StrengthAnalysisObject extends BaseAnalysisObject {
     boolean hasNum = false;
     boolean hasSpecial = false;
 
-    public StrengthAnalysisObject(Password password, String description, boolean hasMinimumLength, boolean hasLower, boolean hasUpper, boolean hasNum, boolean hasSpecial) {
+    public StrengthResult(Password password, String description, boolean hasMinimumLength, boolean hasLower, boolean hasUpper, boolean hasNum, boolean hasSpecial) {
         super(password, description);
         this.hasMinimumLength = hasMinimumLength;
         this.hasLower = hasLower;

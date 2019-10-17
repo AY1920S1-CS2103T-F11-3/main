@@ -1,34 +1,34 @@
 package seedu.address.model.password.analyser;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.model.password.Password;
-import seedu.address.model.password.analyser.analysis.SimilarityAnalysisObject;
+import seedu.address.model.password.analyser.analysis.SimilarityResult;
+import seedu.address.model.password.analyser.match.SimilarityMatch;
 
 public class SimilarityAnalyser implements Analyser {
 
     private static final String MESSAGE_HEADER = "Analyzing password for similarity: \n";
-    ArrayList<SimilarityAnalysisObject> analysisObjects;
+    ArrayList<SimilarityResult> analysisObjects;
 
     @Override
     public void analyse(List<Password> passwordList) {
-        ArrayList<SimilarityAnalysisObject> analysisObjects = new ArrayList<>();
+        ArrayList<SimilarityResult> analysisObjects = new ArrayList<>();
         for (Password acc : passwordList) {
-            ArrayList<Password> similars = findSimilarPasswords(acc, passwordList);
-            if (!similars.isEmpty()) {
-                analysisObjects.add(new SimilarityAnalysisObject(acc, DESC_FAIL, similars));
+            List<SimilarityMatch> matches = findSimilarPasswords(acc, passwordList);
+            if (!matches.isEmpty()) {
+                analysisObjects.add(new SimilarityResult(acc, DESC_FAIL, matches));
             } else {
-                analysisObjects.add(new SimilarityAnalysisObject(acc, DESC_PASS, similars));
+                analysisObjects.add(new SimilarityResult(acc, DESC_PASS, matches));
             }
         }
         this.analysisObjects = analysisObjects;
     }
 
-    private ArrayList<Password> findSimilarPasswords(Password toCheck, List<Password> passwordList) {
+    private List<SimilarityMatch> findSimilarPasswords(Password toCheck, List<Password> passwordList) {
         String s1 = toCheck.getPasswordValue().value;
-        ArrayList<Password> similars = new ArrayList<>();
+        ArrayList<SimilarityMatch> matches = new ArrayList<>();
         for (Password acc : passwordList) {
             if (toCheck == acc) {
                 continue;
@@ -36,10 +36,10 @@ public class SimilarityAnalyser implements Analyser {
             String s2 = acc.getPasswordValue().value;
             double score = score(s1, s2);
             if(score >= 0.75) {
-                similars.add(acc);
+                matches.add(new SimilarityMatch(0, toCheck.getPasswordValue().value.length(), acc.getPasswordValue().value, acc, score));
             }
         }
-        return similars;
+        return matches;
     }
 
     /**
@@ -91,7 +91,7 @@ public class SimilarityAnalyser implements Analyser {
         StringBuilder reportBuilder = new StringBuilder();
         reportBuilder.append(MESSAGE_HEADER);
         reportBuilder.append(MESSAGE_COLUMNS);
-        for (SimilarityAnalysisObject o : analysisObjects) {
+        for (SimilarityResult o : analysisObjects) {
             reportBuilder.append(o);
         }
         return reportBuilder.toString();
@@ -102,7 +102,7 @@ public class SimilarityAnalyser implements Analyser {
         StringBuilder report = new StringBuilder();
         report.append(MESSAGE_INIT);
         report.append(MESSAGE_HEADER);
-        for (SimilarityAnalysisObject o : analysisObjects) {
+        for (SimilarityResult o : analysisObjects) {
             report.append(o.getGreaterDetail());
         }
         return report.toString();

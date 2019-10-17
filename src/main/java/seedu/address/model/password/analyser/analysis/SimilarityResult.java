@@ -1,26 +1,28 @@
 package seedu.address.model.password.analyser.analysis;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import seedu.address.model.password.Password;
+import seedu.address.model.password.analyser.match.SimilarityMatch;
 
-public class SimilarityAnalysisObject extends BaseAnalysisObject {
+public class SimilarityResult extends BaseResult {
 
-    private ArrayList<Password> similars;
+    private List<SimilarityMatch> matches;
 
-    public SimilarityAnalysisObject(Password password, String description, ArrayList<Password> similars) {
+    public SimilarityResult(Password password, String description, List<SimilarityMatch> matches) {
         super(password, description);
-        this.similars = similars;
+        this.matches = matches;
     }
 
     @Override
     public String getGreaterDetail() {
         StringBuilder report = new StringBuilder("Result : " + description + "\n");
-        if (similars.isEmpty()) {
+        if (matches.isEmpty()) {
             return report.append("No accounts with similar passwords were found\n").toString();
         }
-        for (Password acc : similars) {
-            report.append(acc + "\n"); //TODO implement AccountMatches
+        for (SimilarityMatch m : matches) {
+            report.append(m); //TODO implement AccountMatches
         }
         return report.toString();
     }

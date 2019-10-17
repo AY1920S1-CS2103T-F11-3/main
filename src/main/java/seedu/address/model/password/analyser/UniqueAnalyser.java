@@ -5,19 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 
 import seedu.address.model.password.Password;
-import seedu.address.model.password.analyser.analysis.UniqueAnalysisObject;
+import seedu.address.model.password.analyser.analysis.UniqueResult;
+import seedu.address.model.password.analyser.match.UniqueMatch;
 
 public class UniqueAnalyser implements Analyser{
     private static final String DESC_NOT_UNIQUE = "not unique";
     private static final String DESC_UNIQUE = "unique";
     public final String MESSAGE_HEADER = "Analysing passwords to check unique: \n";
 
-    ArrayList<UniqueAnalysisObject> analysisObjects;
+    ArrayList<UniqueResult> analysisObjects;
 
     @Override
     public void analyse(List<Password> accountList) {
         HashMap<String, ArrayList<Password>> passwordToAccounts = new HashMap<>();
-        ArrayList<UniqueAnalysisObject> analysisObjects = new ArrayList<>();
+        ArrayList<UniqueResult> analysisObjects = new ArrayList<>();
         for (Password acc : accountList) {
             String password = acc.getPasswordValue().value;
             if (passwordToAccounts.containsKey(password)) {
@@ -30,16 +31,30 @@ public class UniqueAnalyser implements Analyser{
         }
 
         for (Password acc : accountList) {
+            List<UniqueMatch> matches = new ArrayList<>();
             String password = acc.getPasswordValue().value;
             ArrayList<Password> arrList = passwordToAccounts.get(password);
             if (arrList.size() > 1) {
-                analysisObjects.add(new UniqueAnalysisObject(acc, DESC_NOT_UNIQUE, arrList));
+                matches = getAllMatches(acc, arrList);
+                analysisObjects.add(new UniqueResult(acc, DESC_NOT_UNIQUE, matches));
             } else {
-                analysisObjects.add(new UniqueAnalysisObject(acc, DESC_UNIQUE, arrList));
+                analysisObjects.add(new UniqueResult(acc, DESC_UNIQUE, matches));
             }
         }
 
         this.analysisObjects = analysisObjects;
+    }
+
+    private List<UniqueMatch> getAllMatches(Password acc, ArrayList<Password> arrList) {
+        ArrayList<UniqueMatch> matches = new ArrayList<>();
+        for (Password p : arrList) {
+            if (p == acc) {
+                continue;
+            }
+            matches.add(new UniqueMatch(0, acc.getPasswordValue().value.length(),
+                    acc.getPasswordValue().value, acc));
+        }
+        return matches;
     }
 
     @Override
@@ -47,7 +62,7 @@ public class UniqueAnalyser implements Analyser{
         StringBuilder reportBuilder = new StringBuilder();
         reportBuilder.append(MESSAGE_HEADER);
         reportBuilder.append(MESSAGE_COLUMNS);
-        for (UniqueAnalysisObject o : analysisObjects) {
+        for (UniqueResult o : analysisObjects) {
             reportBuilder.append(o);
         }
         return reportBuilder.toString();
@@ -58,7 +73,7 @@ public class UniqueAnalyser implements Analyser{
         StringBuilder report = new StringBuilder();
         report.append(MESSAGE_INIT);
         report.append(MESSAGE_HEADER);
-        for (UniqueAnalysisObject o : analysisObjects) {
+        for (UniqueResult o : analysisObjects) {
             report.append(o.getGreaterDetail());
         }
         return report.toString();

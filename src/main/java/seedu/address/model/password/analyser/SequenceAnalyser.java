@@ -4,38 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.model.password.Password;
-import seedu.address.model.password.analyser.analysis.SequenceAnalysisObject;
+import seedu.address.model.password.analyser.analysis.SequenceResult;
 import seedu.address.model.password.analyser.match.Match;
+import seedu.address.model.password.analyser.match.SequenceMatch;
 
 public class SequenceAnalyser implements Analyser {
 
     private static final String MESSAGE_HEADER = "Analysing passwords for common sequences :\n";
 
-    private ArrayList<SequenceAnalysisObject> analysisObjects;
+    private ArrayList<SequenceResult> analysisObjects;
 
     @Override
     public void analyse(List<Password> passwordList) {
-        ArrayList<SequenceAnalysisObject> analysisObjects = new ArrayList<>();
+        ArrayList<SequenceResult> analysisObjects = new ArrayList<>();
         for (Password acc : passwordList) {
             String password = acc.getPasswordValue().value;
-            List<Match> matches = getAllSubseq(password);
+            List<SequenceMatch> matches = getAllSubseq(password);
             if (matches.isEmpty()) {
-                analysisObjects.add(new SequenceAnalysisObject(acc, DESC_PASS, matches));
+                analysisObjects.add(new SequenceResult(acc, DESC_PASS, matches));
             } else {
-                analysisObjects.add(new SequenceAnalysisObject(acc, DESC_FAIL, matches));
+                analysisObjects.add(new SequenceResult(acc, DESC_FAIL, matches));
             }
         }
         this.analysisObjects = analysisObjects;
     }
 
-    private List<Match> getAllSubseq(String password) {
-        ArrayList<Match> matches = new ArrayList<>();
+    private List<SequenceMatch> getAllSubseq(String password) {
+        ArrayList<SequenceMatch> matches = new ArrayList<>();
         getAllForwardSubseq(password, matches);
         getAllBackwardSubseq(password, matches);
         return matches;
     }
 
-    private static void getAllForwardSubseq(String password, ArrayList<Match> matches) {
+    private static void getAllForwardSubseq(String password, ArrayList<SequenceMatch> matches) {
         char[] characters = password.toCharArray();
         if (password.length() <= 2) {
             return; //dont bother
@@ -55,14 +56,14 @@ public class SequenceAnalyser implements Analyser {
                 next = characters[end];
             }
             if (seq.length() >= 3) {
-                matches.add(new Match(start, end, seq.toString(), -1));
+                matches.add(new SequenceMatch(start, end, seq.toString()));
             }
             start = end;
         }
         return;
     }
 
-    private static void getAllBackwardSubseq(String password, ArrayList<Match> matches) {
+    private static void getAllBackwardSubseq(String password, ArrayList<SequenceMatch> matches) {
         char[] characters = password.toCharArray();
         if (password.length() <= 2) {
             return; //dont bother
@@ -82,7 +83,7 @@ public class SequenceAnalyser implements Analyser {
                 next = characters[end];
             }
             if (seq.length() >= 3) {
-                matches.add(new Match(start, end, seq.toString(), -1));
+                matches.add(new SequenceMatch(start, end, seq.toString()));
             }
             start = end;
         }
@@ -106,7 +107,7 @@ public class SequenceAnalyser implements Analyser {
         StringBuilder reportBuilder = new StringBuilder();
         reportBuilder.append(MESSAGE_HEADER);
         reportBuilder.append(MESSAGE_COLUMNS);
-        for (SequenceAnalysisObject o : analysisObjects) {
+        for (SequenceResult o : analysisObjects) {
             reportBuilder.append(o);
         }
         return reportBuilder.toString();
@@ -117,7 +118,7 @@ public class SequenceAnalyser implements Analyser {
         StringBuilder report = new StringBuilder();
         report.append(MESSAGE_INIT);
         report.append(MESSAGE_HEADER);
-        for (SequenceAnalysisObject o : analysisObjects) {
+        for (SequenceResult o : analysisObjects) {
             report.append(o.getGreaterDetail());
         }
         return report.toString();
