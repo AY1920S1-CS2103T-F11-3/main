@@ -69,10 +69,6 @@ public class AddressBookParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
-        case GeneratePasswordCommand.COMMAND_WORD:
-
-            return new GeneratePasswordCommandParser().parse(arguments);
-
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
