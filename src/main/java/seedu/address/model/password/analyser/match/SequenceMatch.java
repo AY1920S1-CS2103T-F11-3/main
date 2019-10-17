@@ -1,9 +1,12 @@
 package seedu.address.model.password.analyser.match;
 
+/**
+ * Represents a sequence match found by a sequence analyser.
+ */
 public class SequenceMatch extends BaseMatch {
 
-    public SequenceMatch(int start_index, int end_index, String token) {
-        super(start_index, end_index, token);
+    public SequenceMatch(int startIndex, int endIndex, String token) {
+        super(startIndex, endIndex, token);
     }
 
     @Override

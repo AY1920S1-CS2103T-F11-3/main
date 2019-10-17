@@ -5,13 +5,16 @@ import java.util.Collections;
 import java.util.List;
 
 import seedu.address.commons.core.Dictionary;
-import seedu.address.commons.util.leetUtil;
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.LeetUtil;
 import seedu.address.model.password.Password;
 import seedu.address.model.password.analyser.analysis.DictionaryResult;
 import seedu.address.model.password.analyser.match.DictionaryMatch;
-import seedu.address.model.password.analyser.match.Match;
 
-public class DictionaryAnalyser implements Analyser{
+/**
+ * Represents analyser object that analyses passwords in password book for common dictionary string.
+ */
+public class DictionaryAnalyser implements Analyser {
 
     private static final String MESSAGE_HEADER = "Analysing passwords for commonly used passwords:\n";
     private Dictionary dictionary;
@@ -39,28 +42,24 @@ public class DictionaryAnalyser implements Analyser{
         List<DictionaryMatch> matches = new ArrayList<>();
 
         // Create all possible sub-sequences of the password
-        for (int start = 0; start < password.length(); start++)
-        {
-            for (int end = start + 1; end <= password.length(); end++)
-            {
-                String split_password = password.substring(start, end);
+        for (int start = 0; start < password.length(); start++) {
+            for (int end = start + 1; end <= password.length(); end++) {
+                String splitPassword = password.substring(start, end);
 
                 // Match on lower
-                String lowerPart = split_password.toLowerCase();
-                Integer lower_rank = dictionary.getDictionary().get(lowerPart);
-                if (lower_rank != null) {
-                    matches.add(new DictionaryMatch(start, end - 1, lowerPart, lower_rank));
+                String lowerPart = splitPassword.toLowerCase();
+                Integer lowerRank = dictionary.getDictionary().get(lowerPart);
+                if (lowerRank != null) {
+                    matches.add(new DictionaryMatch(start, end - 1, lowerPart, lowerRank));
                     continue;
                 }
 
                 //Match on leet
-                List<String> unleetList = leetUtil.translateLeet(lowerPart);
-                for (final String unleetPart : unleetList)
-                {
-                    Integer unleet_rank = dictionary.getDictionary().get(unleetPart);
-                    if (unleet_rank != null)
-                    {
-                        matches.add(new DictionaryMatch(start, end - 1, unleetPart, unleet_rank));
+                List<String> unleetList = LeetUtil.translateLeet(lowerPart);
+                for (final String unleetPart : unleetList) {
+                    Integer unleetRank = dictionary.getDictionary().get(unleetPart);
+                    if (unleetRank != null) {
+                        matches.add(new DictionaryMatch(start, end - 1, unleetPart, unleetRank));
                         continue;
                     }
                 }
@@ -82,13 +81,12 @@ public class DictionaryAnalyser implements Analyser{
     }
 
     @Override
-    public String outputDetailedReport() {
+    public String outputDetailedReport(Index index) {
         StringBuilder reportBuilder = new StringBuilder();
         reportBuilder.append(MESSAGE_INIT);
         reportBuilder.append(MESSAGE_HEADER);
-        for (DictionaryResult o : analysisObjects) {
-            reportBuilder.append(o.getGreaterDetail());
-        }
+        DictionaryResult target = analysisObjects.get(index.getZeroBased());
+        reportBuilder.append(target.getGreaterDetail());
         return reportBuilder.toString();
     }
 }

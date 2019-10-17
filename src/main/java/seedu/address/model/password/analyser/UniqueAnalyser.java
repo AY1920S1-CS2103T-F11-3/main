@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.password.Password;
 import seedu.address.model.password.analyser.analysis.UniqueResult;
 import seedu.address.model.password.analyser.match.UniqueMatch;
 
-public class UniqueAnalyser implements Analyser{
+/**
+ * Represents analyser object that analyses passwords in password book for unique passwords.
+ */
+public class UniqueAnalyser implements Analyser {
     private static final String DESC_NOT_UNIQUE = "not unique";
     private static final String DESC_UNIQUE = "unique";
-    public final String MESSAGE_HEADER = "Analysing passwords to check unique: \n";
+    private static final String MESSAGE_HEADER = "Analysing passwords to check unique: \n";
 
-    ArrayList<UniqueResult> analysisObjects;
+    private ArrayList<UniqueResult> analysisObjects;
 
     @Override
     public void analyse(List<Password> accountList) {
@@ -69,13 +73,12 @@ public class UniqueAnalyser implements Analyser{
     }
 
     @Override
-    public String outputDetailedReport() {
+    public String outputDetailedReport(Index index) {
         StringBuilder report = new StringBuilder();
         report.append(MESSAGE_INIT);
         report.append(MESSAGE_HEADER);
-        for (UniqueResult o : analysisObjects) {
-            report.append(o.getGreaterDetail());
-        }
+        UniqueResult target = analysisObjects.get(index.getZeroBased());
+        report.append(target.getGreaterDetail());
         return report.toString();
     }
 

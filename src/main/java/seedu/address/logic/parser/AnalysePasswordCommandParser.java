@@ -1,5 +1,8 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STRONG;
+
 import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
@@ -7,9 +10,9 @@ import seedu.address.logic.commands.AnalysePasswordCommand;
 import seedu.address.logic.commands.AnalyseStrongPasswordCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_STRONG;
-
+/**
+ * Parses input arguments and creates a new AnalysePasswordCommand object
+ */
 public class AnalysePasswordCommandParser implements Parser {
 
     /**
@@ -26,7 +29,8 @@ public class AnalysePasswordCommandParser implements Parser {
                     ArgumentTokenizer.tokenize(userInput, PREFIX_STRONG);
             if (!isPrefixPresent(argMultimap, PREFIX_STRONG)
                     || !argMultimap.getPreamble().isEmpty()) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AnalysePasswordCommand.MESSAGE_USAGE));
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                                                    AnalysePasswordCommand.MESSAGE_USAGE));
             }
             Index index = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_STRONG).get());
 

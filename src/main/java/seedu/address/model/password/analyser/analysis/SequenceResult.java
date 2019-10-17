@@ -6,6 +6,9 @@ import seedu.address.model.password.Password;
 import seedu.address.model.password.analyser.match.Match;
 import seedu.address.model.password.analyser.match.SequenceMatch;
 
+/**
+ * Represents a result produced from sequence analyser.
+ */
 public class SequenceResult extends BaseResult {
     private List<SequenceMatch> matches;
 

@@ -2,15 +2,19 @@ package seedu.address.model.password.analyser.analysis;
 
 import seedu.address.model.password.Password;
 
+/**
+ * Represents a result produced from strength analyser.
+ */
 public class StrengthResult extends BaseResult {
 
-    boolean hasMinimumLength = false;
-    boolean hasLower = false;
-    boolean hasUpper = false;
-    boolean hasNum = false;
-    boolean hasSpecial = false;
+    private boolean hasMinimumLength = false;
+    private boolean hasLower = false;
+    private boolean hasUpper = false;
+    private boolean hasNum = false;
+    private boolean hasSpecial = false;
 
-    public StrengthResult(Password password, String description, boolean hasMinimumLength, boolean hasLower, boolean hasUpper, boolean hasNum, boolean hasSpecial) {
+    public StrengthResult(Password password, String description, boolean hasMinimumLength,
+                          boolean hasLower, boolean hasUpper, boolean hasNum, boolean hasSpecial) {
         super(password, description);
         this.hasMinimumLength = hasMinimumLength;
         this.hasLower = hasLower;

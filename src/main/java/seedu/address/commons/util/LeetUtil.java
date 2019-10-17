@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class leetUtil {
+/**
+ * Converts a leet password into list of unleet possibilities.
+ */
+public class LeetUtil {
     private static Map<Character, Character[]> defaultLeetTable = new HashMap<>();
     static {
         defaultLeetTable.put('4', new Character[]{'a'});
@@ -33,57 +36,51 @@ public class leetUtil {
         defaultLeetTable.put('2', new Character[]{'z'});
     }
 
-    //Generate the possible list of translations given a password.
+    /**
+     * Generates the possible list of translations given a password.
+     * @param password the password string to unleet
+     * @return the list of possible unleet passwords
+     */
     public static List<String> translateLeet(String password) {
         ArrayList<String> translations = new ArrayList();
         final TreeMap<Integer, Character[]> replacements = new TreeMap<>();
-        for (int i = 0; i < password.length(); i++)
-        {
+        for (int i = 0; i < password.length(); i++) {
             Character[] replacement = defaultLeetTable.get(password.charAt(i));
-            if (replacement != null)
-            {
-                replacements.put(i, replacement); // for each character, if the special character has mapping to normal, then put inside the tree.
+            if (replacement != null) {
+                replacements.put(i, replacement);
+                // for each character, if the special character has mapping to normal, then put inside the tree.
             }
         }
 
         // Do not bother continuing if we're going to replace every single character
-        if(replacements.keySet().size() == password.length())
+        if (replacements.keySet().size() == password.length()) {
             return translations;
-
-        if (replacements.size() > 0)
-        {
-            char[] password_char = new char[password.length()];
-            for (int i = 0; i < password.length(); i++)
-            {
-                password_char[i] = password.charAt(i);
-            }
-            replaceAtIndex(replacements, replacements.firstKey(), password_char, translations); //starting from the first element in tree map, build all unleets.
         }
-
-        return translations;
-
-    }
-    
-
-    // Internal function to recursively build the list of un-leet possibilities.
-    private static void replaceAtIndex(final TreeMap<Integer, Character[]> replacements, Integer current_index, char[] password, List<String> final_passwords)
-    {
-        Character[] listOfReplacementsForSpecialCharacter = replacements.get(current_index);
-        for (char replacement : listOfReplacementsForSpecialCharacter) //for each possible replacement in char[]
-        {
-            password[current_index] = replacement;
-            if (current_index.equals(replacements.lastKey()))
-            {
-                final_passwords.add(new String(password));
+        if (replacements.size() > 0) {
+            char[] passwordChar = new char[password.length()];
+            for (int i = 0; i < password.length(); i++) {
+                passwordChar[i] = password.charAt(i);
             }
-            else if (final_passwords.size() > 100)
-            {
+            replaceAtIndex(replacements, replacements.firstKey(), passwordChar, translations);
+        }
+        return translations;
+    }
+
+    /**
+     * Internal function to recursively build the list of un-leet possibilities.
+     */
+    private static void replaceAtIndex(final TreeMap<Integer, Character[]> replacements,
+                                       Integer currentIndex, char[] password, List<String> finalPasswords) {
+        Character[] listOfReplacementsForSpecialCharacter = replacements.get(currentIndex);
+        for (char replacement : listOfReplacementsForSpecialCharacter) {
+            password[currentIndex] = replacement;
+            if (currentIndex.equals(replacements.lastKey())) {
+                finalPasswords.add(new String(password));
+            } else if (finalPasswords.size() > 100) {
                 // Give up if we've already made 100 replacements
                 return;
-            }
-            else
-            {
-                replaceAtIndex(replacements, replacements.higherKey(current_index), password, final_passwords); //move onto the next index in the password.
+            } else {
+                replaceAtIndex(replacements, replacements.higherKey(currentIndex), password, finalPasswords);
             }
         }
     }

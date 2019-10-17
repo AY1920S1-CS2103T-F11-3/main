@@ -2,11 +2,14 @@ package seedu.address.model.password.analyser.match;
 
 import seedu.address.model.password.Password;
 
+/**
+ * Represents a similarity match found by a similarity analyser.
+ */
 public class SimilarityMatch extends BaseMatch implements Comparable<SimilarityMatch> {
     private double similarity;
     private Password password;
-    public SimilarityMatch(int start_index, int end_index, String token, Password password, double similarity) {
-        super(start_index, end_index, token);
+    public SimilarityMatch(int startIndex, int endIndex, String token, Password password, double similarity) {
+        super(startIndex, endIndex, token);
         this.password = password;
         this.similarity = similarity;
     }

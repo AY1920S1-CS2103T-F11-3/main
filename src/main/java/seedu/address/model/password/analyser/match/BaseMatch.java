@@ -1,16 +1,19 @@
 package seedu.address.model.password.analyser.match;
 
-public abstract class BaseMatch implements Match{
+/**
+ * Represents a match found by an analyser which contains the start and end index as well as the match token.
+ */
+public abstract class BaseMatch implements Match {
 
     private String token;
-    private int start_index;
-    private int end_index;
+    private int startIndex;
+    private int endIndex;
     //private int rank;
 
-    public BaseMatch(int start_index, int end_index, String token) {
+    public BaseMatch(int startIndex, int endIndex, String token) {
         this.token = token;
-        this.start_index = start_index;
-        this.end_index = end_index;
+        this.startIndex = startIndex;
+        this.endIndex = endIndex;
         //this.rank = rank; TODO : transfer
     }
 
@@ -19,23 +22,23 @@ public abstract class BaseMatch implements Match{
     }
 
     public int getStart_index() {
-        return start_index;
+        return startIndex;
     }
 
     public int getEnd_index() {
-        return end_index;
+        return endIndex;
     }
 
     @Override
     public String toString() {
         return MESSAGE_INIT
                 + "Token: " + this.token + "\n"
-                + "Start Index: " + this.start_index + "\n"
-                + "End Index: " + this.end_index + "\n";
+                + "Start Index: " + this.startIndex + "\n"
+                + "End Index: " + this.endIndex + "\n";
     }
 
-//    @Override
-//    public int compareTo(Match o) {
-//        return this.rank - o.rank;
-//    }
+    //    @Override
+    //    public int compareTo(Match o) {
+    //        return this.rank - o.rank;
+    //    }
 }

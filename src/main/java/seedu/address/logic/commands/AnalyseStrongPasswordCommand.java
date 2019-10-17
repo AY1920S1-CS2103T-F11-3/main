@@ -3,11 +3,11 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.commons.core.Dictionary;
 import seedu.address.commons.core.index.Index;
+//import seedu.address.commons.exceptions.DictionaryException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.password.Password;
@@ -18,9 +18,12 @@ import seedu.address.model.password.analyser.SimilarityAnalyser;
 import seedu.address.model.password.analyser.StrengthAnalyser;
 import seedu.address.model.password.analyser.UniqueAnalyser;
 
+/**
+ * Analyses a specific password in password book as given by the index.
+ */
 public class AnalyseStrongPasswordCommand extends AnalysePasswordCommand {
+    private static final String MESSAGE_INIT = "----------------------------------------\n";
     private Index index;
-    public static String MESSAGE_INIT = "----------------------------------------\n";
 
     public AnalyseStrongPasswordCommand(Index index) {
         super();
@@ -37,8 +40,8 @@ public class AnalyseStrongPasswordCommand extends AnalysePasswordCommand {
         reportBuilder.append(MESSAGE_INIT);
         reportBuilder.append(passwordToAnalyse);
         for (Analyser analyser : analyserList) {
-            analyser.analyse(new ArrayList<Password>(Arrays.asList(passwordToAnalyse)));
-            String report = analyser.outputDetailedReport();
+            analyser.analyse(passwordList);
+            String report = analyser.outputDetailedReport(index);
             reportBuilder.append(report);
         }
         System.out.println(reportBuilder.toString());

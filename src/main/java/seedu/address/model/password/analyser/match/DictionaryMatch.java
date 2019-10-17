@@ -1,10 +1,13 @@
 package seedu.address.model.password.analyser.match;
 
+/**
+ * Represents a dictionary match found by an dictionary analyser.
+ */
 public class DictionaryMatch extends BaseMatch implements Comparable<DictionaryMatch> {
     private int rank;
 
-    public DictionaryMatch(int start_index, int end_index, String token, int rank) {
-        super(start_index, end_index, token);
+    public DictionaryMatch(int startIndex, int endIndex, String token, int rank) {
+        super(startIndex, endIndex, token);
         this.rank = rank;
     }
 

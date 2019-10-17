@@ -2,6 +2,9 @@ package seedu.address.model.password.analyser.analysis;
 
 import seedu.address.model.password.Password;
 
+/**
+ * Represents a result produced from analyser.
+ */
 public abstract class BaseResult implements Result {
     protected Password password;
     protected String description;
@@ -23,15 +26,20 @@ public abstract class BaseResult implements Result {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         BaseResult that = (BaseResult) o;
         return password.equals(that.password);
     }
 
     @Override
     public String toString() {
-        return this.password.getDescription()  + " : " + this.password.getUsername() + " : " + this.password.getPasswordValue() + " : " + getDescription() + "\n";
+        return this.password.getDescription() + " : " + this.password.getUsername() + " : "
+                + this.password.getPasswordValue() + " : " + getDescription() + "\n";
     }
 
 }

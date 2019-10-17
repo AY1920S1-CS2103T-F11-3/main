@@ -2,11 +2,14 @@ package seedu.address.model.password.analyser.match;
 
 import seedu.address.model.password.Password;
 
+/**
+ * Represents a unique match found by a unique analyser.
+ */
 public class UniqueMatch extends BaseMatch {
     private Password password;
 
-    public UniqueMatch(int start_index, int end_index, String token, Password password) {
-        super(start_index, end_index, token);
+    public UniqueMatch(int startIndex, int endIndex, String token, Password password) {
+        super(startIndex, endIndex, token);
         this.password = password;
     }
 

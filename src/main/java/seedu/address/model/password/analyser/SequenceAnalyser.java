@@ -3,11 +3,14 @@ package seedu.address.model.password.analyser;
 import java.util.ArrayList;
 import java.util.List;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.password.Password;
 import seedu.address.model.password.analyser.analysis.SequenceResult;
-import seedu.address.model.password.analyser.match.Match;
 import seedu.address.model.password.analyser.match.SequenceMatch;
 
+/**
+ * Represents analyser object that analyses passwords in password book for common sequence string.
+ */
 public class SequenceAnalyser implements Analyser {
 
     private static final String MESSAGE_HEADER = "Analysing passwords for common sequences :\n";
@@ -48,10 +51,12 @@ public class SequenceAnalyser implements Analyser {
             seq.append(curr);
             int end = start + 1;
             Character next = characters[end];
-            while (next == curr + 1 && end <= characters.length -1 && inSameRange(curr, next)) {
+            while (next == curr + 1 && end <= characters.length - 1 && inSameRange(curr, next)) {
                 seq.append(next);
                 end++;
-                if (end == characters.length) break;
+                if (end == characters.length) {
+                    break;
+                }
                 curr = next;
                 next = characters[end];
             }
@@ -75,10 +80,12 @@ public class SequenceAnalyser implements Analyser {
             seq.append(curr);
             int end = start + 1;
             Character next = characters[end];
-            while (next == curr - 1 && end <= characters.length -1 && inSameRange(curr, next)) {
+            while (next == curr - 1 && end <= characters.length - 1 && inSameRange(curr, next)) {
                 seq.append(next);
                 end++;
-                if (end == characters.length) break;
+                if (end == characters.length) {
+                    break;
+                }
                 curr = next;
                 next = characters[end];
             }
@@ -90,13 +97,19 @@ public class SequenceAnalyser implements Analyser {
         return;
     }
 
+    /**
+     * Checks that both current and next character are within the same ASCII range type.
+     * @param curr the current character
+     * @param next the next character
+     * @return true if both current and next character are within the same ASCII range type, else false
+     */
     private static boolean inSameRange(Character curr, Character next) {
-        if (curr >= 65 && curr <= 90) //ALPHA_UPPER
+        if (curr >= 65 && curr <= 90) { //ALPHA_UPPER
             return (next >= 65 && next <= 90);
-        else if (curr >= 97 && curr <= 122) { //ALPHA_LOWER:
+        } else if (curr >= 97 && curr <= 122) { //ALPHA_LOWER:
             return (next >= 97 && next <= 122);
-        } else if (curr >= 48 && curr <= 57){ //NUMERICAL:
-                return (next >= 48 && next <= 57);
+        } else if (curr >= 48 && curr <= 57) { //NUMERICAL:
+            return (next >= 48 && next <= 57);
         } else {
             return false;
         }
@@ -114,13 +127,12 @@ public class SequenceAnalyser implements Analyser {
     }
 
     @Override
-    public String outputDetailedReport() {
+    public String outputDetailedReport(Index index) {
         StringBuilder report = new StringBuilder();
         report.append(MESSAGE_INIT);
         report.append(MESSAGE_HEADER);
-        for (SequenceResult o : analysisObjects) {
-            report.append(o.getGreaterDetail());
-        }
+        SequenceResult target = analysisObjects.get(index.getZeroBased());
+        report.append(target.getGreaterDetail());
         return report.toString();
     }
 }

@@ -2,11 +2,13 @@ package seedu.address.model.password.analyser.analysis;
 
 import java.util.List;
 
-import seedu.address.commons.core.Dictionary;
 import seedu.address.model.password.Password;
 import seedu.address.model.password.analyser.match.DictionaryMatch;
 import seedu.address.model.password.analyser.match.Match;
 
+/**
+ * Represents a result produced from dictionary analyser.
+ */
 public class DictionaryResult extends BaseResult {
     private List<DictionaryMatch> matches;
 

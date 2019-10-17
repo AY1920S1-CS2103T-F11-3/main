@@ -1,11 +1,13 @@
 package seedu.address.model.password.analyser.analysis;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.model.password.Password;
 import seedu.address.model.password.analyser.match.SimilarityMatch;
 
+/**
+ * Represents a result produced from similarity analyser.
+ */
 public class SimilarityResult extends BaseResult {
 
     private List<SimilarityMatch> matches;
