@@ -11,6 +11,7 @@ public class PasswordValue {
 
     private static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
+
     public final String value;
 
     public PasswordValue(String passwordValue) {

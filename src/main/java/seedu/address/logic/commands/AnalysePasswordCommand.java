@@ -1,90 +1,85 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import seedu.address.commons.util.leetUtil;
+import seedu.address.commons.core.Dictionary;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.password.Password;
+import seedu.address.model.password.analyser.Analyser;
+import seedu.address.model.password.analyser.DictionaryAnalyser;
+import seedu.address.model.password.analyser.SequenceAnalyser;
+import seedu.address.model.password.analyser.SimilarityAnalyser;
+import seedu.address.model.password.analyser.StrengthAnalyser;
+import seedu.address.model.password.analyser.UniqueAnalyser;
+
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STRONG;
 
 public class AnalysePasswordCommand extends Command{
 
     public static final String COMMAND_WORD = "analyse";
-    //TODO: abstract out all the messages
-    //public static final String MESSAGE_NOT_UNIQUE = "The following accounts resued the same password";
-
-    private ArrayList<MockPassword> accountList;
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + "Analyses the entire list of passwords currently stored in the existing password book in general detail."
+            + "Optional Parameters: \n"
+            + PREFIX_STRONG + "INDEX (must be a positive integer) \n"
+            + "(Analyses the password identified by the index in greater detail.)";
+    public static final String MESSAGE_INIT =
+            "  ____                           ___ _____  \n" +
+            " / ___|  ___  ___ _   _ _ __ ___|_ _|_   _| \n" +
+            " \\___ \\ / _ \\/ __| | | | '__/ _ \\| |  | |   \n" +
+            "  ___) |  __/ (__| |_| | | |  __/| |  | |   \n" +
+            " |____/ \\___|\\___|\\__,_|_|  \\___|___| |_|   \n" +
+            "                                            \n" +
+            "---- Password analysis ----\n" +
+                    "\n";
+    public final String DICTIONARY_PASSWORD = "passwords.txt";
 
     public AnalysePasswordCommand() {
-        accountList = new ArrayList<>(); //MOCK_UP for accountList
-        accountList.add(new MockPassword("facebook", "user1", "password"));
-        accountList.add(new MockPassword("google", "user2", "password1"));
-        accountList.add(new MockPassword("goodgle", "user3", "pa55word2"));
-        accountList.add(new MockPassword("fabook", "user4", "p4ssword3"));
-        accountList.add(new MockPassword("face", "user5", "asdfghjkl"));
-        accountList.add(new MockPassword("facebook", "user6", "p@ssword"));
-        accountList.add(new MockPassword("f", "user7", "pass"));
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        checkUniquePassword(accountList);
-        searchForVariation("password", accountList);
-        return new CommandResult("");
+        requireNonNull(model);
+        List<Password> passwordList = model.getFilteredPasswordList();
+        List<Analyser> analyserList = getRequiredAnalysers();
+        StringBuilder reportBuilder = new StringBuilder();
+        reportBuilder.append(MESSAGE_INIT);
+        for (Analyser analyser : analyserList) {
+            analyser.analyse(passwordList);
+            String report = analyser.outputSummaryReport();
+            reportBuilder.append(report);
+        }
+        System.out.println(reportBuilder.toString());
+        return new CommandResult("Details are shown in CLI!");
     }
 
-    private void searchForVariation(String search, ArrayList<MockPassword> accountList) {
-        for (MockPassword acc : accountList) {
-            List<String> unleetList = leetUtil.translateLeet(acc.password.toLowerCase());
-            for (String variation : unleetList) {
-                if (variation.contains(search)) {
-                    System.out.println(acc.purpose + " | " + acc.username + " | "
-                            + acc.password + " | " + search + " appears in the password: " + acc.password);
-                }
-            }
-        }
+    private List<Analyser> getRequiredAnalysers() {
+        ArrayList<Analyser> analyserList = new ArrayList<>();
+        analyserList.add(new UniqueAnalyser());
+        //analyserList.add(new UserAsPassAnalyser());
+        analyserList.add(new StrengthAnalyser());
+        analyserList.add(new SimilarityAnalyser());
+        analyserList.add(new DictionaryAnalyser(Dictionary.build(DICTIONARY_PASSWORD)));
+        analyserList.add(new SequenceAnalyser());
+
+        return analyserList;
     }
 
-    private void checkUniquePassword(ArrayList<MockPassword> accountList) {
-        HashMap<String, ArrayList<MockPassword>> passwordToSamePassAccountMap = new HashMap<>();
-        ArrayList<String> notUniquePasswords = new ArrayList<>();
-        for (MockPassword p : accountList) {
-            if (passwordToSamePassAccountMap.containsKey(p.password)) {
-                passwordToSamePassAccountMap.get(p.password).add(p);
-                notUniquePasswords.add(p.password);
-            } else {
-                passwordToSamePassAccountMap.put(p.password, new ArrayList<>());
-                passwordToSamePassAccountMap.get(p.password).add(p);
-            }
-        }
-        if (notUniquePasswords.size() != 0) {
+//    private void searchForVariation(String search, List<Password> accountList) { //TODO : Implement search function using this.
+//        for (Password acc : accountList) {
+//            List<String> unleetList = leetUtil.translateLeet(acc.getPasswordValue().toString().toLowerCase());
+//            for (String variation : unleetList) {
+//                if (variation.contains(search)) {
+//                    System.out.println(acc.getDescription() + " | " + acc.getUsername() + " | "
+//                            + acc.getPasswordValue() + " | " + search + " appears in the password: " + acc.getPasswordValue());
+//                }
+//            }
+//        }
+//    }
 
-            System.out.println("The following accounts were found to reuse the same password:");
-            for (String p : notUniquePasswords) {
-                ArrayList<MockPassword> accountsWithSamePassword = passwordToSamePassAccountMap.get(p);
-                for (MockPassword account : accountsWithSamePassword) {
-                    System.out.println(account.purpose + " | " + account.username + " | "
-                                    + account.password + " | " + "Shares the password: " + account.password);
-                }
-            }
-        } else {
-            System.out.println("No passwords were reused!");
-        }
 
-    }
-
-    public class MockPassword {
-        private String purpose;
-        private String username;
-        private String password;
-
-        public MockPassword(String purpose, String username, String password) {
-            this.purpose = purpose;
-            this.username = username;
-            this.password = password;
-        }
-
-        //TODO: CALCULATE_STRENGTH_METHOD
-    }
 }

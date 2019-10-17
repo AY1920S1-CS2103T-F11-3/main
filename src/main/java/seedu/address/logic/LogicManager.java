@@ -44,8 +44,8 @@ public class LogicManager implements Logic {
 
         CommandResult commandResult;
         //TODO: depending on what mode it is on, it will use different parser/storage to execute different command
-        Command command = addressBookParser.parseCommand(commandText);
-        //Command command = passwordBookParser.parseCommand(commandText);
+        //Command command = addressBookParser.parseCommand(commandText);
+        Command command = passwordBookParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {

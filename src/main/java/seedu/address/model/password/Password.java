@@ -56,7 +56,8 @@ public class Password {
                 .append(" Username: ")
                 .append(getUsername())
                 .append(" Password: ")
-                .append(getPasswordValue());
+                .append(getPasswordValue())
+                .append("\n");
 
         return builder.toString();
     }
