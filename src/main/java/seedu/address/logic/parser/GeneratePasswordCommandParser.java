@@ -2,23 +2,27 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.logic.commands.Command;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LENGTH;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LOWER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NUM;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SPECIAL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_UPPER;
+
 import seedu.address.logic.commands.GeneratePasswordCommand;
 import seedu.address.logic.commands.GeneratePasswordCommand.PasswordGeneratorDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_LOWER;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_UPPER;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NUM;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SPECIAL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_LENGTH;
 
+/**
+ * Parses input arguments and creates a new GeneratePasswordCommand object
+ */
 public class GeneratePasswordCommandParser implements Parser {
 
     @Override
     public GeneratePasswordCommand parse(String userInput) throws ParseException {
         requireNonNull(userInput);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(userInput, PREFIX_LENGTH, PREFIX_LOWER, PREFIX_UPPER, PREFIX_NUM, PREFIX_SPECIAL);
+                ArgumentTokenizer.tokenize(userInput, PREFIX_LENGTH, PREFIX_LOWER,
+                                                    PREFIX_UPPER, PREFIX_NUM, PREFIX_SPECIAL);
 
         try {
             PasswordGeneratorDescriptor description = new PasswordGeneratorDescriptor();

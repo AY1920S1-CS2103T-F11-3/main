@@ -1,28 +1,29 @@
 package seedu.address.logic.commands;
 
-import java.awt.*;
+import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
 
-import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
-public class GeneratePasswordCommand extends Command{
+/**
+ * Generates a random password value based on user input argument.
+ */
+public class GeneratePasswordCommand extends Command {
     public static final String COMMAND_WORD = "generate";
-    public static final String MESSAGE_SUCCESS = "Password Generated: %s" + "\n" + "Password has been copied to your clipboard!";
-    public static final String MESSAGE_REQUIRE_CHECK_AT_LEAST_ONE = "At least one field is required to be true to generate password. ";
+    public static final String MESSAGE_SUCCESS = "Password Generated: %s" + "\n"
+                                                            + "Password has been copied to your clipboard!";
+    public static final String MESSAGE_REQUIRE_CHECK_AT_LEAST_ONE = "At least one field "
+                                                            + "is required to be true to generate password. ";
     public static final String MESSAGE_REQUIRE_INTEGER_LENGTH = "Please enter a whole number for password length";
     public static final String MESSAGE_USAGE = "e.g. generate length/8 lower/true upper/true num/true special/true";
-    public static final String MESSAGE_REQUIRE_POSITIVE_LENGTH = "Please enter a valid password length. It has to be a non-zero positive integer.";
+    public static final String MESSAGE_REQUIRE_POSITIVE_LENGTH = "Please enter a valid password length. "
+                                                            + "It has to be a non-zero positive integer.";
 
     private int length;
     private boolean lower;
@@ -40,44 +41,45 @@ public class GeneratePasswordCommand extends Command{
 
     /**
      * Returns a CommandResult containing a randomly generated password.
-     * @param model the manager model for SecureIT
+     * @param model the manager model
      * @return randomly generated password
      */
-
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        // TODO: Integrate with CP PasswordModelManger
-        // TODO: Following method should be abstracted to a separate PasswordModelManager
         if (length < 0) {
-            throw new CommandException(MESSAGE_REQUIRE_POSITIVE_LENGTH + "\n" +
-                                        MESSAGE_USAGE);
+            throw new CommandException(MESSAGE_REQUIRE_POSITIVE_LENGTH + "\n"
+                                        + MESSAGE_USAGE);
         }
         String password = generateRandomPassword();
         copyToClipboard(password, null);
         return new CommandResult(String.format(MESSAGE_SUCCESS, password));
     }
 
+    /**
+     * Generates random password value based on user input.
+     * @return a random password value string
+     */
     private String generateRandomPassword() {
         // Attributes:
         SecureRandom randomNumGen;
         int passwordLength;
         ArrayList<String[]> characterSet;
-        String[] lowAlpha = new String[]
-                {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
-                        "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
-                        "u", "v", "w", "x", "y", "z"};
-        String[] highAlpha = new String[]
-                {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
-                        "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
-                        "U", "V", "W", "X", "Y", "Z"};
-        String[] specialChars = new String[]
-                {"~", "`", "!", "@", "#", "$", "%", "^", "&", "*",
-                        "(", ")", "-", "_", "+", "=", "[", "{", "]", "}",
-                        "|", "\\", "'", "\"", ";", ":", "?", "/", ".", ">",
-                        "<", ","};
-        String[] numbers = new String[]
-                {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] lowAlpha = new String[] {
+            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+            "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+            "u", "v", "w", "x", "y", "z"};
+        String[] highAlpha = new String[] {
+            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+            "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+            "U", "V", "W", "X", "Y", "Z"};
+        String[] specialChars = new String[] {
+            "~", "`", "!", "@", "#", "$", "%", "^", "&", "*",
+            "(", ")", "-", "_", "+", "=", "[", "{", "]", "}",
+            "|", "\\", "'", "\"", ";", ":", "?", "/", ".", ">",
+            "<", ","};
+        String[] numbers = new String[] {
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
         // init
         characterSet = setCharacterSet(lowAlpha, highAlpha, specialChars, numbers);
@@ -88,24 +90,28 @@ public class GeneratePasswordCommand extends Command{
         //generate random character from characterSet for 8 times.
         for (int k = 0; k < passwordLength; k++) {
             int ranArrayChooser = randomNumGen.nextInt(characterSet.size());
-            int randomLetterIndex = randomNumGen.nextInt(characterSet.get(ranArrayChooser).length -1);
+            int randomLetterIndex = randomNumGen.nextInt(characterSet.get(ranArrayChooser).length - 1);
             password.append(characterSet.get(ranArrayChooser)[randomLetterIndex]);
         }
 
         return password.toString();
     }
 
-    private ArrayList<String[]> setCharacterSet(String[] lowAlpha, String[] highAlpha, String[] specialChars, String[] numbers) {
+    private ArrayList<String[]> setCharacterSet(String[] lowAlpha,
+                                                String[] highAlpha, String[] specialChars, String[] numbers) {
 
         ArrayList<String[]> characterSet = new ArrayList<>();
 
         if (lower) {
             characterSet.add(lowAlpha);
-        } if (upper) {
+        }
+        if (upper) {
             characterSet.add(highAlpha);
-        } if (special) {
+        }
+        if (special) {
             characterSet.add(specialChars);
-        } if (num) {
+        }
+        if (num) {
             characterSet.add(numbers);
         }
 
@@ -116,9 +122,12 @@ public class GeneratePasswordCommand extends Command{
     private void requireNonNull(Model model) {
     }
 
-    public void copyToClipboard(String textToCopy, ClipboardOwner user)
-
-    {
+    /**
+     * Copies generated password to user clipboard
+     * @param textToCopy the password to copy
+     * @param user the user local
+     */
+    public void copyToClipboard(String textToCopy, ClipboardOwner user) {
         //Create & get the clipboard from the computer
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 

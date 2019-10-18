@@ -13,11 +13,10 @@ public class CliSyntax {
     public static final Prefix PREFIX_TAG = new Prefix("t/");
     /* Prefix definitions for password generator */
     public static final Prefix PREFIX_LOWER = new Prefix("lower/");
-    public static final Prefix PREFIX_UPPER  = new Prefix("upper/");
+    public static final Prefix PREFIX_UPPER = new Prefix("upper/");
     public static final Prefix PREFIX_NUM = new Prefix("num/");
     public static final Prefix PREFIX_SPECIAL = new Prefix("special/");
     public static final Prefix PREFIX_LENGTH = new Prefix("length/");
-
 
     public static final Prefix PREFIX_DESCRIPTION = new Prefix("d/");
     public static final Prefix PREFIX_USERNAME = new Prefix("u/");
