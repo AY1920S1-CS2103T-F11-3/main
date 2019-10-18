@@ -8,6 +8,7 @@ import java.util.List;
 
 import seedu.address.commons.core.Dictionary;
 //import seedu.address.commons.exceptions.DictionaryException;
+import seedu.address.commons.exceptions.DictionaryException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.password.Password;
@@ -44,7 +45,7 @@ public class AnalysePasswordCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model) throws CommandException, DictionaryException {
         requireNonNull(model);
         List<Password> passwordList = model.getFilteredPasswordList();
         List<Analyser> analyserList = getRequiredAnalysers();
@@ -59,7 +60,7 @@ public class AnalysePasswordCommand extends Command {
         return new CommandResult("Details are shown in CLI!");
     }
 
-    private List<Analyser> getRequiredAnalysers() {
+    private List<Analyser> getRequiredAnalysers() throws DictionaryException {
         ArrayList<Analyser> analyserList = new ArrayList<>();
         analyserList.add(new UniqueAnalyser());
         //analyserList.add(new UserAsPassAnalyser());

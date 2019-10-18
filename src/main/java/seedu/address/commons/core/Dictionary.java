@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-//import seedu.address.commons.exceptions.DictionaryException;
+import seedu.address.commons.exceptions.DictionaryException;
 
 /**
  * Represents dictionary object with name and dictionary look up.
@@ -31,18 +31,17 @@ public class Dictionary {
      * @param name the name of the required dictionary
      * @return the dictionary object
      */
-    public static Dictionary build(String name) {
-        switch (name) {
-        case "passwords.txt":
-            return new Dictionary(name, load("/dictionaries/passwords.txt"));
-        default:
-            return null;
-        //throw new DictionaryException("Requested dictionary not found");
+    public static Dictionary build(String name) throws DictionaryException {
+        try {
+            switch (name) {
+            case "passwords.txt":
+                return new Dictionary(name, load("/dictionaries/passwords.txt"));
+            default:
+                throw new DictionaryException("Requested dictionary not found");
+            }
+        } catch (DictionaryException de) {
+            throw new DictionaryException(de.getMessage(), de);
         }
-        //        } catch (DictionaryException de) {
-        //            throw new DictionaryException(de.getMessage(), de);
-        //            return null;
-        //        }
     }
 
     /**
