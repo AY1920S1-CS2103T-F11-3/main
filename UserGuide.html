@@ -15,7 +15,7 @@
 <ul class="sectlevel2">
 <li><a href="#accessing-password-directory-code-goto-password-code">3.1. Accessing password directory : <code>goto password</code></a></li>
 <li><a href="#accessing-card-directory-code-goto-card-code">3.2. Accessing card directory : <code>goto card</code></a></li>
-<li><a href="#accessing-note-directory-code-goto-file-code">3.3. Accessing note directory : <code>goto file</code></a></li>
+<li><a href="#accessing-file-directory-code-goto-file-code">3.3. Accessing file directory : <code>goto file</code></a></li>
 <li><a href="#accessing-note-directory-code-goto-note-code">3.4. Accessing note directory : <code>goto note</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.5. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.6. Exiting the program : <code>exit</code></a></li>
@@ -264,7 +264,7 @@ Format: <code>add &lt;desc&gt; &lt;username&gt; &lt;password&gt;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="accessing-note-directory-code-goto-file-code"><a class="link" href="#accessing-note-directory-code-goto-file-code">3.3. Accessing note directory : <code>goto file</code></a></h3>
+<h3 id="accessing-file-directory-code-goto-file-code"><a class="link" href="#accessing-file-directory-code-goto-file-code">3.3. Accessing file directory : <code>goto file</code></a></h3>
 <div class="sect3">
 <h4 id="encrypting-a-file-code-encrypt-code"><a class="link" href="#encrypting-a-file-code-encrypt-code">3.3.1. Encrypting a file : <code>encrypt</code></a></h4>
 <div class="paragraph">
@@ -324,22 +324,36 @@ Format: <code>add &lt;desc&gt; &lt;username&gt; &lt;password&gt;</code></p>
 <p>Adds a note to the app.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add &lt;title&gt;</code></p>
+<p>Format: `add &lt;title&gt; &lt;description&gt; &lt;tag&gt; &lt;content&gt; `</p>
 </div>
 <div class="paragraph">
-<p>Example: <code>add personal_diary</code></p>
+<p>Example: <code>add ti/Diary d/documentation of 2020 t/Personal c/day1 documentation</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="accessing-a-note-code-open-code"><a class="link" href="#accessing-a-note-code-open-code">3.4.2. Accessing a note : <code>open</code></a></h4>
+<h4 id="accessing-a-note-code-read-code"><a class="link" href="#accessing-a-note-code-read-code">3.4.2. Accessing a note : <code>read</code></a></h4>
 <div class="paragraph">
-<p>Opens a note to the app.</p>
+<p>Reads a note in the app.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>open &lt;note&gt;</code></p>
+<p>Format: <code>read &lt;index&gt;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>open personal_diary</code></p>
+<p>Example: <code>read 1</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Read note opens a new window that allows you to read and edit easily.</p>
+</li>
+<li>
+<p>Click on save button after editing to save changes made to the content of the note.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -348,22 +362,49 @@ Format: <code>add &lt;desc&gt; &lt;username&gt; &lt;password&gt;</code></p>
 <p>Deletes a note as specified by the user.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete &lt;note&gt;</code></p>
+<p>Format: <code>delete &lt;index&gt;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>delete personal_diary</code></p>
+<p>Example: <code>delete 1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-a-note-code-find-code"><a class="link" href="#finding-a-note-code-find-code">3.4.4. Finding a note: <code>find</code></a></h4>
+<h4 id="editing-a-note-code-edit-code"><a class="link" href="#editing-a-note-code-edit-code">3.4.4. Editing a note: <code>edit</code></a></h4>
+<div class="paragraph">
+<p>Edits a note specified by the user.</p>
+</div>
+<div class="paragraph">
+<p>Format: `edit &lt;index&gt; &lt;Title&gt; &lt;Description&gt; &lt;Tag&gt; &lt;Content&gt;</p>
+</div>
+<div class="paragraph">
+<p>Example: <code>edit 1 ti/NewTitle d/NewDescription t/NewTag c/NewContent</code>
+Example: <code>edit 1 ti/NewTitle</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>&lt;index&gt; and at least one field is compulsory to successfully edit the note.</p>
+</li>
+<li>
+<p>To edit the content of the note, you can also choose to use the Read command for better usability.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-a-note-code-find-code"><a class="link" href="#finding-a-note-code-find-code">3.4.5. Finding a note: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Finds a note as specified by the user.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>find &lt;note&gt;</code></p>
+<p>Format: <code>find &lt;index&gt;</code> or <code>find &lt;Title&gt;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>find personal_diary</code></p>
+<p>Example: <code>find 1</code> or <code>find Personal_diary</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -380,11 +421,47 @@ Format: <code>add &lt;desc&gt; &lt;username&gt; &lt;password&gt;</code></p>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="sorting-notes-code-sortby-code"><a class="link" href="#sorting-notes-code-sortby-code">3.4.6. Sorting notes: <code>sortBy</code></a></h4>
+<div class="paragraph">
+<p>Sorts notes in ways specified by the user.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>sortBy &lt;sortMethod&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>sortBy date/</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undo-notes-action-code-undo-code"><a class="link" href="#undo-notes-action-code-undo-code">3.4.7. Undo notes action: <code>undo</code></a></h4>
+<div class="paragraph">
+<p>Undo last action on notes.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>undo</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>undo</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redo-notes-action-code-redo-code"><a class="link" href="#redo-notes-action-code-redo-code">3.4.8. Redo notes action: <code>redo</code></a></h4>
+<div class="paragraph">
+<p>Redo last undone action on notes.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>redo</code></p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.5. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
+<p>Clears all entries from the current book user is on.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
@@ -412,4 +489,4 @@ There is no need to save manually.</p>
 <strong>A</strong>: Install the app in the other computer and copy store.tmp files from the application’s directory to the new computer.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 13:21:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-23 18:33:29 UTC</div></div></div></body></html>
