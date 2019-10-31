@@ -162,69 +162,67 @@
 </div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <strong>TODO</strong></p>
-</div>
-<div class="paragraph">
 <p>The <code>Analyser</code> component,</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>can analyse the current list of <code>Password</code> object.</p>
-</li>
-<li>
-<p>can output a summary security report for the list of <code>Password</code> objects.</p>
-</li>
-<li>
-<p>can output a detailed security report for a specified <code>Password</code> object.</p>
+<p>can analyse the current list of <code>Password</code> object to produce a list of analysis <code>Results</code>.</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
 <h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
 <div class="paragraph">
-<p>The analyse password functionality is facilitated by the <code>AnalysePasswordCommand</code>, which makes use of various analysers.
-Each type of analyser implements <code>Analyser</code>, and implements the following operations:</p>
+<p>The analyse password makes use of various analysers.
+Each type of analyser implements it&#8217;s own implementation of <code>#analyse()</code> , and inspects the following aspects of the password:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Analyser#analyse(List&lt;Password&gt; passwords)</code>&#8201;&#8212;&#8201;Analyses a certain aspect for every password in the list.</p>
+<p>Complexity (Strength)</p>
 </li>
 <li>
-<p><code>Analyser#outputSummaryReport()</code>&#8201;&#8212;&#8201;Outputs an overview summary report for the list of <code>Results</code> created from analysing each password.</p>
+<p>Uniqueness</p>
 </li>
 <li>
-<p><code>Analyser#ouputDetailedReport(Index index)</code>&#8201;&#8212;&#8201;Outputs a detailed report from the result of a specified Password.</p>
+<p>Similarity</p>
+</li>
+<li>
+<p>Commonly-used passwords</p>
+</li>
+<li>
+<p>Commonly-used sequences</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Given below is the example usage of how the the analyse functionality, using the <code>DictionaryAnalyser</code>, behaves at each step.</p>
+<p>Given below is the example usage of how the analysis for commonly-used passwords is implemented, using the <code>DictionaryAnalyser</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user inputs <code>analyse</code> into the command line. The <code>Logic</code> uses the <code>PasswordBookParser</code> to parse the user command,
-which results in a <code>AnalysePasswordCommand</code> which is executed by the <code>LogicManager</code>.</p>
+<p>Step 1. The user inputs <code>analyse</code> into the command line. An <code>AnalysePasswordCommand</code> is generated and executed by <code>Logic</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The <code>AnalysePasswordCommand</code> calls the <code>Model#getFilteredPasswordList()</code> to obtain the current list of passwords,
-as well as <code>#getRequiredAnalysers()</code> to get the default list of analysers.</p>
+<p>Step 2. On <code>#execute</code>, AnalysePasswordCommand retrieves the current list of passwords via <code>Model#getFilteredPasswordList()</code>.
+It also retrieves the required analysers via <code>#getRequiredAnalysers()</code>. Each analyser will then <code>#analyse</code> the list of passwords.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. <code>AnalysePasswordCommand</code> will invoke <code>Analyser#analyse()</code> of each analyser on every password in the list to produce the respective result.
-The <code>Result</code> object contains information of the password after analysis, such as the description of result.
-For comparison-based analysers, <code>Match</code> objects are created to store information about matches found by the analyser.
-Each <code>Match</code> contains details such as the match token, as well as the start and end index of the token with respect to the password.</p>
+<p>Step 3. In the case of <code>DictionaryAnalyser</code>, each subsequence of the particular password is checked against a common-password dictionary
+Every match found is appended to the list of <code>Match</code> objects. The following sequence diagram explains how this is done:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/GetAllMatchesSequence.png" alt="GetAllMatchesSequence">
+</div>
 </div>
 <div class="paragraph">
-<p>Step 4. A report is compiled by stringify-ing the list of <code>Result</code> objects from each analyser and shown to the user.</p>
+<p>Step 4. An <code>AnalysisReport</code> compiles all the <code>Results</code> of each analyser into a string-formatted report for the user.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. Should the user wish to view a more detailed report for a specific password, user may input <code>analyse strong/&lt;index&gt;</code>
-to view a more detailed analysis of the specified password.</p>
+<p>Step 5. Should the user wish to view a more detailed report for a specific password, user may input <code>analyse strong/&lt;index&gt;</code>.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the analyse functionality works:</p>
+<p>The following sequence diagram shows how the overall analyse functionality works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -311,4 +309,4 @@ from the last time they were analysed.</p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-30 13:13:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 01:41:18 UTC</div></div></div></body></html>
