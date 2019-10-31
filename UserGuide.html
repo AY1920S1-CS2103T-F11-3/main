@@ -10,19 +10,21 @@
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#basic-information">2. Basic Information</a></li>
+<li><a href="#quick-start">3. Quick Start</a></li>
+<li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
-<li><a href="#accessing-password-directory-code-goto-password-code">3.1. Accessing password directory : <code>goto password</code></a></li>
-<li><a href="#accessing-card-directory-code-goto-card-code">3.2. Accessing card directory : <code>goto card</code></a></li>
-<li><a href="#accessing-file-directory-code-goto-file-code">3.3. Accessing file directory : <code>goto file</code></a></li>
-<li><a href="#accessing-note-directory-code-goto-note-code">3.4. Accessing note directory : <code>goto note</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.5. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.6. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.7. Saving the data</a></li>
+<li><a href="#password">4.1. Password</a></li>
+<li><a href="#card">4.2. Card</a></li>
+<li><a href="#file">4.3. File</a></li>
+<li><a href="#note">4.4. Note</a></li>
+<li><a href="#clearing-all-entries-code-clear-code">4.5. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">4.6. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">4.7. Saving the data</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
+<li><a href="#cheatsheet-of-commands">5. CheatSheet of commands</a></li>
+<li><a href="#faq">6. FAQ</a></li>
 </ul>
 </div>
 </div>
@@ -30,12 +32,69 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>SecureIT is for those who <strong>prefer a secure password manager that stores your password locally</strong>. More importantly, AB3 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>Welcome to SecureIT!</p>
+</div>
+<div class="paragraph">
+<p>Tired of having to keep track of all your confidential information? Look no further!
+SecureIT is specifically designed to help manage your confidential information all in one application. More importantly,
+it <strong>stores your information locally,</strong>  and does not use any form of online storage!</p>
+</div>
+<div class="paragraph">
+<p>SecureIT is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI).
+For those of you who are type fast, SecureIT can get can manage your confidential information faster than traditional GUI apps.</p>
+</div>
+<div class="paragraph">
+<p>Interested? Jump to the <a href="#quick-start">Section 3, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
+<h2 id="basic-information"><a class="link" href="#basic-information">2. Basic Information</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This following guide will teach you how you can use <code>SecureIT</code> to keep track of your confidential information so you will never have to worry about your information ever again.</p>
+</div>
+<div class="paragraph">
+<p>Confused? You refer to <a href="#quick-start">Section 3, &#8220;Quick Start&#8221;</a> for a simple set-up.</p>
+</div>
+<div class="paragraph">
+<p>If you are overwhelmed by all the instructions and don&#8217;t know which one to use, our <a href="#cheatsheet-of-commands">Section 5, &#8220;CheatSheet of commands&#8221;</a> is here to help you.</p>
+</div>
+<div class="paragraph">
+<p>The following list of icons below will assist you to understand our material:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 6.9767%;">
+<col style="width: 93.0233%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Icon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Meaning</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some tips for you to familiarise with the commands</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock">
+<div class="content">
+<img src="images/warning.png" alt="warning" width="20">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Warning! Danger zone. Make sure you know what you are doing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="link" href="#quick-start">3. Quick Start</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
@@ -46,13 +105,16 @@
 <p>Download the latest <code>SecureIT.jar</code> <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your SecureIT.</p>
+<p>Copy the file to the folder you want to use as the home folder for your <strong>SecureIT</strong>.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 </li>
 <li>
-<p>Enter password for SecureIT or set up a new password if it is your first time accessing the application.</p>
+<p>Since this is the first time that you are using <strong>SecureIT</strong>, you will be asked to create a new master password. Type your preferred master password in the command box and hit the <code>Enter</code> key.</p>
+</li>
+<li>
+<p>With that, you have created your very own <strong>SecureIT</strong> account. You can now enter commands in the command box and press <code>Enter</code> to execute it.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
@@ -60,135 +122,243 @@
 </div>
 </li>
 <li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>Here are some example commands that you can try out:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add d/Gmail u/randomGuy p/qwerty123</code> : adds a password with username 'randomGuy' and password 'qwerty123'</p>
+</li>
+<li>
+<p><code>analyse</code> : briefly analyses all your passwords and produces a security report</p>
+</li>
+<li>
+<p><code>analyse strong/1</code> : analyses your first password and produces a detailed security report</p>
+</li>
+<li>
+<p><code>generate</code> : generates a random strong password for you</p>
+</li>
+<li>
+<p><code>encrypt &lt;filepath&gt;</code> : encrypts the file in the specified filepath</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>You may refer to <a href="#Features">Section 4, &#8220;Features&#8221;</a> for more details of all our available commands.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="Features"><a class="link" href="#Features">4. Features</a></h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p><strong>Command Format</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by you e.g. in <code>add u/USERNAME</code>, <code>USERNAME</code> is a parameter which can be used as <code>add u/User Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>u/USERNAME [t/TAG]</code> can be used as <code>u/User Doe t/work</code> or as <code>n/User Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times until a limit including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/Work</code>, <code>t/SocialMedia t/Personal</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>u/USERNAME p/PASSWORD</code>, <code>p/PASSWORD u/USERNAME</code> is also acceptable.</p>
+</li>
+<li>
+<p>All index specified must be a positive number 1,2,3&#8230;&#8203;</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="accessing-password-directory-code-goto-password-code"><a class="link" href="#accessing-password-directory-code-goto-password-code">3.1. Accessing password directory : <code>goto password</code></a></h3>
-<div class="sect3">
-<h4 id="adding-a-password-code-add-code"><a class="link" href="#adding-a-password-code-add-code">3.1.1. Adding a password : <code>add</code></a></h4>
+<h3 id="password"><a class="link" href="#password">4.1. Password</a></h3>
 <div class="paragraph">
-<p>Adds a password to the app.
-Format: <code>add &lt;desc&gt; &lt;username&gt; &lt;password&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>add Gmail user1 password1</code></p>
-</div>
+<p>You can access the password directory using this command : <code>goto password</code></p>
 </div>
 <div class="sect3">
-<h4 id="accessing-a-password-code-open-code"><a class="link" href="#accessing-a-password-code-open-code">3.1.2. Accessing a password : <code>open</code></a></h4>
+<h4 id="adding-a-password-code-add-code"><a class="link" href="#adding-a-password-code-add-code">4.1.1. Adding a password : <code>add</code></a></h4>
 <div class="paragraph">
-<p>Shows the username and password for the specified password description provided by the user.</p>
+<p>Too many passwords to remember? You can add a password to the application.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>open &lt;desc&gt;</code></p>
+<p>Format: <code>add d/DESCRIPTION u/USERNAME p/PASSWORD [w/WEBSITE] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>open Gmail</code></p>
+<p>Example: <code>add d/Gmail u/user1 p/password1 w/www.gmail.com/signin t/work</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="updating-a-password-code-update-code"><a class="link" href="#updating-a-password-code-update-code">3.1.3. Updating a password : <code>update</code></a></h4>
+<h4 id="accessing-a-password-code-read-code"><a class="link" href="#accessing-a-password-code-read-code">4.1.2. Accessing a password : <code>read</code></a></h4>
 <div class="paragraph">
-<p>Updates a password as specified by the user.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>update &lt;desc&gt;</code></p>
+<p>You can open and view the password for the specified index.</p>
 </div>
 <div class="paragraph">
-<p>Example: <code>update Gmail</code></p>
-</div>
-<div class="sect4">
-<h5 id="updating-description-code-d-code"><a class="link" href="#updating-description-code-d-code">Updating description: <code>-d</code></a></h5>
-<div class="paragraph">
-<p>Updates specified password’s description.</p>
+<p>Format: <code>read INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>-d &lt;desc&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>-d Hotmail</code></p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="updating-username-code-u-code"><a class="link" href="#updating-username-code-u-code">Updating username: <code>-u</code></a></h5>
-<div class="paragraph">
-<p>Updates specified password’s username.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>-u &lt;username&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>-u user2</code></p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="updating-password-code-p-code"><a class="link" href="#updating-password-code-p-code">Updating password: <code>-p</code></a></h5>
-<div class="paragraph">
-<p>Updates specified password’s password.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>-p &lt;password&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>-p password2</code></p>
-</div>
+<p>Example: <code>read 1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-password-code-delete-code"><a class="link" href="#deleting-a-password-code-delete-code">3.1.4. Deleting a password: <code>delete</code></a></h4>
-<div class="paragraph">
-<p>Deletes a password as specified by the user.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>delete &lt;desc&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>delete Gmail</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="finding-a-password-code-find-code"><a class="link" href="#finding-a-password-code-find-code">3.1.5. Finding a password: <code>find</code></a></h4>
-<div class="paragraph">
-<p>Finds a password description as specified by the user.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>find &lt;desc&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>find Gmail</code></p>
-</div>
-<div class="sidebarblock">
+<h4 id="copying-a-field-in-a-password-code-copy-code"><a class="link" href="#copying-a-field-in-a-password-code-copy-code">4.1.3. Copying a field in a password : <code>copy</code></a></h4>
+<div class="exampleblock">
 <div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can type cp for copy, p for password, u for username and w for website.</p>
+</li>
+<li>
+<p>You can only copy one field at a time</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can copy the password value, website or username for the specific index.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>copy password INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>copy password 1</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>cp p 1</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>cp username 2</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>cp w 2</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updating-a-password-code-edit-code"><a class="link" href="#updating-a-password-code-edit-code">4.1.4. Updating a password : <code>edit</code></a></h4>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You do not need not type all the fields of the password again.</p>
+</li>
+<li>
+<p>You can just type the fields that you want to change.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Added a wrong password? No worries, you can edit the password.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>edit INDEX [d/DESCRIPTION] [u/USERNAME] [p/PASSWORD] [w/WEBSITE] [t/TAG]</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>edit 1 u/NewUsername</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>edit 1 p/password123</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>edit 1 u/NewUsername p/password123</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-password-code-delete-code"><a class="link" href="#deleting-a-password-code-delete-code">4.1.5. Deleting a password: <code>delete</code></a></h4>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deleted passwords are not recoverable</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>No longer use the user account? You can delete the password as specified by the user.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>delete 2</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-a-password-code-find-code"><a class="link" href="#finding-a-password-code-find-code">4.1.6. Finding a password: <code>find</code></a></h4>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -201,59 +371,181 @@ Format: <code>add &lt;desc&gt; &lt;username&gt; &lt;password&gt;</code></p>
 <p>Only the description is searched.</p>
 </li>
 <li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+<p>Incomplete-words will be matched e.g. <code>Han</code> will match <code>Hans</code></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="generating-a-new-password-code-generate-code"><a class="link" href="#generating-a-new-password-code-generate-code">3.1.6. Generating a new password: <code>generate</code></a></h4>
 <div class="paragraph">
-<p>Generates a new random password based on user preference input and copies generated password into user clipboard.</p>
+<p>Too many passwords? You can find the password description as specified by the user.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>generate lower/&lt;true/false&gt; upper/&lt;true/false&gt; num/&lt;true/false&gt; special/&lt;true/false&gt;</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="analysing-all-password-code-analyse-code"><a class="link" href="#analysing-all-password-code-analyse-code">3.1.7. Analysing all password: <code>analyse</code></a></h4>
-<div class="paragraph">
-<p>Analyses all passwords currently stored and produces a security summary report.</p>
+<p>Format: <code>find DESCRIPTION</code></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>analyse</code></p>
+<p>Example: <code>find Gmail</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="analysing-all-password-code-analyse-strong-code"><a class="link" href="#analysing-all-password-code-analyse-strong-code">3.1.8. Analysing all password: <code>analyse strong</code></a></h4>
+<h4 id="generating-a-new-password-code-generate-code"><a class="link" href="#generating-a-new-password-code-generate-code">4.1.7. Generating a new password: <code>generate</code></a></h4>
 <div class="paragraph">
-<p>Analyses in detail a specified password based on the user specified index.</p>
+<p>Lazy to think of a strong password?
+Simply enter <code>generate</code> into the command box to get one.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>Format: <code>analyse strong/&lt;index&gt;</code></p>
+<p><strong>Try it out!</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can add custom preferences and configure the following:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Length of password</p>
+</li>
+<li>
+<p>Inclusion of upper / lower alphabets</p>
+</li>
+<li>
+<p>Inclusion of numbers</p>
+</li>
+<li>
+<p>Inclusion of special characters</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>All passwords are automatically copied onto your clipboard.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Format: <code>generate [length/LENGTH] [lower/TRUE] [upper/TRUE] [num/TRUE] [special/TRUE]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The various fields are set to TRUE by default.</p>
+</li>
+<li>
+<p>To disable these fields, set to FALSE.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example: <code>generate</code></p>
+</div>
+<div class="paragraph">
+<p>Example <code>generate length/10</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>generate lower/true upper/true num/true special/false</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="analysing-passwords-code-analyse-code"><a class="link" href="#analysing-passwords-code-analyse-code">4.1.8. Analysing passwords : <code>analyse</code></a></h4>
+<div class="paragraph">
+<p>Curious how secure your passwords really are? Type <code>analyse</code> into the command box to find out.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Try it out!</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can opt to view:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A general, summary security report for all passwords, or</p>
+</li>
+<li>
+<p>A detailed security report for a specific password.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>To view the detailed analysis of a particular password, simply add in the <code>strong</code> prefix.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Format: <code>analyse [strong/INDEX]</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>analyse</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>analyse strong/8</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="accessing-card-directory-code-goto-card-code"><a class="link" href="#accessing-card-directory-code-goto-card-code">3.2. Accessing card directory : <code>goto card</code></a></h3>
-<div class="sect3">
-<h4 id="creating-a-card-code-add-code"><a class="link" href="#creating-a-card-code-add-code">3.2.1. Creating a card : <code>add</code></a></h4>
+<h3 id="card"><a class="link" href="#card">4.2. Card</a></h3>
 <div class="paragraph">
-<p>Adds a credit/debit card to the app.</p>
+<p>Too many credit cards to carry around? With SecureIT, you can easily manage your card information.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add &lt;description&gt; &lt;cardNumber&gt; &lt;expiry&gt; &lt;cvc&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>add VisaPOSB</code></p>
-</div>
+<p>To access your cards, simply enter <code>goto card</code> in the command box.</p>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-card-code-delete-code"><a class="link" href="#deleting-a-card-code-delete-code">3.2.2. Deleting a card: <code>delete</code></a></h4>
+<h4 id="creating-a-card-code-add-code"><a class="link" href="#creating-a-card-code-add-code">4.2.1. Creating a card : <code>add</code></a></h4>
 <div class="paragraph">
-<p>Deletes a card as specified by the user.</p>
+<p>You can easily adds cards to the application.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add d/&lt;description&gt; c/&lt;cardNumber&gt; e/&lt;expiry&gt; v/&lt;cvc&gt; [t/&lt;tag&gt;]</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>add d/VisaPOSB c/5203123458392748 e/12/25 v/456 t/groceries</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reading-a-card-code-read-code"><a class="link" href="#reading-a-card-code-read-code">4.2.2. Reading a card : <code>read</code></a></h4>
+<div class="paragraph">
+<p>You can also obtain the details of a card easily, just by its description.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>read &lt;description&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>read VisaPOSB</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-card-code-delete-code"><a class="link" href="#deleting-a-card-code-delete-code">4.2.3. Deleting a card: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>If your card has expired, you can easily remove it from the application, by its description.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>delete &lt;description&gt;</code></p>
@@ -264,89 +556,408 @@ Format: <code>add &lt;desc&gt; &lt;username&gt; &lt;password&gt;</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="accessing-file-directory-code-goto-file-code"><a class="link" href="#accessing-file-directory-code-goto-file-code">3.3. Accessing file directory : <code>goto file</code></a></h3>
-<div class="sect3">
-<h4 id="encrypting-a-file-code-encrypt-code"><a class="link" href="#encrypting-a-file-code-encrypt-code">3.3.1. Encrypting a file : <code>encrypt</code></a></h4>
+<h3 id="file"><a class="link" href="#file">4.3. File</a></h3>
 <div class="paragraph">
-<p>Encrypts a local file as specified by the user.</p>
+<p>SecureIT has a file manager which helps you keep secret files that you do not wish others to see. Using your master password, SecureIT convert your files into encrypted code which other apps cannot understand.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>encrypt FILEPATH</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>encrypt ~/Desktop/Secret File.png</code></p>
-</div>
+<p>To access the file manager, simply enter <code>goto file</code> in the command box.</p>
 </div>
 <div class="sect3">
-<h4 id="decrypting-a-file-code-decrypt-code"><a class="link" href="#decrypting-a-file-code-decrypt-code">3.3.2. Decrypting a file : <code>decrypt</code></a></h4>
+<h4 id="encrypting-a-file-code-encrypt-code"><a class="link" href="#encrypting-a-file-code-encrypt-code">4.3.1. Encrypting a file : <code>encrypt</code></a></h4>
 <div class="paragraph">
-<p>Decrypts a local file as specified by the user.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>decrypt INDEX</code></p>
+<p>Encrypts a local file as specified by its file path. The file&#8217;s content is converted into encrypted code which other apps cannot understand. Encrypted files have the prefix <code>[LOCKED]</code> in their file names.</p>
 </div>
 <div class="paragraph">
-<p>Example: <code>decrypt 1</code> (This command decrypts the first file in the file list.)</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="finding-a-file-code-find-code"><a class="link" href="#finding-a-file-code-find-code">3.3.3. Finding a file: <code>find</code></a></h4>
-<div class="paragraph">
-<p>Finds an encrypted file as specified by the user.</p>
+<p>As you encrypt the file, you may tag the file at the same time for easy reference later on.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>find FILENAME</code></p>
+<p>Format: <code>encrypt FILEPATH [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>find Secret File</code></p>
+<p>Example: <code>encrypt ~/Desktop/Secret File.png t/Image</code></p>
 </div>
-<div class="sidebarblock">
+<div class="exampleblock">
 <div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>secret file</code> will match <code>Secret File</code></p>
+<p>Instead of typing the file path, you can drag the file into the input field to easily append the file path. This also applies to other commands (e.g. <code>add</code>).</p>
 </li>
 <li>
-<p>Only the file name is searched.</p>
+<p>The app may freeze for some time if the file to be encrypted is large. Please do not force exit the app during encryption.</p>
+</li>
+<li>
+<p>The app does not support encryption of files larger than 2GB.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>encrypt</code> command only alters the file content but does not set up additional access rights. In other words, it keeps your information secret but does not keep your files safe from malicious alteration or deletion.</p>
+</li>
+<li>
+<p>If you wish to prevent alternation or deletion of files, please set up additional access rights using your operating system. SecureIT is not responsible for any data loss resulting from lack of access right settings.</p>
+</li>
+<li>
+<p>If you are using Windows, please close the file before encryption.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="decrypting-a-file-code-decrypt-code"><a class="link" href="#decrypting-a-file-code-decrypt-code">4.3.2. Decrypting a file : <code>decrypt</code></a></h4>
+<div class="paragraph">
+<p>Decrypts a local file as specified by the displayed index number.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>decrypt INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>decrypt 1</code> (This command decrypts the first file in the displayed file list.)</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you notice that the file decryption fails, it may be because you have renamed the file or moved the file to another location without using SecureIT (for example, using your operating system directly).</p>
+</li>
+<li>
+<p>In that case, use <code>remove</code> command to remove the file from the list first, and then use <code>add</code> command to add the renamed/moved file. Please refer to the <code>remove</code> and <code>add</code> command sections for detailed instructions.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-an-encrypted-file-code-add-code"><a class="link" href="#adding-an-encrypted-file-code-add-code">4.3.3. Adding an encrypted file : <code>add</code></a></h4>
+<div class="paragraph">
+<p>Adds an encrypted file as specified by its file path. The file must be encrypted by SecureIT previously.</p>
+</div>
+<div class="paragraph">
+<p>As you add the file, you may tag the file at the same time for easy reference later on.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add FILENAME [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>add ~/Desktop/[LOCKED] Secret File.png t/Image</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The file name does not have to contain the prefix <code>[LOCKED]</code>. SecureIT can recognise the file and automatically prepend the prefix.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removing-a-file-code-remove-code"><a class="link" href="#removing-a-file-code-remove-code">4.3.4. Removing a file : <code>remove</code></a></h4>
+<div class="paragraph">
+<p>Removes an encrypted file record as specified by the displayed index number.</p>
+</div>
+<div class="paragraph">
+<p>Please note that only the file record within SecureIT is removed. The actual file is not deleted from the file system.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>remove INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>remove 1</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The "encrypted at" and "last edited at" timestamps are stored within SecureIT and will be discarded if you remove the record from SecureIT. They are not recoverable even if you add the file back using <code>add</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="renaming-an-encrypted-file-code-rename-code"><a class="link" href="#renaming-an-encrypted-file-code-rename-code">4.3.5. Renaming an encrypted file : <code>rename</code></a></h4>
+<div class="paragraph">
+<p>Renames an encrypted file as specified by its index number. The prefix <code>[LOCKED]</code> is retained.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>rename INDEX TARGET_FILENAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>rename 1 Secret File.txt</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The file extension of the file is retained using <code>rename</code> command. If you give a file extension in the target file name, it will be ignored.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="moving-an-encrypted-file-code-move-code"><a class="link" href="#moving-an-encrypted-file-code-move-code">4.3.6. Moving an encrypted file : <code>move</code></a></h4>
+<div class="paragraph">
+<p>Moves an encrypted file as specified by its index number.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>move INDEX TARGET_DIRECTORY</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>move 1 ~/Documents/Secret File.png</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It is recommended to rename and move files using SecureIT to better manage your files.</p>
+</li>
+<li>
+<p>If you have renamed or moved your files without using SecureIT (for example, using the operating system directly), you have to use <code>remove</code> command to remove the file from the list first, and then use <code>add</code> command to add the renamed/moved file.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-encrypted-files-code-find-code"><a class="link" href="#finding-encrypted-files-code-find-code">4.3.7. Finding encrypted files : <code>find</code></a></h4>
+<div class="paragraph">
+<p>Finds matching encrypted files as specified by the search keywords.</p>
+</div>
+<div class="paragraph">
+<p>To return from search results, use <code>list</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find KEYWORDS&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples: <code>find Secret File</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>secret file</code> will match <code>Secret File</code>.</p>
+</li>
+<li>
+<p>Both the file name and the file path are searched. Hence, you can look for files with certain types (e.g. <code>find .png .jpg</code>) or files inside certain directories (e.g. <code>find /Desktop</code>).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-files-code-list-code"><a class="link" href="#listing-all-files-code-list-code">4.3.8. Listing all files : <code>list</code></a></h4>
+<div class="paragraph">
+<p>Lists all encrypted files managed by SecureIT.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-an-encrypted-file-code-preview-code-coming-soon"><a class="link" href="#viewing-an-encrypted-file-code-preview-code-coming-soon">4.3.9. Viewing an encrypted file : <code>preview</code> [coming soon]</a></h4>
+<div class="paragraph">
+<p>Previews an encrypted file as specified by its index number. You can only preview <code>.txt</code>, <code>.jpg</code> and <code>.png</code> files.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>preview INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>preview 1</code></p>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="accessing-note-directory-code-goto-note-code"><a class="link" href="#accessing-note-directory-code-goto-note-code">3.4. Accessing note directory : <code>goto note</code></a></h3>
+<h3 id="note"><a class="link" href="#note">4.4. Note</a></h3>
+<div class="paragraph">
+<p>Accessing note directory : <code>goto note</code></p>
+</div>
 <div class="sect3">
-<h4 id="creating-a-note-code-add-code"><a class="link" href="#creating-a-note-code-add-code">3.4.1. Creating a note : <code>add</code></a></h4>
+<h4 id="creating-a-note-code-add-code"><a class="link" href="#creating-a-note-code-add-code">4.4.1. Creating a note : <code>add</code></a></h4>
 <div class="paragraph">
 <p>Adds a note to the app.</p>
 </div>
 <div class="paragraph">
-<p>Format: `add &lt;title&gt; &lt;description&gt; &lt;tag&gt; &lt;content&gt; `</p>
+<p>Format: `add ti/TITLE d/DESCRIPTION t/TAG c/CONTENT `</p>
 </div>
 <div class="paragraph">
 <p>Example: <code>add ti/Diary d/documentation of 2020 t/Personal c/day1 documentation</code></p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="accessing-a-note-code-read-code"><a class="link" href="#accessing-a-note-code-read-code">3.4.2. Accessing a note : <code>read</code></a></h4>
-<div class="paragraph">
-<p>Reads a note in the app.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>read &lt;index&gt;</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>read 1</code></p>
-</div>
-<div class="sidebarblock">
+<div class="exampleblock">
 <div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Read note opens a new window that allows you to read and edit easily.</p>
+<p>You are not allowed to create notes with the same title.</p>
+</li>
+<li>
+<p>Title, description and tag field must not be empty.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="accessing-a-note-code-open-code"><a class="link" href="#accessing-a-note-code-open-code">4.4.2. Accessing a note : <code>open</code></a></h4>
+<div class="paragraph">
+<p>Opens the note corresponding to the index in the app.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>open INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>open 1</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Opens a new window that allows you to read and edit easily.</p>
 </li>
 <li>
 <p>Click on save button after editing to save changes made to the content of the note.</p>
@@ -357,38 +968,47 @@ Format: <code>add &lt;desc&gt; &lt;username&gt; &lt;password&gt;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-note-code-delete-code"><a class="link" href="#deleting-a-note-code-delete-code">3.4.3. Deleting a note: <code>delete</code></a></h4>
+<h4 id="deleting-a-note-code-delete-code"><a class="link" href="#deleting-a-note-code-delete-code">4.4.3. Deleting a note: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>Deletes a note as specified by the user.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete &lt;index&gt;</code></p>
+<p>Format: <code>delete INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Example: <code>delete 1</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-note-code-edit-code"><a class="link" href="#editing-a-note-code-edit-code">3.4.4. Editing a note: <code>edit</code></a></h4>
+<h4 id="editing-a-note-code-edit-code"><a class="link" href="#editing-a-note-code-edit-code">4.4.4. Editing a note: <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits a note specified by the user.</p>
 </div>
 <div class="paragraph">
-<p>Format: `edit &lt;index&gt; &lt;Title&gt; &lt;Description&gt; &lt;Tag&gt; &lt;Content&gt;</p>
+<p>Format: <code>edit INDEX [ti/TITLE] [d/DESCRIPTION] [t/TAG c/CONTENT]</code></p>
 </div>
 <div class="paragraph">
 <p>Example: <code>edit 1 ti/NewTitle d/NewDescription t/NewTag c/NewContent</code>
 Example: <code>edit 1 ti/NewTitle</code></p>
 </div>
-<div class="sidebarblock">
+<div class="exampleblock">
 <div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>&lt;index&gt; and at least one field is compulsory to successfully edit the note.</p>
-</li>
-<li>
-<p>To edit the content of the note, you can also choose to use the Read command for better usability.</p>
+<p>INDEX and at least one optional field is compulsory to successfully edit the note.</p>
 </li>
 </ul>
 </div>
@@ -396,25 +1016,37 @@ Example: <code>edit 1 ti/NewTitle</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-a-note-code-find-code"><a class="link" href="#finding-a-note-code-find-code">3.4.5. Finding a note: <code>find</code></a></h4>
+<h4 id="finding-a-note-code-find-code"><a class="link" href="#finding-a-note-code-find-code">4.4.5. Finding a note: <code>find</code></a></h4>
 <div class="paragraph">
 <p>Finds a note as specified by the user.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>find &lt;index&gt;</code> or <code>find &lt;Title&gt;</code></p>
+<p>Format: <code>find TEXT</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>find 1</code> or <code>find Personal_diary</code></p>
+<p>Example:`find Personal_diary`</p>
 </div>
-<div class="sidebarblock">
+<div class="exampleblock">
 <div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>Personal_diary</code> will match <code>personal_diary</code></p>
+<p>Your input TEXT for search is case insensitive. e.g <code>Personal_diary</code> will match <code>personal_diary</code></p>
 </li>
 <li>
-<p>Only the description is searched.</p>
+<p>Searches title, description and content of all the notes that contains the TEXT.</p>
 </li>
 </ul>
 </div>
@@ -422,19 +1054,45 @@ Example: <code>edit 1 ti/NewTitle</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sorting-notes-code-sortby-code"><a class="link" href="#sorting-notes-code-sortby-code">3.4.6. Sorting notes: <code>sortBy</code></a></h4>
+<h4 id="sorting-notes-code-sort-code"><a class="link" href="#sorting-notes-code-sort-code">4.4.6. Sorting notes: <code>sort</code></a></h4>
 <div class="paragraph">
 <p>Sorts notes in ways specified by the user.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>sortBy &lt;sortMethod&gt;</code></p>
+<p>Format: <code>sort by/SORTBYCONDITION</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>sortBy date/</code></p>
+<p>Example: <code>sort by/DateModified</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SORTBYCONDITION must be either "DateModified", "DateCreated" and "NumOfAccess".</p>
+</li>
+<li>
+<p>SORTBYCONDITION is not case-sensitive.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undo-notes-action-code-undo-code"><a class="link" href="#undo-notes-action-code-undo-code">3.4.7. Undo notes action: <code>undo</code></a></h4>
+<h4 id="undo-notes-action-code-undo-code"><a class="link" href="#undo-notes-action-code-undo-code">4.4.7. Undo notes action: <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Undo last action on notes.</p>
 </div>
@@ -444,9 +1102,35 @@ Example: <code>edit 1 ti/NewTitle</code></p>
 <div class="paragraph">
 <p>Example: <code>undo</code></p>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can only perform undo on undo-able commands. Undoable commands are: <code>add</code>, <code>edit</code>, <code>delete</code>, <code>clear</code> and <code>sort</code></p>
+</li>
+<li>
+<p>You can undo as many commands as you wish until there are no more commands that can be undone.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="redo-notes-action-code-redo-code"><a class="link" href="#redo-notes-action-code-redo-code">3.4.8. Redo notes action: <code>redo</code></a></h4>
+<h4 id="redo-notes-action-code-redo-code"><a class="link" href="#redo-notes-action-code-redo-code">4.4.8. Redo notes action: <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Redo last undone action on notes.</p>
 </div>
@@ -456,24 +1140,50 @@ Example: <code>edit 1 ti/NewTitle</code></p>
 <div class="paragraph">
 <p>Example: <code>redo</code></p>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can redo as many commands as you wish until there are no more commands that can be redone.</p>
+</li>
+<li>
+<p>If you perform a new undo-able command, all existing redo-able commands will be cleared.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.5. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">4.5. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the current book user is on.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.6. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">4.6. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.7. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">4.7. Saving the data</a></h3>
 <div class="paragraph">
 <p>SecureIT data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -482,11 +1192,150 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="cheatsheet-of-commands"><a class="link" href="#cheatsheet-of-commands">5. CheatSheet of commands</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Password</strong></p>
+</div>
+<div class="paragraph">
+<p>Accessing Password directory: <code>goto password</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add d/DESCRIPTION u/USERNAME p/PASSWORD [w/WEBSITE] [t/TAG]&#8230;&#8203;</code> : Adds a password to the app.</p>
+</li>
+<li>
+<p><code>read INDEX</code>:  Shows the username and password for the specified index provided by you.</p>
+</li>
+<li>
+<p><code>edit INDEX [d/DESCRIPTION] [u/USERNAME] [p/PASSWORD] [w/WEBSITE] [t/TAG]</code>: Edits a password as specified by you.</p>
+</li>
+<li>
+<p><code>copy password INDEX</code>: Copies the password value, website or username for the specific index</p>
+</li>
+<li>
+<p><code>delete INDEX</code>: Deletes a password as specified by the user.</p>
+</li>
+<li>
+<p><code>find DESCRIPTION</code>: Finds a password description as specified by the user.</p>
+</li>
+<li>
+<p><code>generate [length/LENGTH] [lower/TRUE] [upper/TRUE] [num/TRUE] [special/TRUE]</code>: Generates a new random password based on user preference input and copies generated password into user clipboard.</p>
+</li>
+<li>
+<p><code>analyse</code>: Analyses all passwords currently stored and produces a security summary report.</p>
+</li>
+<li>
+<p><code>analyse [strong/INDEX]</code>: Analyses in detail a specified password based on the user specified index.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Card</strong></p>
+</div>
+<div class="paragraph">
+<p>Accessing Card directory: <code>goto card</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add d/DESCRIPTION c/CARDNUMBER e/EXPIRY v/CVC</code>: Adds a credit/debit card to the app.</p>
+</li>
+<li>
+<p><code>delete DESCRIPTION</code>: Deletes a card as specified by the user.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>File</strong></p>
+</div>
+<div class="paragraph">
+<p>Accessing File directory: <code>goto file</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>encrypt FILEPATH [t/TAG]&#8230;&#8203;</code>: Encrypts a local file as specified by its file path.</p>
+</li>
+<li>
+<p><code>decrypt INDEX</code>: Decrypts a local file as specified by the displayed index number.</p>
+</li>
+<li>
+<p><code>add FILENAME [t/TAG]&#8230;&#8203;</code>: Adds an encrypted file as specified by its file path.</p>
+</li>
+<li>
+<p><code>remove INDEX</code>: Removes an encrypted file record as specified by the displayed index number.</p>
+</li>
+<li>
+<p><code>rename INDEX TARGET_FILENAME</code>: Renames an encrypted file as specified by its index number.</p>
+</li>
+<li>
+<p><code>move INDEX TARGET_DIRECTORY</code>: Moves an encrypted file as specified by its index number.</p>
+</li>
+<li>
+<p><code>find KEYWORDS&#8230;&#8203;</code>: Finds matching encrypted files as specified by the search keywords.</p>
+</li>
+<li>
+<p><code>list</code>: Lists all encrypted files managed by SecureIT.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong></p>
+</div>
+<div class="paragraph">
+<p>Accessing Note directory: <code>goto note</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open INDEX</code>: Opens the note corresponding to the index in the app.</p>
+</li>
+<li>
+<p><code>delete INDEX</code>: Deletes a note as specified by the user.</p>
+</li>
+<li>
+<p><code>edit INDEX ti/TITLE d/DESCRIPTION t/TAG c/CONTENT</code>: Edits a note specified by the user.</p>
+</li>
+<li>
+<p><code>find INDEX</code> or <code>find TITLE</code>: Finds a note as specified by the user.</p>
+</li>
+<li>
+<p><code>sort by/SORTBYCONDITION</code>: Sorts notes in ways specified by the user.</p>
+</li>
+<li>
+<p><code>undo</code>: Undo last action on notes.</p>
+</li>
+<li>
+<p><code>redo</code>: Redo last undone action on notes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Others</strong></p>
+</div>
+<div class="paragraph">
+<p>Other commands</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clear</code>: Clears all entries from the current book user is on.</p>
+</li>
+<li>
+<p><code>exit</code>: Exits the program.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">6. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
 <strong>A</strong>: Install the app in the other computer and copy store.tmp files from the application’s directory to the new computer.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:37:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:39:38 UTC</div></div></div></body></html>
