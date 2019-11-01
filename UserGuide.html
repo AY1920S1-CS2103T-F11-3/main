@@ -524,10 +524,10 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <p>You can easily adds cards to the application.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add d/&lt;description&gt; c/&lt;cardNumber&gt; e/&lt;expiry&gt; v/&lt;cvc&gt; [t/&lt;tag&gt;]</code></p>
+<p>Format: <code>add d/DESCRIPTION c/CARDNUMBER v/CVC e/EXPIRY [t/TAG]</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>add d/VisaPOSB c/5203123458392748 e/12/25 v/456 t/groceries</code></p>
+<p>Example: <code>add d/VisaPOSB c/5203123458392748 v/456 e/12/25 t/groceries</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -536,10 +536,10 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <p>You can also obtain the details of a card easily, just by its description.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>read &lt;description&gt;</code></p>
+<p>Format: <code>read d/DESCRIPTION v/CVC</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>read VisaPOSB</code></p>
+<p>Example: <code>read d/VisaPOSB v/456</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -548,7 +548,7 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <p>If your card has expired, you can easily remove it from the application, by its description.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete &lt;description&gt;</code></p>
+<p>Format: <code>delete DESCRIPTION</code></p>
 </div>
 <div class="paragraph">
 <p>Example: <code>delete VisaPOSB</code></p>
@@ -1341,4 +1341,4 @@ There is no need to save manually.</p>
 <strong>A</strong>: Install the app in the other computer and copy store.tmp files from the application’s directory to the new computer.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 02:43:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 05:25:35 UTC</div></div></div></body></html>
