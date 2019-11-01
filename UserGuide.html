@@ -919,10 +919,10 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You are not allowed to create notes with the same title.</p>
+<p>You are not allowed to add notes with the same title.</p>
 </li>
 <li>
-<p>Title, description and tag field must not be empty.</p>
+<p>Title, description and tag fields must not be empty.</p>
 </li>
 </ul>
 </div>
@@ -957,7 +957,7 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Opens a new window that allows you to read and edit easily.</p>
+<p>Opens a new panel on the right that allows you to read and edit easily.</p>
 </li>
 <li>
 <p>Click on save button after editing to save changes made to the content of the note.</p>
@@ -1010,6 +1010,9 @@ Example: <code>edit 1 ti/NewTitle</code></p>
 <li>
 <p>INDEX and at least one optional field is compulsory to successfully edit the note.</p>
 </li>
+<li>
+<p>You are not allowed to edit notes to have the same title.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -1046,7 +1049,7 @@ Example: <code>edit 1 ti/NewTitle</code></p>
 <p>Your input TEXT for search is case insensitive. e.g <code>Personal_diary</code> will match <code>personal_diary</code></p>
 </li>
 <li>
-<p>Searches title, description and content of all the notes that contains the TEXT.</p>
+<p>Searches title, description and content of all notes and returns those that contains the TEXT.</p>
 </li>
 </ul>
 </div>
@@ -1290,19 +1293,19 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>open INDEX</code>: Opens the note corresponding to the index in the app.</p>
+<p><code>open INDEX</code>: Opens the note corresponding to the index.</p>
 </li>
 <li>
-<p><code>delete INDEX</code>: Deletes a note as specified by the user.</p>
+<p><code>delete INDEX</code>: Deletes a note as specified by you.</p>
 </li>
 <li>
-<p><code>edit INDEX ti/TITLE d/DESCRIPTION t/TAG c/CONTENT</code>: Edits a note specified by the user.</p>
+<p><code>edit INDEX ti/TITLE d/DESCRIPTION t/TAG c/CONTENT</code>: Edits a note specified by you.</p>
 </li>
 <li>
-<p><code>find INDEX</code> or <code>find TITLE</code>: Finds a note as specified by the user.</p>
+<p><code>find TEXT</code>: Finds notes containing the text specified by the user.</p>
 </li>
 <li>
-<p><code>sort by/SORTBYCONDITION</code>: Sorts notes in ways specified by the user.</p>
+<p><code>sort by/SORTBYCONDITION</code>: Sorts notes by the condition specified by you.</p>
 </li>
 <li>
 <p><code>undo</code>: Undo last action on notes.</p>
@@ -1338,4 +1341,4 @@ There is no need to save manually.</p>
 <strong>A</strong>: Install the app in the other computer and copy store.tmp files from the application’s directory to the new computer.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:39:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 02:43:13 UTC</div></div></div></body></html>
