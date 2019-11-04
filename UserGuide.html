@@ -578,7 +578,10 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <p>Format: <code>encrypt FILEPATH [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>encrypt ~/Desktop/Secret File.png t/Image</code></p>
+<p>Example:<br>
+For Windows: <code>encrypt C:\Users\YOUR_USERNAME\Desktop\Test.txt t/personal</code><br>
+For macOS: <code>encrypt /Users/YOUR_USERNAME/Desktop/Test.txt t/personal</code><br>
+(The actual file path may differ on your OS. Hence, it is always recommended to drag the file in the input field.)</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -597,7 +600,7 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Instead of typing the file path, you can drag the file into the input field to easily append the file path. This also applies to other commands (e.g. <code>add</code>).</p>
+<p>Instead of typing the file path, you can drag the file into the input field to easily append the file path. This also applies to other commands (e.g. <code>add</code>, <code>move</code>).</p>
 </li>
 <li>
 <p>The app may freeze for some time if the file to be encrypted is large. Please do not force exit the app during encryption.</p>
@@ -689,7 +692,10 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <p>Format: <code>add FILENAME [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>add ~/Desktop/[LOCKED] Secret File.png t/Image</code></p>
+<p>Example:<br>
+For Windows: <code>add C:\Users\YOUR_USERNAME\Desktop\[LOCKED] Test.txt t/personal</code><br>
+For macOS: <code>add /Users/YOUR_USERNAME/Desktop/[LOCKED] Test.txt t/personal</code><br>
+(The actual file path may differ on your OS. Hence, it is always recommended to drag the file in the input field.)</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -762,7 +768,7 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <p>Format: <code>rename INDEX TARGET_FILENAME</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>rename 1 Secret File.txt</code></p>
+<p>Example: <code>rename 1 Test2</code></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -791,13 +797,16 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <div class="sect3">
 <h4 id="moving-an-encrypted-file-code-move-code"><a class="link" href="#moving-an-encrypted-file-code-move-code">4.3.6. Moving an encrypted file : <code>move</code></a></h4>
 <div class="paragraph">
-<p>Moves an encrypted file as specified by its index number.</p>
+<p>Moves an encrypted file as specified by its index number. The target directory must be a real directory (not a shortcut, alias, symbolic link, etc.)</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>move INDEX TARGET_DIRECTORY</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>move 1 ~/Documents/Secret File.png</code></p>
+<p>Example:<br>
+For Windows: <code>move 1 C:\Users\YOUR_USERNAME\Desktop</code><br>
+For macOS: <code>move 1 /Users/YOUR_USERNAME/Desktop</code><br>
+(The actual file path may differ on your OS. Hence, it is always recommended to drag the directory in the input field.)</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -838,7 +847,7 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <p>Format: <code>find KEYWORDS&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
-<p>Examples: <code>find Secret File</code></p>
+<p>Example: <code>find Test</code></p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -857,7 +866,7 @@ Simply enter <code>generate</code> into the command box to get one.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>secret file</code> will match <code>Secret File</code>.</p>
+<p>The search is case insensitive. e.g <code>test</code> will match <code>Test</code>.</p>
 </li>
 <li>
 <p>Both the file name and the file path are searched. Hence, you can look for files with certain types (e.g. <code>find .png .jpg</code>) or files inside certain directories (e.g. <code>find /Desktop</code>).</p>
@@ -1344,4 +1353,4 @@ There is no need to save manually.</p>
 <strong>A</strong>: Install the app in the other computer and copy store.tmp files from the application’s directory to the new computer.</p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-03 11:42:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-04 14:32:13 UTC</div></div></div></body></html>
