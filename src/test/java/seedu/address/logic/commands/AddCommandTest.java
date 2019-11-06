@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.person.AddCommand;
 import seedu.address.model.AddressBook;
 import seedu.address.model.CardBook;
 import seedu.address.model.Model;

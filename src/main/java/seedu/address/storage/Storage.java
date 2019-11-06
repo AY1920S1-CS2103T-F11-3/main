@@ -12,6 +12,11 @@ import seedu.address.model.ReadOnlyNoteBook;
 import seedu.address.model.ReadOnlyPasswordBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.storage.card.CardBookStorage;
+import seedu.address.storage.file.FileBookStorage;
+import seedu.address.storage.note.NoteBookStorage;
+import seedu.address.storage.password.PasswordBookStorage;
+import seedu.address.storage.person.AddressBookStorage;
 
 /**
  * API of the Storage component
