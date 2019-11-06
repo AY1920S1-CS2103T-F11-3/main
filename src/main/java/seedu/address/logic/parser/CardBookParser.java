@@ -6,12 +6,12 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.card.AddCardCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.card.DeleteCardCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.GoToCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.card.AddCardCommand;
+import seedu.address.logic.commands.card.DeleteCardCommand;
 import seedu.address.logic.commands.card.ReadCardCommand;
 import seedu.address.logic.parser.commandparser.GoToCommandParser;
 import seedu.address.logic.parser.commandparser.card.AddCardCommandParser;

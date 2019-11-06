@@ -14,11 +14,11 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.note.EditNoteCommand;
+import seedu.address.logic.parser.commandparser.CommandParser;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.ArgumentMultimap;
 import seedu.address.logic.parser.util.ArgumentTokenizer;
-import seedu.address.logic.parser.commandparser.CommandParser;
 import seedu.address.logic.parser.util.ParserUtil;
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
 

@@ -4,8 +4,8 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.file.DecryptFileCommand;
-import seedu.address.logic.parser.util.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.util.ParserUtil;
 
 /**
  * Parses input arguments and creates a new DecryptFileCommand object

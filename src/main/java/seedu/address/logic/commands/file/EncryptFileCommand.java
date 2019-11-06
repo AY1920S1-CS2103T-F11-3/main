@@ -12,10 +12,10 @@ import java.util.Date;
 
 import seedu.address.commons.exceptions.TargetFileExistException;
 import seedu.address.commons.util.EncryptionUtil;
-import seedu.address.logic.commands.person.AddCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.person.AddCommand;
 import seedu.address.model.Model;
 import seedu.address.model.file.EncryptedAt;
 import seedu.address.model.file.EncryptedFile;

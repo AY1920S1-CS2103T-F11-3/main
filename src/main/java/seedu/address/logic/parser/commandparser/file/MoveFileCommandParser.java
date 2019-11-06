@@ -7,8 +7,8 @@ import java.nio.file.Path;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.file.MoveFileCommand;
 import seedu.address.logic.parser.commandparser.CommandParser;
-import seedu.address.logic.parser.util.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.util.ParserUtil;
 import seedu.address.model.file.FilePath;
 
 /**

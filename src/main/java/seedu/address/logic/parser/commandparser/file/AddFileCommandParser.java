@@ -6,11 +6,11 @@ import static seedu.address.logic.parser.util.CliSyntax.PREFIX_TAG;
 import java.util.Set;
 
 import seedu.address.logic.commands.file.AddFileCommand;
+import seedu.address.logic.parser.commandparser.CommandParser;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.ArgumentMultimap;
 import seedu.address.logic.parser.util.ArgumentTokenizer;
-import seedu.address.logic.parser.commandparser.CommandParser;
 import seedu.address.logic.parser.util.ParserUtil;
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.file.EncryptedFile;
 import seedu.address.model.file.FileName;
 import seedu.address.model.file.FilePath;

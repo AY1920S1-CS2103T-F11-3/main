@@ -12,8 +12,8 @@ import seedu.address.logic.commands.password.CopyPasswordValueCommand;
 import seedu.address.logic.commands.password.CopyUsernameCommand;
 import seedu.address.logic.commands.password.CopyWebsiteCommand;
 import seedu.address.logic.parser.commandparser.CommandParser;
-import seedu.address.logic.parser.util.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.util.ParserUtil;
 
 
 /**

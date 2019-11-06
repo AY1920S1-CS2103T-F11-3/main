@@ -9,10 +9,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.commands.password.CopyPasswordCommand;
-import seedu.address.logic.commands.password.CopyPasswordValueCommand;
-import seedu.address.logic.commands.password.CopyUsernameCommand;
-import seedu.address.logic.commands.password.CopyWebsiteCommand;
 import seedu.address.model.Model;
 import seedu.address.model.password.Password;
 
