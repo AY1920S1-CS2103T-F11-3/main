@@ -6,18 +6,20 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddFileCommand;
+import seedu.address.logic.commands.file.AddFileCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DecryptFileCommand;
-import seedu.address.logic.commands.EncryptFileCommand;
+import seedu.address.logic.commands.file.DecryptFileCommand;
+import seedu.address.logic.commands.file.EncryptFileCommand;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindFileCommand;
+import seedu.address.logic.commands.file.FindFileCommand;
 import seedu.address.logic.commands.GoToCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListFileCommand;
-import seedu.address.logic.commands.MoveFileCommand;
-import seedu.address.logic.commands.RemoveFileCommand;
-import seedu.address.logic.commands.RenameFileCommand;
+import seedu.address.logic.commands.file.ListFileCommand;
+import seedu.address.logic.commands.file.MoveFileCommand;
+import seedu.address.logic.commands.file.RemoveFileCommand;
+import seedu.address.logic.commands.file.RenameFileCommand;
+import seedu.address.logic.parser.commandparser.GoToCommandParser;
+import seedu.address.logic.parser.commandparser.file.*;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**

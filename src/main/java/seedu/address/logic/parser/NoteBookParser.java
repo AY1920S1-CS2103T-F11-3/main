@@ -6,20 +6,22 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddNotesCommand;
-import seedu.address.logic.commands.ClearNoteCommand;
+import seedu.address.logic.commands.note.AddNotesCommand;
+import seedu.address.logic.commands.note.ClearNoteCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DeleteNoteCommand;
-import seedu.address.logic.commands.EditNoteCommand;
+import seedu.address.logic.commands.note.DeleteNoteCommand;
+import seedu.address.logic.commands.note.EditNoteCommand;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindNoteCommand;
+import seedu.address.logic.commands.note.FindNoteCommand;
 import seedu.address.logic.commands.GoToCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListNoteCommand;
-import seedu.address.logic.commands.OpenNoteCommand;
-import seedu.address.logic.commands.RedoNoteCommand;
-import seedu.address.logic.commands.SortNoteCommand;
-import seedu.address.logic.commands.UndoNoteCommand;
+import seedu.address.logic.commands.note.ListNoteCommand;
+import seedu.address.logic.commands.note.OpenNoteCommand;
+import seedu.address.logic.commands.note.RedoNoteCommand;
+import seedu.address.logic.commands.note.SortNoteCommand;
+import seedu.address.logic.commands.note.UndoNoteCommand;
+import seedu.address.logic.parser.commandparser.GoToCommandParser;
+import seedu.address.logic.parser.commandparser.note.*;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 

@@ -18,9 +18,9 @@
 //import org.junit.jupiter.api.io.TempDir;
 //
 //import seedu.address.commons.exceptions.DictionaryException;
-//import seedu.address.logic.commands.AddCommand;
+//import seedu.address.logic.commands.person.AddCommand;
 //import seedu.address.logic.commands.CommandResult;
-//import seedu.address.logic.commands.ListCommand;
+//import seedu.address.logic.commands.person.ListCommand;
 //import seedu.address.logic.commands.exceptions.CommandException;
 //import seedu.address.logic.parser.exceptions.ParseException;
 //import seedu.address.model.Model;
@@ -31,11 +31,11 @@
 //import seedu.address.model.ReadOnlyPasswordBook;
 //import seedu.address.model.UserPrefs;
 //import seedu.address.model.person.Person;
-//import seedu.address.storage.JsonAddressBookStorage;
-//import seedu.address.storage.JsonCardBookStorage;
-//import seedu.address.storage.JsonFileBookStorage;
-//import seedu.address.storage.JsonNoteBookStorage;
-//import seedu.address.storage.JsonPasswordBookStorage;
+//import seedu.address.storage.person.JsonAddressBookStorage;
+//import seedu.address.storage.card.JsonCardBookStorage;
+//import seedu.address.storage.file.JsonFileBookStorage;
+//import seedu.address.storage.note.JsonNoteBookStorage;
+//import seedu.address.storage.password.JsonPasswordBookStorage;
 //import seedu.address.storage.JsonUserPrefsStorage;
 //import seedu.address.storage.StorageManager;
 //import seedu.address.testutil.PersonBuilder;

@@ -24,6 +24,16 @@ import seedu.address.model.card.Card;
 import seedu.address.model.note.Note;
 import seedu.address.model.password.Password;
 import seedu.address.model.password.analyser.report.AnalysisReport;
+import seedu.address.ui.card.CardListPanel;
+import seedu.address.ui.card.ExpiryDisplay;
+import seedu.address.ui.card.ReadDisplayCard;
+import seedu.address.ui.file.FileListPanel;
+import seedu.address.ui.note.NoteListPanel;
+import seedu.address.ui.note.OpenDisplayNote;
+import seedu.address.ui.password.PasswordListPanel;
+import seedu.address.ui.password.ReadDisplayPassword;
+import seedu.address.ui.password.ReadDisplayPasswordReport;
+import seedu.address.ui.person.PersonListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -348,7 +358,7 @@ public class MainWindow extends UiPart<Stage> {
      *
      * @see seedu.address.logic.Logic#execute(String)
      */
-    CommandResult executeCommand(String commandText) throws CommandException,
+    public CommandResult executeCommand(String commandText) throws CommandException,
             ParseException, DictionaryException {
         readList.setVisible(false);
         readList.setMinWidth(0);

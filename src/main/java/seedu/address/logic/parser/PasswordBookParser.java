@@ -6,19 +6,21 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddPasswordCommand;
-import seedu.address.logic.commands.AnalysePasswordCommand;
+import seedu.address.logic.commands.password.AddPasswordCommand;
+import seedu.address.logic.commands.password.AnalysePasswordCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CopyPasswordCommand;
-import seedu.address.logic.commands.DeletePasswordCommand;
-import seedu.address.logic.commands.EditPasswordCommand;
+import seedu.address.logic.commands.password.CopyPasswordCommand;
+import seedu.address.logic.commands.password.DeletePasswordCommand;
+import seedu.address.logic.commands.password.EditPasswordCommand;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindPasswordCommand;
-import seedu.address.logic.commands.GeneratePasswordCommand;
+import seedu.address.logic.commands.password.FindPasswordCommand;
+import seedu.address.logic.commands.password.GeneratePasswordCommand;
 import seedu.address.logic.commands.GoToCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListPasswordCommand;
-import seedu.address.logic.commands.ReadPasswordCommand;
+import seedu.address.logic.commands.password.ListPasswordCommand;
+import seedu.address.logic.commands.password.ReadPasswordCommand;
+import seedu.address.logic.parser.commandparser.GoToCommandParser;
+import seedu.address.logic.parser.commandparser.password.*;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 
