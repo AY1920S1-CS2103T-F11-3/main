@@ -1,0 +1,503 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Ni Tianzhen - Project Portfolio Page</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">SecureIT</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F11-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Ni Tianzhen - Project Portfolio Page</h1></div><div id="content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This portfolio page serves to document my contributions during the development of SecureIT, a desktop application to enhance data security.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about-the-project"><a class="link" href="#about-the-project">About the project</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I, together with 4 other software engineering students, was tasked to enhance an existing command-line-based desktop addressbook application for our Software Engineering project. We decided to morph it into a confidential information management system called <strong>SecureIT</strong>. It enables employees to safely keep their confidential data, including passwords, files, cards, and notes, at their workplaces.</p>
+</div>
+<div class="paragraph">
+<p>My role was to design and implement general data encryption and the file management feature. This is what the file management mode looks like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/niqiukun-ppp/FileManagerOverview.png" alt="FileManagerOverview">
+</div>
+</div>
+<div class="paragraph">
+<p>The following sections illustrate my contributions, including the documentation I have added in the user and developer guides.</p>
+</div>
+<div class="paragraph">
+<p>Note the following symbols and formatting used in this document:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 6.9767%;">
+<col style="width: 93.0233%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This symbol indicates some useful tips that help you understand the features.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock">
+<div class="content">
+<img src="../images/warning.png" alt="warning" width="20">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This symbol indicates important information that you have to take note of.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>encrypt</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Monospaced font indicates that this is a command that can be inputted into the command box and executed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>EncryptedFile</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bolded monospaced font indicates a component, class or object in this application.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of Contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section shows a summary of my coding, documentation, and other helpful contributions to the team project.</p>
+</div>
+<div class="paragraph">
+<p><strong>Enhancement added</strong>: I added the ability to encrypt data with a master password and to manage encrypted files</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The master password converts the app&#8217;s data into an encrypted format which is not readable by others. The app can also encrypt external files and manage them.</p>
+</li>
+<li>
+<p>Justification: The data of small-to-medium enterprises are often stored as files and are vulnerable to cyberattacks. Hence, a mechanism has to be in place to protect the data.</p>
+</li>
+<li>
+<p>Highlights: The encryption works seamlessly with existing and future commands. The file manager allows users to preview encrypted files without decrypting them in the file system. It can be expanded in future to allow edit of encrypted files.</p>
+</li>
+<li>
+<p>Credits: The encryption relies on Java&#8217;s build-in <code><strong>Cipher</strong></code> class without the need to implement encryption algorithms. Preview of PDF and Word documents relies on third-party libraries, Apache PDFBox and Apache POI, respectively.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Code Contributed</strong>: Please click the link to see a sample of my code: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=niqiukun&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=niqiukun&amp;tabRepo=AY1920S1-CS2103T-F11-3%2Fmain%5Bmaster%5D">Code on RepoSense</a>]</p>
+</div>
+<div class="paragraph">
+<p><strong>Other Contributions</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed release versions <code>1.1</code>, <code>1.2.1</code>, and <code>1.3</code> (3 releases) on Github.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other enhancements:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added <code>goto</code> command which allows users to switch between different modes: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/39">#39</a></p>
+</li>
+<li>
+<p>Designed and implemented the dialogs which allow users to create and validate their master passwords: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/36">#36</a> <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/171">#171</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Designed the initial UI mock-up: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/5">#5</a></p>
+</li>
+<li>
+<p>Updated the README page: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/11">#11</a></p>
+</li>
+<li>
+<p>Updated the UML diagram for <code><strong>Storage</strong></code> to include newly added components: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/55">#55</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and offered suggestions for other team members: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/81">#81</a> <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/83">#83</a> <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/86">#86</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated third-party libraries to the project: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/180">#180</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following excerpt from our User Guide shows the usage of the file manager. Please note that not all commands are shown. Refer to the <a href="https://ay1920s1-cs2103t-f11-3.github.io/main/UserGuide.html#file">User Guide</a> for a complete list.</p>
+</div>
+<div class="sect2">
+<h3 id="file-manager"><a class="link" href="#file-manager">File Manager</a></h3>
+<div class="paragraph">
+<p>SecureIT has a file manager which helps you keep confidential files that you do not wish others to see. Using your master password, SecureIT converts your files into an encrypted format which cannot be read by other applications.</p>
+</div>
+<div class="paragraph">
+<p>To access the file manager, simply type <code>goto file</code> in the command box and press Enter.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/niqiukun-ppp/GotoFile.png" alt="GotoFile">
+</div>
+</div>
+<div class="sect3">
+<h4 id="encrypting-a-file-code-encrypt-code"><a class="link" href="#encrypting-a-file-code-encrypt-code">Encrypting a file : <code>encrypt</code></a></h4>
+<div class="paragraph">
+<p>You can encrypt a local file using its file path. You may also tag the file at the same time for easy reference later on.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>encrypt FILEPATH [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Let&#8217;s say that you have been tasked to keep your company&#8217;s reports. With every detail about the company&#8217;s operation, the reports are highly confidential and you wish to prevent information leaks. Here is how you can protect your data!</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <code>encrypt</code> in the command box, followed by a space. Do not press Enter yet.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/niqiukun-ppp/EncryptSpace.png" alt="EncryptSpace">
+</div>
+</div>
+</li>
+<li>
+<p>Drag and drop the file that you wish to encrypt into the command box.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/niqiukun-ppp/DragAndDrop.png" alt="DragAndDrop">
+</div>
+</div>
+</li>
+<li>
+<p>The file path should appear in the command box. Press Enter to execute the command.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/niqiukun-ppp/EncryptFilePath.png" alt="EncryptFilePath">
+</div>
+</div>
+</li>
+<li>
+<p>The result box displays the message "File encrypted: &#8230;&#8203;" You can see that the information of the encrypted file appears in the list.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/niqiukun-ppp/FileEncrypted.png" alt="FileEncrypted">
+</div>
+</div>
+</li>
+<li>
+<p>Encrypted files have the prefix <code>[LOCKED]</code> in their file names. You can verify that the file has been encrypted.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/niqiukun-ppp/CannotOpenFile.png" alt="CannotOpenFile">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The app does not support encryption of files larger than 2GB.</p>
+</li>
+<li>
+<p>If you are using Windows, please close the file before encryption.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The app may freeze for some time if the file to be encrypted is large. Please do not force exit the app during encryption.</p>
+</li>
+<li>
+<p>The <code>encrypt</code> command keeps your information secret but others/malware may still change or delete your file. If you wish to prevent malicious alteration or deletion, please set up additional access rights in your file system.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="decrypting-a-file-code-decrypt-code"><a class="link" href="#decrypting-a-file-code-decrypt-code">Decrypting a file : <code>decrypt</code></a></h4>
+<div class="paragraph">
+<p>You can decrypt a local file using its displayed index number.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>decrypt INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Let&#8217;s say that your colleague requests a copy of one of the reports kept by you. Before sending them the report, you need to decrypt it first. Here is how you can do it.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <code>decrypt</code> in the command box, followed by a space and the index number of the file that you wish to decrypt. Press Enter.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/niqiukun-ppp/DecryptFour.png" alt="DecryptFour">
+</div>
+</div>
+</li>
+<li>
+<p>The result box displays the message "File decrypted&#8230;&#8203;" and the file record is gone from the list.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/niqiukun-ppp/FileDecrypted.png" alt="FileDecrypted">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you notice that the file decryption fails, it may be because you have renamed or moved the file without using SecureIT (for example, in your operating system).</p>
+</li>
+<li>
+<p>In that case, use <code>remove</code> command to remove the file from the list first, and then use <code>add</code> command to add the renamed/moved file. Please refer to the <a href="https://ay1920s1-cs2103t-f11-3.github.io/main/UserGuide.html#removing-a-file-code-remove-code"><code>remove</code></a> and <a href="https://ay1920s1-cs2103t-f11-3.github.io/main/UserGuide.html#adding-an-encrypted-file-code-add-code"><code>add</code></a> commands for detailed instructions.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following section shows my contributions to the Developer Guide.</p>
+</div>
+<div class="sect2">
+<h3 id="general-data-encryption"><a class="link" href="#general-data-encryption">General Data Encryption</a></h3>
+<div class="sect3">
+<h4 id="initialization-and-validation"><a class="link" href="#initialization-and-validation">Initialization and Validation</a></h4>
+<div class="paragraph">
+<p>We encrypt all the data files of SecureIT with a master password set by the user. The initialization and validation of the master password are handled by <code><strong>TestStorage</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram shows how the master password is initialized when the user uses the app for the first time and validated for subsequent uses of the app.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/InitPasswordActivityDiagram.png" alt="InitPasswordActivityDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Note that to protect users' data, the main components of the app (<code><strong>Storage</strong></code>, <code><strong>Ui</strong></code>, <code><strong>Logic</strong></code>, <code><strong>Model</strong></code>) can only be initialised with a correct master password.</p>
+</div>
+<div class="paragraph">
+<p>Also, the app does not store the master password itself. Instead, during initialization, the app encrypts a magic word using the password and stores it in the file system. For validation, the app tries to decrypt the stored magic word using the password given and checks if the original word is obtained. If the password given is correct, the original magic word should be obtained.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="encryption-method"><a class="link" href="#encryption-method">Encryption Method</a></h4>
+<div class="paragraph">
+<p>The following sequence diagram explains how the <code><strong>EncryptionUtil</strong></code> class encrypts an input byte array using a password.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EncryptionUtilSequenceDiagram.png" alt="EncryptionUtilSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>The process of encrypting a byte array is outlined as follows:</p>
+</div>
+<div class="paragraph">
+<p>Step 1. A key (<code><strong>SecretKey key</strong></code>) is generated from the password string (<code><strong>pwd</strong></code>) and a specified encryption method (<code><strong>PBEWithMD5AndTripleDES</strong></code>) via a utility class (<code><strong>SecretKeyFactory</strong></code>).</p>
+</div>
+<div class="paragraph">
+<p>Step 2. A set of parameter specification (<code><strong>PBEParameterSpec paramSpec</strong></code>) is generated with hardcoded parameters (<code><strong>SALT</strong></code>, <code><strong>ITERATION</strong></code>). Hardcoded parameters ensure that the same password can always be correctly validated at different times.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. A <code><strong>Cipher</strong></code> class is constructed with the same encryption method specified above (<code><strong>PBEWithMD5AndTripleDES</strong></code>) and initialised with the key and the set of parameter specifications.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The <code><strong>doFinal</strong></code> method conducts the actual encryption on the input array and returns the encrypted byte array.</p>
+</div>
+<div class="paragraph">
+<p>The decryption process is similar to the encryption process, except that the <code><strong>ENCRYPT_MODE</strong></code> is changed to <code><strong>DECRYPT_MODE</strong></code>. The same password is necessary to decrypt an encrypted byte array to its original content.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="file-management"><a class="link" href="#file-management">File Management</a></h3>
+<div class="paragraph">
+<p>SecureIT does not store users' encrypted files directly. Instead, it reads the files' data, carries out the encryption, and replaces the original files with encrypted ones in users' file system. Meanwhile, it also maintains records of files that it encrypts, represented by <code><strong>EncryptedFile</strong></code> class, in an internal data structure, <code><strong>FileBook</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram illustrates how the record of an encrypted file is represented internally.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FileModelClassDiagram.png" alt="Diagram" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>FileBook</strong></code>, managed by the app&#8217;s <code><strong>ModelManager</strong></code>, keeps a <code><strong>UniqueFileList</strong></code>. The list encapsulates an internal mechanism to prevent file duplication. Each entry in the list represents a record of an encrypted file.</p>
+</div>
+<div class="paragraph">
+<p>An <code><strong>EncryptedFile</strong></code> must have the following attributes:  a <code><strong>FileName</strong></code>, a <code><strong>FilePath</strong></code>, and a <code><strong>FileStatus</strong></code>. While the first two attributes allow the app to locate the file, the file status provides users with an indication of the current state of the file. It defaults to <code><strong>ACTIVE</strong></code> for newly encrypted/added files.</p>
+</div>
+<div class="paragraph">
+<p>Two timestamps, <code><strong>EncryptedAt</strong></code> and <code><strong>ModifiedAt</strong></code>, provide users with more details about the file. These two attributes may not always be available. For example, encrypted files added with <code>add</code> command do not contain this information.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, while a <code><strong>ViewableFile</strong></code> contains the file&#8217;s content for preview. It is a generic class which is extendable to accommodate even more file types in future. The <code><strong>FilePreviewPanel</strong></code>, which is a <code><strong>UI</strong></code> component, depends on <code><strong>ViewableFile</strong></code> to render the preview.</p>
+</div>
+<div class="sect3">
+<h4 id="logic"><a class="link" href="#logic">Logic</a></h4>
+<div class="paragraph">
+<p>The user can perform the following operations: <code>encrypt</code>, <code>decrypt</code>, <code>add</code>, <code>remove</code>, <code>move</code>, <code>rename</code>, and <code>preview</code>. There are two differences between the commands of the file manager and those of the address book. First, some file commands require a password for execution. Second, most file commands involve interaction with the external file system.</p>
+</div>
+<div class="paragraph">
+<p>The solution to the first difference is a <code><strong>FileCommandParser</strong></code> class which is similar to the <code><strong>Parser</strong></code> class, but it packages the password within the commands during parsing. It is illustrated in the class diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FileCommandParserClassDiagram.png" alt="FileCommandParserClassDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>To address the second difference, we separate the access to the file system from the parser. For example, during encryption, at the parsing stage, an <code><strong>EncryptedFile toAdd</strong></code> is created without the knowledge of the actual file. Both the validation and encryption are carried out only at the execution stage. This is illustrated in the following sequence diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EncryptSequenceDiagram.png" alt="EncryptSequenceDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p>Below is a summary of my considerations and analysis while developing the file manager:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When to do file validation with the file system</p>
+<div class="paragraph">
+<p><strong>Alternative 1</strong>: When a command is parsed<br>
+<strong>Pros</strong>: There is no need to construct <code><strong>EncryptedFile</strong></code> objects for invalid files.<br>
+<strong>Cons</strong>: Both the command parsing and execution require interaction with the file system. <code><strong>Parser</strong></code> violates the single responsibility principle.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2</strong>: When a command is executed<br>
+<strong>Pros</strong>: Interaction with the file system only occurs during execution. Easier to debug.<br>
+<strong>Cons</strong>: Need to construct <code><strong>EncryptedFile</strong></code> when file information is not yet available. Cannot initialise <code><strong>ModifiedAt</strong></code> in the constructor.</p>
+</div>
+<div class="paragraph">
+<p>We choose alternative 2 because according to single responsibility principle, <code><strong>Parser</strong></code> should only convert user input to correct command format, without the knowledge of files.</p>
+</div>
+</li>
+<li>
+<p>How to implement the file preview feature</p>
+<div class="paragraph">
+<p><strong>Alternative 1</strong>: UI components read file content<br>
+<strong>Pros</strong>: There is no need to create extra classes in <code><strong>Model</strong></code>, such as <code><strong>ViewableFile</strong></code>.<br>
+<strong>Cons</strong>: UI components have to interact directly with the file system.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2</strong>: Read file content during command execution<br>
+<strong>Pros</strong>: File system access is limited to command execution time only.<br>
+<strong>Cons</strong>: Need to pass the file content to the UI components via <code><strong>CommandResult</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>We choose alternative 2 because it is better to keep all access to file system in one place.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:06:27 UTC</div></div></div></body></html>

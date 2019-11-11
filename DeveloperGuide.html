@@ -22,11 +22,15 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#analyse-password">3.1. Analyse Password</a></li>
-<li><a href="#data-encryption">3.2. Data Encryption</a></li>
-<li><a href="#notes-feature">3.3. Notes Feature</a></li>
-<li><a href="#logging">3.4. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#password-management">3.1. Password Management</a></li>
+<li><a href="#generate-password">3.2. Generate Password</a></li>
+<li><a href="#analyse-password">3.3. Analyse Password</a></li>
+<li><a href="#general-data-encryption">3.4. General Data Encryption</a></li>
+<li><a href="#cards-feature">3.5. Cards Feature</a></li>
+<li><a href="#file-management">3.6. File Management</a></li>
+<li><a href="#notes-feature">3.7. Notes Feature</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -35,16 +39,6 @@
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
-<li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
-<ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-note">G.2. Deleting a note</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -301,150 +295,622 @@ The lifeline for <code>DeleteNoteCommandParser</code> should end at the destroy 
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="analyse-password"><a class="link" href="#analyse-password">3.1. Analyse Password</a></h3>
-<div class="paragraph">
-<p>The following class diagram is the current structure of the <code>Analyser</code> component, using <code>DictionaryAnalyser</code> as an example:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AnalyserClassDiagram.png" alt="AnalyserClassDiagram">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>Analyser</code> component,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>can analyse the current list of <code>Password</code> object to produce a list of analysis <code>Results</code>.</p>
-</li>
-</ul>
-</div>
+<h3 id="password-management"><a class="link" href="#password-management">3.1. Password Management</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
+<h4 id="model"><a class="link" href="#model">3.1.1. Model</a></h4>
 <div class="paragraph">
-<p>The analyse password makes use of various analysers.
-Each type of analyser implements it&#8217;s own implementation of <code>#analyse()</code> , and inspects the following aspects of the password:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Complexity (Strength)</p>
-</li>
-<li>
-<p>Uniqueness</p>
-</li>
-<li>
-<p>Similarity</p>
-</li>
-<li>
-<p>Commonly-used passwords</p>
-</li>
-<li>
-<p>Commonly-used sequences</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Given below is the example usage of how the analysis for commonly-used passwords is implemented, using the <code>DictionaryAnalyser</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user inputs <code>analyse</code> into the command line. An <code>AnalysePasswordCommand</code> is generated and executed by <code>Logic</code>.</p>
-</div>
-<div class="paragraph">
-<p>Step 2. On <code>#execute</code>, AnalysePasswordCommand retrieves the current list of passwords via <code>Model#getFilteredPasswordList()</code>.
-It also retrieves the required analysers via <code>#getRequiredAnalysers()</code>. Each analyser will then <code>#analyse</code> the list of passwords.</p>
-</div>
-<div class="paragraph">
-<p>Step 3. In the case of <code>DictionaryAnalyser</code>, each subsequence of the particular password is checked against a common-password dictionary
-Every match found is appended to the list of <code>Match</code> objects. The following sequence diagram explains how this is done:</p>
+<p>We created the <code>Password</code> model to support the password management feature of our application.
+It stores the information of all the passwords created by the user. The class diagram of the <code>Password</code> model is as follows:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/GetAllMatchesSequence.png" alt="GetAllMatchesSequence">
+<img src="images/PasswordClassDiagram.png" alt="PasswordClassDiagram">
 </div>
-</div>
-<div class="paragraph">
-<p>Step 4. An <code>AnalysisReport</code> compiles all the <code>Results</code> of each analyser into a string-formatted report for the user.</p>
+<div class="title">Figure 8. Class diagram of Password Model.</div>
 </div>
 <div class="paragraph">
-<p>Step 5. Should the user wish to view a more detailed report for a specific password, user may input <code>analyse strong/&lt;index&gt;</code>.</p>
+<p>The <code>Password</code> model consists of a <code>Password</code> class which has its attributes implemented as
+separate classes to follow <strong>Single Responsibility Principle</strong>. The attributes are as follows:</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the overall analyse functionality works:</p>
+<p><code>Username</code>: The username of the password model</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AnalysePasswordSequenceDiagram.png" alt="AnalysePasswordSequenceDiagram">
+<div class="paragraph">
+<p><code>PasswordValue</code>: The actual password value of the password model</p>
 </div>
+<div class="paragraph">
+<p><code>PasswordDescription</code>: The description of the password model.</p>
+</div>
+<div class="paragraph">
+<p><code>Website</code>: The website where the password is being used for.</p>
+</div>
+<div class="paragraph">
+<p><code>PasswordModifiedAt</code>: The date when the password is last modified.</p>
+</div>
+<div class="paragraph">
+<p><code>PasswordExpiredAt</code>: The date 1 year after the password is last modified.</p>
+</div>
+<div class="paragraph">
+<p><code>ExpiryMode</code>: It has 3 modes: <code>HEALTHY</code>, <code>EXPIRING</code>, <code>EXPIRED</code>, depending on how close the current date is when compared to the expiry date of the password.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Password</code> objects are stored in a <code>UniquePasswordList</code> in the <code>PasswordBook</code> and the existing model manager is extended to
+add the functionality managing passwords into the application. We have adhered to <strong>YAGNI</strong> design principle by making sure that minimal changes are added.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations:</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-analyse-analyse-strong-executes"><a class="link" href="#aspect-how-analyse-analyse-strong-executes">Aspect: How analyse/analyse strong executes</a></h5>
+<h5 id="aspect-model-manager-for-password"><a class="link" href="#aspect-model-manager-for-password">Aspect: Model Manager for Password.</a></h5>
+<div class="paragraph">
+<p>The design considerations would be similar for all other models including <code>File</code> model, <code>Card</code> model, <code>Note</code> model and <code>Password</code> model.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Always analyse the entire list of Password objects for every "analyse" command,
-even if the list of Passwords was unchanged.</p>
+<p><strong>Alternative 1 (current choice):</strong> The current model manager is extended to handle the filtered lists of all the models.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement, not required to check state if the current list of Passwords has been modified.</p>
+<p>Pros: Adheres to <strong>DRY</strong> design principle as it extends the functionality of the model manager without repeating code.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of speed of the programme.</p>
+<p>Cons: It might increase dependencies in the model manager.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Save in memory the result produced by the Analyser objects, and update result upon modification of
-list of Passwords (e.g. new passwords added/ passwords deleted.)</p>
+<p><strong>Alternative 2:</strong> Create another <code>Model</code> interface and another <code>Model Manager</code> class.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Performance of programme will be a lot faster.</p>
+<p>Pros: Easy to implement.</p>
 </li>
 <li>
-<p>Cons: Hard to implement. Have to keep track of state of the list of Password objects and check if the list has been modified
-from the last time they were analysed.</p>
+<p>Cons: Does not adhere to <strong>DRY</strong> design principle, where additional <code>Model Manager</code> class are created.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>We chose alternative 1 as there is already a model manager available and it would be logical to use it instead of creating another class and possibly write repeated code.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logic"><a class="link" href="#logic">3.1.3. Logic</a></h4>
+<div class="paragraph">
+<p>User is allowed to <code>add</code>, <code>read</code>, <code>edit</code>, <code>find</code>, <code>list</code>, <code>delete</code> and <code>copy</code>. Additional <code>PasswordBookParser</code>, <code>Parser</code> and <code>Command</code>
+classes are included to support the functionality stated above. The class diagram for all <code>Command</code> classes available for <code>Password</code> model is as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CopyCommand.png" alt="CopyCommand">
+</div>
+<div class="title">Figure 9. Class diagram of all Command classes used in password management</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-logic-manager-for-password-model"><a class="link" href="#aspect-logic-manager-for-password-model">Aspect: Logic Manager for Password model.</a></h5>
+<div class="paragraph">
+<p>The design considerations would be similar for all other models such as the <code>File</code> model, <code>Card</code> model, <code>Note</code> model and <code>Password</code> model.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> The current logic manager is extended to handle the model parsers. The logic manager
+checks for the current mode of the system and decides which model parser class to use.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This adheres to the Open-closed principle in SOLID. Same command words can be used in different modes and it does not increase coupling in the application.</p>
+</li>
+<li>
+<p>Cons: Hard to implement. Requires another command to switch modes. Similar command classes will need to be implemented in different model such as <code>AddPasswordCommand</code>, <code>AddNoteCommand</code>, <code>AddCardCommand</code>.
+However, all the fields in the command classes are different and separating them into different classes reduces coupling.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Extending one parser class to handle all the different commands. Different command will have different <code>add</code> command words.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: User will have to remember different command words for the same <code>add</code> command for different modes, such as <code>addp</code>, <code>addn</code>, <code>addc</code>.
+This will impact the user experience and increase coupling as the same <code>add</code> command is required to perform different tasks.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose alternative 1 because of its pros. We place emphasis on the user
+experience of our application. In this implementation users will not have to remember different command words to
+add the same objects into our application.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="copy-command"><a class="link" href="#copy-command">3.1.4. Copy Command:</a></h4>
+<div class="sect4">
+<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation:</a></h5>
+<div class="paragraph">
+<p><code>CopyPasswordValueCommand</code> class, <code>CopyWebsiteCommand</code> class and <code>CopyUsernameCommand</code> class extends <code>CopyPasswordCommand</code> class as shown in the earlier figure.</p>
+</div>
+<div class="paragraph">
+<p>These three classes are implemented together with <code>CopyCommandParser</code> class to create the functionality of copying the required details onto clipboard using CLI.
+Since this is a command that would be used frequently, command alias are added to increase the efficiency for the user.
+The activity diagram below describes the flow of the <code>CopyPasswordCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Step1.png" alt="Step1">
+</div>
+<div class="title">Figure 10. Activity Diagram for CopyPasswordCommand</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram describes the detailed interactions between any <code>CopyPasswordCommand</code> and the architecture:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CopyPasswordSequenceDiagram.png" alt="CopyPasswordSequenceDiagram">
+</div>
+<div class="title">Figure 11. Sequence Diagram for CopyPasswordValueCommand</div>
+</div>
+<div class="paragraph">
+<p>The process of copying a password value is as follows:</p>
+</div>
+<div class="paragraph">
+<p>1) PasswordBookParser creates CopyPasswordCommandParser and depending on the command word after <code>copy</code>, different copy commands will be created.</p>
+</div>
+<div class="paragraph">
+<p>2) In this case, the index is a valid index and <code>CopyPasswordValueCommand</code> is created.</p>
+</div>
+<div class="paragraph">
+<p>3) The <code>Password</code> object is retrieved from the filtered password list using the index and the password value is copied via
+<code>ClipboardUtil#copyToClipboard()</code> method</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.1.5. Design Considerations:</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-copypasswordcommand-code"><a class="link" href="#aspect-implementation-of-code-copypasswordcommand-code">Aspect: Implementation of <code>CopyPasswordCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> The <code>CopyPasswordCommand</code> class extends <code>Command</code> class. <code>CopyPasswordValueCommand</code> class, <code>CopyWebsiteCommand</code> class and <code>CopyUsernameCommand</code> class extend <code>CopyPasswordCommand</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This follows closely to <strong>Polymorphism</strong> and <strong>Inheritance</strong> concepts as all three commands share the similar functionality.
+The common functionality is abstracted out and placed inside the <code>CopyPasswordCommand</code>.</p>
+</li>
+<li>
+<p>Cons: Any further enhancement of the child commands will have to follow <strong>Liskov Substitution Principle</strong> and it needs to be more restrictive than the parent command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> <code>CopyPasswordValueCommand</code>, <code>CopyWebsiteCommand</code> , <code>CopyUsernameCommand</code> will extend <code>Command</code> class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. <code>PasswordBookParser</code> can directly check for the command word instead of splitting into 2 command words.</p>
+</li>
+<li>
+<p>Cons: Does not adhere to <strong>DRY</strong> design principle.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose alternative 1 because it is more logical and follows the <strong>DRY</strong> design principle. The cons caused by the further enhancements of child
+commands will not be considered because of <strong>YAGNI</strong> design principle.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-encryption"><a class="link" href="#data-encryption">3.2. Data Encryption</a></h3>
-<div class="sect3">
-<h4 id="initialization-and-validation"><a class="link" href="#initialization-and-validation">3.2.1. Initialization and Validation</a></h4>
+<h3 id="generate-password"><a class="link" href="#generate-password">3.2. Generate Password</a></h3>
 <div class="paragraph">
-<p>All data files of SecureIT are encrypted with a master password set by the user. The initialization and validation of the master password is handled by <code>TestStorage</code>.</p>
+<p>This section provides implementation details on the password generation feature.</p>
+</div>
+<div class="sect3">
+<h4 id="overview"><a class="link" href="#overview">3.2.1. Overview</a></h4>
+<div class="paragraph">
+<p>The purpose of password generation is to provide users with a hassle-free way to generate random, secure passwords.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the master password is initialized when the user uses the app for the first time, and validated for subsequent uses of the app.</p>
+<p>By default, the password generation feature will generate a random password that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>is 10 letters long</p>
+</li>
+<li>
+<p>contains lower case alphabets, upper case alphabets, numbers, and special characters.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>However, users can alternatively choose to customise any of the aforementioned fields as per their needs through their input.</p>
+</div>
+<div class="paragraph">
+<p>The generation of truly random passwords is made possible through the use of the <code>java.security.SecureRandom</code> API.
+It provides a cryptographically strong random number generator (RNG) that will be used in the password generation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.2. Implementation</a></h4>
+<div class="paragraph">
+<p>The following activity diagram summarises the general steps taken during password generation:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/InitPasswordSequenceDiagram.png" alt="InitPasswordSequenceDiagram">
+<img src="images/GeneratePasswordActivityDiagram.png" alt="GeneratePasswordActivityDiagram" width="400">
 </div>
-</div>
-<div class="paragraph">
-<p>Note that the main components of the app (<code>Storage</code>, <code>Ui</code>, <code>Logic</code>, <code>Model</code>) can only be initialised with a correct master password.</p>
+<div class="title">Figure 12. Summary flow of actions during password generation.</div>
 </div>
 <div class="paragraph">
-<p>The app does not store the master password itself. Instead, during initialization, the app encrypts a magic word using the password and stores it in the storage. For validation, the app tries to decrypt the stored magic word using the password given and compares if the original word is obtained. If the password given is correct, the decrypted magic word should be the same as the original one.</p>
+<p>The steps below outline explicity the generation of passwords :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The user input is <code>#parse()</code> by the <code>GeneratePasswordCommandParser</code>.</p>
+</li>
+<li>
+<p>Based on the user input, a <code>GeneratePasswordDescriptor</code> is instantiated.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the user input includes optional prefixes to customise configuration, we modify the attributes of the <code>GeneratePasswordDescriptor</code> through various setter methods.</p>
+</li>
+<li>
+<p>Else, the default <code>GeneratePasswordDescriptor</code> is instantiated through the static method <code>GeneratePasswordDescriptor#getDefaultConfiguration()</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>GeneratePasswordDescriptor</code> is an object that encapsulates the settings of the <strong>configuration</strong> used for password generation.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>GeneratePasswordCommand</code> is then instantiated with the given configuration.</p>
+</li>
+<li>
+<p>Upon <code>GeneratePasswordCommand#execute()</code>, the static method <code>GeneratorUtil#generateRandomPassword()</code> is invoked:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Based on the configuration, the relevant character sets (lower-case alphabets, upper case alphabets, numerals, special characters) are added into a list.</p>
+</li>
+<li>
+<p>The <code>GeneratorUtil</code> class uses the method <code>java.security.SecureRandom.nextInt()</code> to choose a random characters set, followed by a random character within that set to be included in the new password.</p>
+</li>
+<li>
+<p>This process of choosing a character to include in the password is repeated for the length of the password.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The generated password is then checked to see if it includes all the user requirements (ie. whether it includes all the character sets specified by the user.)</p>
+</li>
+<li>
+<p>This process of generating a password is repeated until the user requirements are met.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The activity diagram below depicts the way in which a password is generated by the method <code>GeneratorUtil#generateRandomPassword()</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GenerateMethodActivityDiagram.png" alt="GenerateMethodActivityDiagram" width="500">
+</div>
+<div class="title">Figure 13. Summary flow of actions during the invokation of #generateRandomassword().</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="encryption-method"><a class="link" href="#encryption-method">3.2.2. Encryption Method</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.2.3. Design considerations</a></h4>
 <div class="paragraph">
-<p>The following sequence diagram explains how the <code>EncryptionUtil</code> class encrypts an input byte array (<code>byte[] input</code>) using using a password (<code>String pwd</code>).</p>
+<p>These are the considerations we came across when implementing the generate feature:</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-to-generate-a-random-password"><a class="link" href="#aspect-how-to-generate-a-random-password">Aspect: How to generate a random password</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 1 (Current choice)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Alternative 2</strong>
+How to generate a truly random password</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Randomly choose a character set, followed by a character within the set to include in password</strong>:<br>
+<br>
+<em class="underline">Pros:</em><br>
+Randomness is achieved because there is no predictability in the way a character set, or character is chosen.<br>
+<em class="underline">Cons:</em><br>
+Efficiency is compromised. Generating a password this way may produce a password that does not meet user configuration
+(e.g. random password does not include special characters, although it was supposed to).
+As such, program needs to keep producing new random password until all the user configuration are met.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ensuring all user configurations are met by hard coding a pattern in the way character sets are included</strong><br>
+<br>
+<em class="underline">Pros:</em><br>
+Efficiency is achieved. We are guaranteed to generate a password that matches users' configuration everytime (e.g. lower case &#8594; upper case &#8594; numeral &#8594; special case patter)<br>
+<em class="underline">Cons:</em><br>
+Randomness is compromised. Generating passwords in such a pattern makes the password style very predictable, hence compromising randomness and security.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Why did we choose Alternative 1:</strong><br>
+Although less time efficient, the password generated is more random, and thus more secure. Generating a secure password is inline with our use case, and so is a more important factor.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="analyse-password"><a class="link" href="#analyse-password">3.3. Analyse Password</a></h3>
+<div class="paragraph">
+<p>This section provides implementation details on the analyse password feature.</p>
+</div>
+<div class="sect3">
+<h4 id="overview-2"><a class="link" href="#overview-2">3.3.1. Overview</a></h4>
+<div class="paragraph">
+<p>The purpose of analysing passwords is to provide users with information on the level of security of their passwords.</p>
+</div>
+<div class="paragraph">
+<p>The user can either :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>View a summary table of results of all password by inputting <code>"analyse"</code> OR</p>
+</li>
+<li>
+<p>View a detailed review of a specific password by inputting <code>"analyse strong/INDEX"</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>SecureIT analyses 6 core components of every <code>Password</code>, using various <code>Analysers</code>. The following table summarises the functionality of each <code>Analyser</code>:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Analyser:</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Purpose:</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>UniqueAnalyser </strong><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Checks that every password is unique.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>StrengthAnalyser </strong><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Checks the complexity of every password.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SimilarityAnalyser </strong><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Checks that no two accounts share a password that is at least 70% similar.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DictionaryAnalyser </strong><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Checks that password does not contain any commonly-used passwords. (e.g. "password")</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SequenceAnalyser </strong><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Checks that password does not contain any commonly-used sequences. (e.g. "ABC")</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>KeyboardAnalyser </strong><br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Checks that password does not contain any commonly-used keyboard patterns. (e.g. "qwerty")</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following class diagram is the current structure of the <code>Analyser</code> component.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AnalyserClassDiagram.png" alt="AnalyserClassDiagram" width="550">
+</div>
+<div class="title">Figure 14. Class diagram depicting the structure of the Analyser component.</div>
+</div>
+<div class="paragraph">
+<p>In summary,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The analysis of passwords is initiated upon <code>#execute()</code> of the <code>AnalysePasswordCommand</code>.</p>
+</li>
+<li>
+<p>Each <code>Analyser</code> analyses every password in the password book.</p>
+</li>
+<li>
+<p>The analysis of each password produces the respective <code>Result</code> for that password.</p>
+</li>
+<li>
+<p>These <code>Results</code> are compiled and written into a <code>AnalysisReport</code>, which is then shown to the user in the form of a summary table.</p>
+</li>
+<li>
+<p>Users can opt to view a detailed report for a specific password to get more information on the respective <code>Result</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.3.2. Implementation</a></h4>
+<div class="paragraph">
+<p>On <code>#execute()</code>, <code>AnalysePasswordCommand</code> retrieves the current list of passwords via <code>Model#getFilteredPasswordList()</code>.
+It also retrieves the required analysers via <code>#getRequiredAnalysers()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Each <code>Analyser</code> has it&#8217;s own implementation of <code>#analyse()</code>, which will subsequently be invoked by the <code>AnalysePasswordCommand</code> given the current list of passwords.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram breaks down the general flows of events stated above, and in the context of a <code>DictionaryAnalyser</code>:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For the following sequence diagram, the other <code>Analysers</code> are instantiated in a similar fashion in <code>#getRequiredAnalsyers()</code> and hence omitted to the make the diagram less congested.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AnalysePasswordSequenceDiagram.png" alt="AnalysePasswordSequenceDiagram">
+</div>
+<div class="title">Figure 15. Sequence diagram depicting the flow of analysing the list of passwords, in the context of DictionaryAnalyser.</div>
+</div>
+<div class="paragraph">
+<p>In the following discussion, we will be reviewing how <code>Results</code> are produced for each password, in the context of the <code>DictionaryAnalyser</code>.</p>
+</div>
+<div class="paragraph">
+<p>In the case of the <code>DictionaryAnalyser#analyse()</code>, every password is checked to see if it contains any subsequence that is listed as a commonly used password in the instantiated <code>Dictionary</code>. This is done in the internal method <code>#getAllMatches()</code> within <code>#analyse()</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>Dictionary</code> is an object that maps commonly used passwords to their ranking in terms of how commonly used they are. (e.g. "123456" is mapped to rank 1 in the Dictionary because it is  the most commonly used password)
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If there exists a subsequence that tests positive when looked up against the <code>Dictionary</code> , a <code>DictionaryMatch</code> is created to note down the details of the subsequence.</p>
+</div>
+<div class="paragraph">
+<p>As long as a <code>DictionaryMatch</code> is found, then the password has failed the analysis. A <code>DictionaryResult</code> with the attribute <code>ResultOutcome.FAIL</code> will be created for that password. This process is repeated for every password. Following, the list of <code>DictionaryResult</code> are returned to be compiled and written by the <code>AnalysisReport</code>.</p>
+</div>
+<div class="paragraph">
+<p>It is also worth mentioning that <code>DictionaryAnalyser</code> is capable of identifying commonly used passwords even in leet-ed variations (e.g. p@5sw0rd).</p>
+</div>
+<div class="paragraph">
+<p>This is made possible because of the method <code>#LeetUtil.translateLeet()</code>, which is a recursive algorithm designed to return all possible un-leet variations, given a leet-ed password.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram depicts the flow of events mentioned above:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GetAllMatchesSequence.png" alt="GetAllMatchesSequence" width="500">
+</div>
+<div class="title">Figure 16. Sequence diagram depicting the flow of getting all Match objects for a given password.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.3.3. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-analyse-analyse-strong-executes"><a class="link" href="#aspect-how-analyse-analyse-strong-executes">Aspect: How analyse/analyse strong executes</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Alternative 1 (Current choice)</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Alternative 2</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Always analyse the entire list of Password objects for every "analyse" command,
+even if the list of Passwords was unchanged.</strong><br>
+<em class="underline">Pros:</em><br>
+Easy to implement, not required to check state if the current list of Passwords has been modified.<br>
+<em class="underline">Cons:</em><br>
+May have performance issues in terms of speed of the programme.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Save in memory the result produced by the Analyser objects, and update result upon modification of
+list of Passwords.</strong><br>
+<em class="underline">Pros:</em><br>
+Performance of programme will be a lot faster and efficient.<br>
+<em class="underline">Cons:</em><br>
+Hard to implement. Have to keep track of state of the list of Password objects and check if the list has been modified
+from the last time they were analysed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Why did we choose Alternative 1:</strong><br>
+From a more practical point of view, users are not expected to analyse their passwords on a very regular basis, so it may be inefficient use of memory to constantly save the results.
+Also, considering the fact that each password is capped at a length of 25, time performance will not be affected significantly when analysing each password.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="general-data-encryption"><a class="link" href="#general-data-encryption">3.4. General Data Encryption</a></h3>
+<div class="sect3">
+<h4 id="initialization-and-validation"><a class="link" href="#initialization-and-validation">3.4.1. Initialization and Validation</a></h4>
+<div class="paragraph">
+<p>We encrypt all the data files of SecureIT with a master password set by the user. The initialization and validation of the master password are handled by <code><strong>TestStorage</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram shows how the master password is initialized when the user uses the app for the first time and validated for subsequent uses of the app.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/InitPasswordActivityDiagram.png" alt="InitPasswordActivityDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Note that to protect users' data, the main components of the app (<code><strong>Storage</strong></code>, <code><strong>Ui</strong></code>, <code><strong>Logic</strong></code>, <code><strong>Model</strong></code>) can only be initialised with a correct master password.</p>
+</div>
+<div class="paragraph">
+<p>Also, the app does not store the master password itself. Instead, during initialization, the app encrypts a magic word using the password and stores it in the file system. For validation, the app tries to decrypt the stored magic word using the password given and checks if the original word is obtained. If the password given is correct, the original magic word should be obtained.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="encryption-method"><a class="link" href="#encryption-method">3.4.2. Encryption Method</a></h4>
+<div class="paragraph">
+<p>The following sequence diagram explains how the <code><strong>EncryptionUtil</strong></code> class encrypts an input byte array using a password.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -452,59 +918,585 @@ from the last time they were analysed.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Before the encryption, both a key (<code>SecretKey key</code>) and a set of parameter specification (<code>PBEParameterSpec paramSpec</code>) are required. The key is generated from the password string and a specified encryption method (<code>PBEWithMD5AndTripleDES</code>) via a utility class (<code>SecretKeyFactory</code>). On the other hand, the parameter specification is generated with hardcoded parameters (<code>SALT</code>, <code>ITERATION</code>). Hardcoded parameters ensure that the same password can always be correctly validated at different times.</p>
+<p>The process of encrypting a byte array is outlined as follows:</p>
 </div>
 <div class="paragraph">
-<p>Finally, a <code>Cipher</code> class is constructed with the same encryption method specified above (<code>PBEWithMD5AndTripleDES</code>) and initialised with the key and the set of parameter specifications. The <code>doFinal</code> method conducts the actual encryption on the input array and returns the encrypted byte array.</p>
+<p>Step 1. A key (<code><strong>SecretKey key</strong></code>) is generated from the password string (<code><strong>pwd</strong></code>) and a specified encryption method (<code><strong>PBEWithMD5AndTripleDES</strong></code>) via a utility class (<code><strong>SecretKeyFactory</strong></code>).</p>
 </div>
 <div class="paragraph">
-<p>The decryption process is similar to the encryption process, except that the <code>ENCRYPT_MODE</code> is changed to <code>DECRYPT_MODE</code>. The same password is necessary to decrypt an encrypted byte array to its original content.</p>
+<p>Step 2. A set of parameter specification (<code><strong>PBEParameterSpec paramSpec</strong></code>) is generated with hardcoded parameters (<code><strong>SALT</strong></code>, <code><strong>ITERATION</strong></code>). Hardcoded parameters ensure that the same password can always be correctly validated at different times.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. A <code><strong>Cipher</strong></code> class is constructed with the same encryption method specified above (<code><strong>PBEWithMD5AndTripleDES</strong></code>) and initialised with the key and the set of parameter specifications.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The <code><strong>doFinal</strong></code> method conducts the actual encryption on the input array and returns the encrypted byte array.</p>
+</div>
+<div class="paragraph">
+<p>The decryption process is similar to the encryption process, except that the <code><strong>ENCRYPT_MODE</strong></code> is changed to <code><strong>DECRYPT_MODE</strong></code>. The same password is necessary to decrypt an encrypted byte array to its original content.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="notes-feature"><a class="link" href="#notes-feature">3.3. Notes Feature</a></h3>
+<h3 id="cards-feature"><a class="link" href="#cards-feature">3.5. Cards Feature</a></h3>
+<div class="sect3">
+<h4 id="expiry-validations"><a class="link" href="#expiry-validations">3.5.1. Expiry Validations</a></h4>
 <div class="paragraph">
-<p>Within the notes feature, the user will be able to perform operations to <code>add</code>, <code>open</code>, <code>delete</code> and <code>edit</code> a note.</p>
+<p>When a user tries to add a card, there are various checks to ensure that the expiry entered is valid.  As the name suggests, expiry validations are implemented within <code>Expiry</code>. Additionally, it implements the following operations:</p>
 </div>
-<div class="paragraph">
-<p>The <code>open</code> command allows users to open the note in a separate panel to edit and save through the UI of the app.
-The following sequence diagram illustrates how the note is retrieved and editable via the <code>open</code> command.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/OpenNoteSequenceDiagram.png" alt="OpenNoteSequenceDiagram">
-</div>
-</div>
-<div class="paragraph">
-<p>Below is the sub-diagram for retrieving the note through the <code>open</code> command.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Note that the sequence diagram for <code>add</code>, <code>delete</code> and <code>edit</code> commands are similar to the one below, hence are omitted.</p>
+<p><code>ExpiryDate#isValidDate(String test)</code>&#8201;&#8212;&#8201;Checks the string against the provided regex to make sure it is a match.</p>
+</li>
+<li>
+<p><code>ExpiryDate#isValidExpiryDate(String test)</code>&#8201;&#8212;&#8201;Checks to ensure that it has not past the given expiry date.</p>
+</li>
+<li>
+<p><code>ExpiryUtil#getMonthToExp(String expiry)</code>&#8201;&#8212;&#8201;Returns the number of months left until the given expiry.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>ExpiryDate#isValidExpiryDate(String test)</code> is implemented using <code>ExpiryUtil#getMonthToExp(String expiry)</code> to ensure that the number of months left is positive.</p>
+</div>
+<div class="paragraph">
+<p>The other operations are used in <code>ParserUtil#parseExpiryDate(String expiryDate)</code> to ensure that user input passes these validations, before allowing the card to be added to the list. Upon startup of the app, the repopulation of data also checks against these validations to ensure that there are no illegal values stored in the list.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the validations behave at each step. The following sequence diagram shows how the expiry validations work.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CardExpiryValidation.png" alt="Diagram" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>add d/VisaPOSB v/4291728395018293 c/256 e/12/15</code> command to add a new card named 'VisaPOSB' in the card book. The <code>CardBookParser#parseCommand(String userInput)</code> calls <code>AddCardCommandParser#parse(String args)</code> and the command parser tries to breakdown the string in to various parameters.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>AddCardCommandParser</code> calls <code>ParserUtil#parseExpiryDate(String expiryDate)</code>, which first calls <code>ExpiryDate#isValidDate(String test)</code> to check its validity, which returns true.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>ParserUtil#parseExpiryDate(String expiry)</code> then calls <code>ExpiryDate#isValidExpiryDate(String test)</code>, which calls <code>ExpiryUtil#getMonthToExp(String expiry)</code>. However, <code>-47</code> is returned and the condition in <code>ExpiryDate#isValidExpiryDate</code> returns <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. A <code>ParseException</code> is thrown from <code>ParserUtil#parseExpiryDate(String expiryDate)</code> and the error message is shown on the result box.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="expiry-notification"><a class="link" href="#expiry-notification">3.5.2. Expiry Notification</a></h4>
+<div class="paragraph">
+<p>The expiry notification is facilitated by <code>ExpiryDisplay</code>. It exists as an attribute within <code>MainWindow</code> and obtains the required expiring cards list from <code>LogicManager</code>. This is internally stored as <code>expiringCards</code>. Additionally, it implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>LogicManager#getExpiringCardList()</code>&#8201;&#8212;&#8201;Returns the list of expiring cards.</p>
+</li>
+<li>
+<p><code>ExpiringCard#of(Card card)</code>&#8201;&#8212;&#8201;Creates an ExpiringCard given card details.</p>
+</li>
+<li>
+<p><code>ExpiryDisplay#hasCards()</code>&#8201;&#8212;&#8201;Returns true if there are expiring cards.</p>
+</li>
+<li>
+<p><code>MainWindow#handleExpiry()</code>&#8201;&#8212;&#8201;Pops up a notification if there are expiring cards upon startup of the app.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="file-management"><a class="link" href="#file-management">3.6. File Management</a></h3>
+<div class="paragraph">
+<p>SecureIT does not store users' encrypted files directly. Instead, it reads the files' data, carries out the encryption, and replaces the original files with encrypted ones in users' file system. Meanwhile, it also maintains records of files that it encrypts, represented by <code><strong>EncryptedFile</strong></code> class, in an internal data structure, <code><strong>FileBook</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram illustrates how the record of an encrypted file is represented internally.</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="images/OpenNoteSequenceDiagramRef.png" alt="OpenNoteSequenceDiagramRef">
+<img src="images/FileModelClassDiagram.png" alt="Diagram" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code><strong>FileBook</strong></code>, managed by the app&#8217;s <code><strong>ModelManager</strong></code>, keeps a <code><strong>UniqueFileList</strong></code>. The list encapsulates an internal mechanism to prevent file duplication. Each entry in the list represents a record of an encrypted file.</p>
+</div>
+<div class="paragraph">
+<p>An <code><strong>EncryptedFile</strong></code> must have the following attributes:  a <code><strong>FileName</strong></code>, a <code><strong>FilePath</strong></code>, and a <code><strong>FileStatus</strong></code>. While the first two attributes allow the app to locate the file, the file status provides users with an indication of the current state of the file. It defaults to <code><strong>ACTIVE</strong></code> for newly encrypted/added files.</p>
+</div>
+<div class="paragraph">
+<p>Two timestamps, <code><strong>EncryptedAt</strong></code> and <code><strong>ModifiedAt</strong></code>, provide users with more details about the file. These two attributes may not always be available. For example, encrypted files added with <code>add</code> command do not contain this information.</p>
+</div>
+<div class="paragraph">
+<p>Lastly, while a <code><strong>ViewableFile</strong></code> contains the file&#8217;s content for preview. It is a generic class which is extendable to accommodate even more file types in future. The <code><strong>FilePreviewPanel</strong></code>, which is a <code><strong>UI</strong></code> component, depends on <code><strong>ViewableFile</strong></code> to render the preview.</p>
+</div>
+<div class="sect3">
+<h4 id="logic-2"><a class="link" href="#logic-2">3.6.1. Logic</a></h4>
+<div class="paragraph">
+<p>The user can perform the following operations: <code>encrypt</code>, <code>decrypt</code>, <code>add</code>, <code>remove</code>, <code>move</code>, <code>rename</code>, and <code>preview</code>. There are two differences between the commands of the file manager and those of the address book. First, some file commands require a password for execution. Second, most file commands involve interaction with the external file system.</p>
+</div>
+<div class="paragraph">
+<p>The solution to the first difference is a <code><strong>FileCommandParser</strong></code> class which is similar to the <code><strong>Parser</strong></code> class, but it packages the password within the commands during parsing. It is illustrated in the class diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FileCommandParserClassDiagram.png" alt="FileCommandParserClassDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>To address the second difference, we separate the access to the file system from the parser. For example, during encryption, at the parsing stage, an <code><strong>EncryptedFile toAdd</strong></code> is created without the knowledge of the actual file. Both the validation and encryption are carried out only at the execution stage. This is illustrated in the following sequence diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EncryptSequenceDiagram.png" alt="EncryptSequenceDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Below is a summary of my considerations and analysis while developing the file manager:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When to do file validation with the file system</p>
+<div class="paragraph">
+<p><strong>Alternative 1</strong>: When a command is parsed<br>
+<strong>Pros</strong>: There is no need to construct <code><strong>EncryptedFile</strong></code> objects for invalid files.<br>
+<strong>Cons</strong>: Both the command parsing and execution require interaction with the file system. <code><strong>Parser</strong></code> violates the single responsibility principle.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2</strong>: When a command is executed<br>
+<strong>Pros</strong>: Interaction with the file system only occurs during execution. Easier to debug.<br>
+<strong>Cons</strong>: Need to construct <code><strong>EncryptedFile</strong></code> when file information is not yet available. Cannot initialise <code><strong>ModifiedAt</strong></code> in the constructor.</p>
+</div>
+<div class="paragraph">
+<p>We choose alternative 2 because according to single responsibility principle, <code><strong>Parser</strong></code> should only convert user input to correct command format, without the knowledge of files.</p>
+</div>
+</li>
+<li>
+<p>How to implement the file preview feature</p>
+<div class="paragraph">
+<p><strong>Alternative 1</strong>: UI components read file content<br>
+<strong>Pros</strong>: There is no need to create extra classes in <code><strong>Model</strong></code>, such as <code><strong>ViewableFile</strong></code>.<br>
+<strong>Cons</strong>: UI components have to interact directly with the file system.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2</strong>: Read file content during command execution<br>
+<strong>Pros</strong>: File system access is limited to command execution time only.<br>
+<strong>Cons</strong>: Need to pass the file content to the UI components via <code><strong>CommandResult</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>We choose alternative 2 because it is better to keep all access to file system in one place.</p>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
+<h3 id="notes-feature"><a class="link" href="#notes-feature">3.7. Notes Feature</a></h3>
+<div class="sect3">
+<h4 id="open-note"><a class="link" href="#open-note">3.7.1. Open Note</a></h4>
+<div class="paragraph">
+<p>The user is able to open a note in a separate panel to easily read and edit its contents.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates how the note is retrieved and edited through the UI via the <code>open</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OpenNoteSequenceDiagram.png" alt="OpenNoteSequenceDiagram" width="300">
+</div>
+<div class="title">Figure 17. Diagram illustrates how note is retrievable and editable through the UI.</div>
+</div>
+<div class="paragraph">
+<p>Below is the sub-diagram for retrieving the note through the <code>open</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OpenNoteSequenceDiagramRef.png" alt="OpenNoteSequenceDiagramRef" width="400">
+</div>
+<div class="title">Figure 18. Sub-diagram to illustrate how a note is retrieved through the <code>open</code> command.</div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage of scenario of the <code>open</code> command in notes, where a user intends to open a note to read
+or edit its contents.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Through the <code>goto note</code> command, the user arrives at the notes component of the app. The user then executes the command
+<code>open 1</code>.</p>
+</li>
+<li>
+<p>The app recognises that it is an <code>open</code> command and proceeds to check if the index <code>1</code> given is a valid index using
+the <code>ParserUtil#parseIndex()</code> method.</p>
+</li>
+<li>
+<p>If the index given by the user is valid, the corresponding note will be retrieved. This note is shown to the user in a panel on the right
+within the app.</p>
+</li>
+<li>
+<p>The user proceeds to edit the Title, Description and Content field of the note through this panel and saves his
+edits using the save button. This executes the <code>Logic#EditNoteCommand()</code> which edits the note in the note book.</p>
+</li>
+<li>
+<p>The note book is now updated with the note edited by the user.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undo-redo"><a class="link" href="#undo-redo">3.7.2. Undo/Redo</a></h4>
+<div class="sect4">
+<h5 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h5>
+<div class="paragraph">
+<p>The undo/redo mechanism is facilitated by the <code><strong>VersionedNoteBook</strong></code>, which extends <code><strong>NoteBook</strong></code> with a undo/redo history.
+This history is stored in two stacks - the <code><strong>UndoStack</strong></code> and the <code><strong>RedoStack</strong></code>. The <code><strong>UndoStack</strong></code> stores the states of note books
+before the current state while the <code><strong>RedoStack</strong></code> stores the states of note books after the current state.
+The key operations that support these mechanisms are:</p>
+</div>
+<div class="paragraph">
+<p><code>VersionedNoteBook#commit()</code> — Saves the current note book state and its corresponding command in the <code><strong>UndoStack</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p><code>VersionedNoteBook#undo()</code> — Restores the previous note book state from the <code><strong>UndoStack</strong></code> and returns its corresponding command
+to inform the user what command is undone. It also stores the current state of the note book into the <code><strong>RedoStack</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p><code>VersionedNoteBook#redo()</code> — Restores a previously undone note book state from the <code><strong>RedoStack</strong></code> and returns its corresponding
+command to inform the user what command is redone. It also stores the current state of the note book into the <code><strong>UndoStack</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>Below is a class diagram to illustrate how the classes mentioned above interact with one another.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/VersionedNoteBookClassDiagram.png" alt="VersionedNoteBookClassDiagram" width="350">
+</div>
+<div class="title">Figure 19. Class diagram of <code><strong>VersionedNoteBook</strong></code>, <code><strong>NoteBook</strong></code> and <code><strong>NoteBookWithCommand</strong></code>.</div>
+</div>
+<div class="paragraph">
+<p>Below is a comprehensive activity diagram to illustrate how the undo &amp; redo mechanism works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram">
+</div>
+<div class="title">Figure 20. Activity diagram to illustrate how undo &amp; redo executes.</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
+</div>
+<div class="paragraph">
+<p>Not all commands are undoable. Undo-able commands are commands that modifies the note book. They include: <code>add</code>, <code>delete</code>,
+<code>clear</code>, <code>edit</code> and <code>open</code>.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Below is an example run through to illustrate how the undo command is executed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user launches the application for the first time. The <code><strong>VersionedNoteBook</strong></code> will be initialized with the initial
+note book state, with empty <code><strong>UndoStack</strong></code> and <code><strong>RedoStack</strong></code>.</p>
+</li>
+<li>
+<p>The user executes <code>delete 5</code> command to delete the 5th note in the note book. The delete command calls Model#commitNoteBook(),
+causing the state of the note book before the <code>delete 5</code> command executes to be saved in the <code><strong>UndoStack</strong></code>. The current state
+of the note book becomes the state of the note book after <code>delete 5</code> command executes.</p>
+</li>
+<li>
+<p>The user now decides that deleting the note was a mistake, and decides to undo that action by executing the <code>undo</code> command.</p>
+</li>
+<li>
+<p>This will call the <code>Model#undo()</code>, which will first check if the <code><strong>UndoStack</strong></code> is empty.</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code><strong>UndoStack</strong></code> will be empty if no undoable command were called prior
+to calling the <code>undo</code> command.</p>
+</li>
+<li>
+<p>The undo mechanism will proceed only if the <code><strong>UndoStack</strong></code> is not empty,
+else an error will be returned to the user rather than attempting to perform the undo.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The current state of the note book is then checked against the previous state of the note book.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In the event that they are the same, the
+previous note book state is popped from the <code><strong>UndoStack</strong></code> and the <code>undo</code> command is called recursively (starting from step 2).
+This recursive call is performed until either the current and previous note book state are different or until the <code><strong>UndoStack</strong></code> is empty.</p>
+</li>
+<li>
+<p>In the event that they are different, proceed on to step 4.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The current state of the note book is first stored in the <code><strong>RedoStack</strong></code>.</p>
+</li>
+<li>
+<p>The note book is then reverted to the previous note book state. This same previous note book state is removed from
+the <code><strong>UndoStack</strong></code>.</p>
+</li>
+<li>
+<p>Undo command is complete.</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 3 is to prevent users from being able to perform <code>undo</code> actions when there is no change to be undone.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For the redo command, a key point to note is that it is not logical to redo a command from the <code><strong>RedoStack</strong></code> when an undoable
+command is executed. Therefore, anytime an undoable command is executed, the <code><strong>RedoStack</strong></code> is purged. This behavior is follows
+that of most modern desktop applications as well.</p>
+</div>
+<div class="paragraph">
+<p>As the rest of the mechanisms of the <code>redo</code> command is similar to that of the <code>undo</code> command but opposite,
+its details are omitted.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Saves the entire note book.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less complex and easier to implement.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Individual command knows how to undo/redo by itself.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Makes use of lesser memory.</p>
+</li>
+<li>
+<p>Cons: More complex to implement and more prone to bugs as each individual command must be correct to work correctly.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The reason why we chose alternative 1:</strong>
+By adopting a simpler implementation, we are able to introduce less bugs into system. Furthermore, this implementation better
+supports future extensions as undoable commands can be added much easier.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Use two stacks to store the history of note book states - one for undo, and the other for redo.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Very easy to implement.</p>
+</li>
+<li>
+<p>Cons: Using two data structures may incur additional overhead in terms of memory.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Use a single linked list to store the history of note book states which supports both undo and redo.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: May incur less overhead in terms of memory usage as only one data structure is used.</p>
+</li>
+<li>
+<p>Cons: More complex to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The reason why we chose alternative 1:</strong>
+It is less complex to implement and the code is much cleaner for better readability which also helps in future extensions.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-implementation-of-expiry-tagging-system"><a class="link" href="#aspect-implementation-of-expiry-tagging-system">Aspect: Implementation of expiry tagging system</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Check for expiring and expired cards and add respective tags upon startup.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Adds the tag in real time on startup, removing the concern of updating tags.</p>
+</li>
+<li>
+<p>Cons: Startup time may take longer due to extra processing of information.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Add respective expiring and expired tags upon detection of nearing expiry.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Users can visibly see the addition of expiry tags when cards are expiring.</p>
+</li>
+<li>
+<p>Cons: There will be a need to update expiring tags to expired tags, after the card has expired. This may lead to potential bugs.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The reason why we chose alternative 1:</strong>
+It is much easier to code, and it is less susceptible to unforeseen circumstances such as a card having both expiring and expired tags.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-deciding-when-the-expiry-notification-should-appear"><a class="link" href="#aspect-deciding-when-the-expiry-notification-should-appear">Aspect: Deciding when the expiry notification should appear</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Notification should appear upon startup.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User is immediately warned of their expiring cards and is able to take the necessary actions required.</p>
+</li>
+<li>
+<p>Cons: Potentially disruptive as notification would appear every time the user starts up the app, as long as expiring cards exists.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Notification should appear upon navigating to card book.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User can immediately tell which cards are in need of attention.</p>
+</li>
+<li>
+<p>Cons: Expiring cards may be left unnoticed if user does not explicitly navigate to the card book.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The reason why we chose alternative 1:</strong>
+The main purpose of notifications is to remind users to take action and users can subsequently delete the card so that the notification stops appearing.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sort-note-feature"><a class="link" href="#sort-note-feature">3.7.3. Sort Note feature</a></h4>
+<div class="paragraph">
+<p>Sorting of notes is handled by the MultipleSortByCond class, which allows the notes in the NoteBook to be sorted in
+three different ways - by date modified, date added or number of of times the note is accessed.</p>
+</div>
+<div class="paragraph">
+<p>Below is a class diagram to illustrate how the <code><strong>NoteBook</strong></code> class and <code>MultipleSortByCond</code> class interact with one another.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SortNoteClassDiagram.png" alt="SortNoteClassDiagram">
+</div>
+<div class="title">Figure 21. Class diagram to illustrate how the <code>MultipleSortByCond</code> class interacts the other classes.</div>
+</div>
+<div class="paragraph">
+<p><a href="UserGuide.adoc" class="bare">UserGuide.adoc</a></p>
+</div>
+<div class="paragraph">
+<p>Sorting the note book rearranges the notes according to the sort conditions provided.</p>
+</div>
+<div class="paragraph">
+<p>More than one of the conditions can be used to sort the notes in the note book at one time, with the first condition
+having the greatest precedence.</p>
+</div>
+<div class="paragraph">
+<p>This is handled by the <code>MultipleSortByCond#buildComparator()</code>, which takes in the sort conditions specified by the user and returns a <code>MultipleCondNoteComparator</code> object that is used to sort the list of notes
+in NoteBook.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -535,7 +1527,7 @@ The following sequence diagram illustrates how the note is retrieved and editabl
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -665,15 +1657,15 @@ The following sequence diagram illustrates how the note is retrieved and editabl
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">employee with multiple passwords</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">employee who constantly creates new accounts</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">generate strong passwords</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">I can create new passwords will not be cracked easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">my new accounts will not be cracked easily</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">employee with multiple passwords</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">analyse my passwords</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">I know which passwords are vulnerable and I should change them</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I know which passwords are vulnerable and that I should change them</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -968,9 +1960,6 @@ The following sequence diagram illustrates how the note is retrieved and editabl
 <p>User chooses to generate a password</p>
 </li>
 <li>
-<p>User enters description of password</p>
-</li>
-<li>
 <p>PasswordSys generates a password
 Use case ends</p>
 <div class="paragraph">
@@ -985,11 +1974,11 @@ Use case ends</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. No description entered</p>
+<p>1a. Unidentified prefix entered</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. PasswordSys shows an error message</p>
+<p>1a1. PasswordSys shows an error message</p>
 <div class="paragraph">
 <p>Use case end.</p>
 </div>
@@ -1004,11 +1993,28 @@ Use case ends</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2b. Description entered already exists</p>
+<p>1b. Invalid length prefix entered</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2b1. PasswordSys shows an error message</p>
+<p>1b1. PasswordSys shows an error message</p>
+<div class="paragraph">
+<p>Use case end.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c. All prefix are set to false</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. PasswordSys shows an error message</p>
 <div class="paragraph">
 <p>Use case end.</p>
 </div>
@@ -1035,17 +2041,34 @@ Use case ends</p>
 </li>
 </ol>
 </div>
+<h3 id="uc16-analyse-a-password" class="discrete">UC16 - Analyse a password</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses to analyse a password</p>
+</li>
+<li>
+<p>PasswordSys shows detailed report of analysis</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
 </div>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. No passwords available</p>
+<p>1a. Index entered is invalid</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. PasswordSys shows an error message</p>
+<p>1a1. PasswordSys shows an error message</p>
 <div class="paragraph">
 <p>Use case end.</p>
 </div>
@@ -1054,6 +2077,8 @@ Use case ends</p>
 </div>
 </li>
 </ul>
+</div>
+</div>
 </div>
 <hr>
 <div class="paragraph">
@@ -1238,8 +2263,8 @@ Use case ends</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
+<div class="openblock">
+<div class="content">
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -1464,13 +2489,9 @@ Use case ends</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Accessibility</p>
+<p>== Non Functional Requirements
+Accessibility</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1521,7 +2542,7 @@ Use case ends</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The app shall resist unauthorised, accidential or unintended usage and provide access only to legitimate users.</p>
+<p>The app shall resist unauthorised, accidental or unintended usage and provide access only to legitimate users.</p>
 </li>
 </ul>
 </div>
@@ -1561,11 +2582,9 @@ Use case ends</p>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
 </div>
+<div class="paragraph">
+<p>== Glossary</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
-<div class="sectionbody">
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
@@ -1578,11 +2597,9 @@ Use case ends</p>
 </dd>
 </dl>
 </div>
+<div class="paragraph">
+<p>== Product Survey</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Product Name</strong></p>
 </div>
@@ -1615,11 +2632,9 @@ Use case ends</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>== Instructions for Manual Testing</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
 </div>
@@ -1635,8 +2650,9 @@ These instructions only provide a starting point for testers to work on; testers
 </tr>
 </table>
 </div>
-<div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<div class="paragraph">
+<p>=== Launch and Shutdown</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1672,9 +2688,9 @@ Expected: The most recent window size and location is retained.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
+<div class="paragraph">
+<p>=== Deleting a note</p>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-note"><a class="link" href="#deleting-a-note">G.2. Deleting a note</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1704,9 +2720,9 @@ Expected: Similar to previous.</p>
 <div class="paragraph">
 <p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
+<div class="paragraph">
+<p>=== Saving data</p>
 </div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1726,4 +2742,5 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:15:44 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:06:27 UTC</div></div></div></body></html>

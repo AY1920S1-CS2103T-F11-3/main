@@ -1,0 +1,523 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Hoon Chee Ping - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">SecureIT</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F11-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Hoon Chee Ping - Project Portfolio</h1></div><div id="content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page showcases my contribution to the SecureIT project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-secureit"><a class="link" href="#project-secureit">PROJECT: SecureIT</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="overview"><a class="link" href="#overview">Overview</a></h3>
+<div class="paragraph">
+<p>SecureIT is an application to help manage your confidential information.
+More importantly, it <strong>stores your information locally,</strong>  and does not use any form of online storage!</p>
+</div>
+<div class="paragraph">
+<p>SecureIT is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI)
+while still having the benefits of a Graphical User Interface (GUI).</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a sneak peak of our application:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UG%20first%20page.png" alt="UG first page" width="700">
+</div>
+<div class="title">Figure 1. Sneak peak of SecureIT</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Major enhancement</strong></p>
+</div>
+<div class="paragraph">
+<p>Implemented a series of commands to manage the user&#8217;s password. This includes adding a <code>Password</code> model
+and its subclasses of <code>Description</code>, <code>Username</code>, <code>PasswordValue</code>, <code>Website</code>, <code>PasswordModifiedAt</code>, <code>PasswordExpiredAt</code>, <code>ExpiryMode</code>.</p>
+</div>
+<div class="paragraph">
+<p>In addition,
+I implemented the supportive commands to the password model such as <code>AddPasswordCommand</code>, <code>FindPasswordCommand</code>, <code>CopyPasswordCommand</code>, <code>DeletePasswordCommand</code>,
+<code>ReadPasswordCommand</code> and <code>EditPasswordCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>What it does</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows the user to manage their passwords and keep track of the expiry dates of the passwords.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Justification</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Many small and medium enterprises now have a plethora of accounts to use for day-to-day activities.
+It is hard to keep track of all the passwords without compromising on security. This feature aims to alleviate the password management
+on businesses and improve data security.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Highlights</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A new <code>Password</code> model was created to support the management of passwords.
+Numerous commands were also implemented for this enhancement.
+This enhancement requires in depth analysis of the current structure of the architecture
+as it touches every component of the architecture.
+In addition, many Software Engineering Principles, such as <strong>SOLID</strong>, <strong>YAGNI</strong> and <strong>DRY</strong> Principles, were used.
+Defensive programming is also evident throughout the enhancement.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Minor enhancement</strong>
+Designed the UI of the current application by adding in a <code>ReadDisplayPanel</code> and <code>ModeDisplay</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=hooncp&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=hooncp&amp;tabRepo=AY1920S1-CS2103T-F11-3%2Fmain%5Bmaster%5D">RepoSense</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Other contributions</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Set up team repository and other essential tools such as Travis on GitHub.</p>
+</li>
+<li>
+<p>Maintained the team repository by managing issue tracking, issue assigment and milestones.</p>
+</li>
+<li>
+<p>Reported bugs and suggestions to teammates (Pull requests: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/90">#90</a>, <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/82">#82</a>, <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/113">#113</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Designed and enhanced the UI of the existing application (Pull requests: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/68">#68</a>, <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/80">#80</a>)</p>
+</li>
+<li>
+<p>The UI designed for the Password details was adopted for Card details.</p>
+</li>
+<li>
+<p>Wrote additional tests for existing features to increase coverage (Pull requests: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/175">#175</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Developer Guide:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated Use Case (Pull Request: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/6">#6</a>)</p>
+</li>
+<li>
+<p>Updated UML diagrams for current implementation (Pull Request: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/58">#58</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>User Guide:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated Basic Information for better clarity to address users (Pull Request: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/60">#60</a>)</p>
+</li>
+<li>
+<p>Added in icons for better clarity (Pull Request: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/60">#60</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Issues created (with non-trivial review comments): <a href="https://github.com/hooncp/ped/issues/11">#11</a>, <a href="https://github.com/hooncp/ped/issues/10">#10</a>, <a href="https://github.com/hooncp/ped/issues/9">#9</a>, <a href="https://github.com/hooncp/ped/issues/6">#6</a>, <a href="https://github.com/hooncp/ped/issues/3">#3</a>, <a href="https://github.com/hooncp/ped/issues/1">#1</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="adding-a-password-code-add-code"><a class="link" href="#adding-a-password-code-add-code">Adding a password : <code>add</code></a></h4>
+<div class="paragraph">
+<p>Too many passwords to remember?
+You can add a password to the application.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>add d/DESCRIPTION u/USERNAME p/PASSWORD [w/WEBSITE] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>add d/Gmail u/user1 p/password1 w/www.gmail.com/signin t/work</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Add%202%20in%201.png" alt="Add 2 in 1">
+</div>
+<div class="title">Figure 2. Example of how an add command can be used.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="accessing-a-password-code-read-code"><a class="link" href="#accessing-a-password-code-read-code">Accessing a password : <code>read</code></a></h4>
+<div class="paragraph">
+<p>You can open and view the password for the specified index.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>read INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>read 1</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Read%202%20in%201.png" alt="Read 2 in 1">
+</div>
+<div class="title">Figure 3. Example of how an read command can be used.</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Your password will expire expire in a year.</p>
+</li>
+<li>
+<p>You will be reminded if your password is expired or about to expire.</p>
+</li>
+<li>
+<p>You can toggle the eye icon to see your password.
+Be wary of surveillance by secret agents or people standing behind you</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You will see this reminder 30 days before your password expires.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PasswordExpiring.png" alt="PasswordExpiring" width="220">
+</div>
+<div class="title">Figure 4. Example of when your password is about to expire</div>
+</div>
+<div class="paragraph">
+<p>You will see this reminder if you have <strong>not</strong> changed your password for over a year.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PasswordExpired.png" alt="PasswordExpired" width="220">
+</div>
+<div class="title">Figure 5. Example of when your password is expired</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="password-management"><a class="link" href="#password-management">Password Management</a></h3>
+<div class="sect3">
+<h4 id="model"><a class="link" href="#model">Model</a></h4>
+<div class="paragraph">
+<p>We created the <code>Password</code> model to support the password management feature of our application.
+It stores the information of all the passwords created by the user. The class diagram of the <code>Password</code> model is as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PasswordClassDiagram.png" alt="PasswordClassDiagram">
+</div>
+<div class="title">Figure 6. Class diagram of Password Model.</div>
+</div>
+<div class="paragraph">
+<p>The <code>Password</code> model consists of a <code>Password</code> class which has its attributes implemented as
+separate classes to follow <strong>Single Responsibility Principle</strong>. The attributes are as follows:</p>
+</div>
+<div class="paragraph">
+<p><code>Username</code>: The username of the password model</p>
+</div>
+<div class="paragraph">
+<p><code>PasswordValue</code>: The actual password value of the password model</p>
+</div>
+<div class="paragraph">
+<p><code>PasswordDescription</code>: The description of the password model.</p>
+</div>
+<div class="paragraph">
+<p><code>Website</code>: The website where the password is being used for.</p>
+</div>
+<div class="paragraph">
+<p><code>PasswordModifiedAt</code>: The date when the password is last modified.</p>
+</div>
+<div class="paragraph">
+<p><code>PasswordExpiredAt</code>: The date 1 year after the password is last modified.</p>
+</div>
+<div class="paragraph">
+<p><code>ExpiryMode</code>: It has 3 modes: <code>HEALTHY</code>, <code>EXPIRING</code>, <code>EXPIRED</code>, depending on how close the current date is when compared to the expiry date of the password.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Password</code> objects are stored in a <code>UniquePasswordList</code> in the <code>PasswordBook</code> and the existing model manager is extended to
+add the functionality managing passwords into the application. We have adhered to <strong>YAGNI</strong> design principle by making sure that minimal changes are added.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations:</a></h4>
+<div class="sect4">
+<h5 id="aspect-model-manager-for-password"><a class="link" href="#aspect-model-manager-for-password">Aspect: Model Manager for Password.</a></h5>
+<div class="paragraph">
+<p>The design considerations would be similar for all other models including <code>File</code> model, <code>Card</code> model, <code>Note</code> model and <code>Password</code> model.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> The current model manager is extended to handle the filtered lists of all the models.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Adheres to <strong>DRY</strong> design principle as it extends the functionality of the model manager without repeating code.</p>
+</li>
+<li>
+<p>Cons: It might increase dependencies in the model manager.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create another <code>Model</code> interface and another <code>Model Manager</code> class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Does not adhere to <strong>DRY</strong> design principle, where additional <code>Model Manager</code> class are created.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose alternative 1 as there is already a model manager available and it would be logical to use it instead of creating another class and possibly write repeated code.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="logic"><a class="link" href="#logic">Logic</a></h4>
+<div class="paragraph">
+<p>User is allowed to <code>add</code>, <code>read</code>, <code>edit</code>, <code>find</code>, <code>list</code>, <code>delete</code> and <code>copy</code>. Additional <code>PasswordBookParser</code>, <code>Parser</code> and <code>Command</code>
+classes are included to support the functionality stated above. The class diagram for all <code>Command</code> classes available for <code>Password</code> model is as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CopyCommand.png" alt="CopyCommand">
+</div>
+<div class="title">Figure 7. Class diagram of all Command classes used in password management</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-logic-manager-for-password-model"><a class="link" href="#aspect-logic-manager-for-password-model">Aspect: Logic Manager for Password model.</a></h5>
+<div class="paragraph">
+<p>The design considerations would be similar for all other models such as the <code>File</code> model, <code>Card</code> model, <code>Note</code> model and <code>Password</code> model.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> The current logic manager is extended to handle the model parsers. The logic manager
+checks for the current mode of the system and decides which model parser class to use.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This adheres to the Open-closed principle in SOLID. Same command words can be used in different modes and it does not increase coupling in the application.</p>
+</li>
+<li>
+<p>Cons: Hard to implement. Requires another command to switch modes. Similar command classes will need to be implemented in different model such as <code>AddPasswordCommand</code>, <code>AddNoteCommand</code>, <code>AddCardCommand</code>.
+However, all the fields in the command classes are different and separating them into different classes reduces coupling.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Extending one parser class to handle all the different commands. Different command will have different <code>add</code> command words.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: User will have to remember different command words for the same <code>add</code> command for different modes, such as <code>addp</code>, <code>addn</code>, <code>addc</code>.
+This will impact the user experience and increase coupling as the same <code>add</code> command is required to perform different tasks.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose alternative 1 because of its pros. We place emphasis on the user
+experience of our application. In this implementation users will not have to remember different command words to
+add the same objects into our application.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="copy-command"><a class="link" href="#copy-command">Copy Command:</a></h4>
+<div class="sect4">
+<h5 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation:</a></h5>
+<div class="paragraph">
+<p><code>CopyPasswordValueCommand</code> class, <code>CopyWebsiteCommand</code> class and <code>CopyUsernameCommand</code> class extends <code>CopyPasswordCommand</code> class as shown in the earlier figure.</p>
+</div>
+<div class="paragraph">
+<p>These three classes are implemented together with <code>CopyCommandParser</code> class to create the functionality of copying the required details onto clipboard using CLI.
+Since this is a command that would be used frequently, command alias are added to increase the efficiency for the user.
+The activity diagram below describes the flow of the <code>CopyPasswordCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Step1.png" alt="Step1">
+</div>
+<div class="title">Figure 8. Activity Diagram for CopyPasswordCommand</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram describes the detailed interactions between any <code>CopyPasswordCommand</code> and the architecture:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CopyPasswordSequenceDiagram.png" alt="CopyPasswordSequenceDiagram">
+</div>
+<div class="title">Figure 9. Sequence Diagram for CopyPasswordValueCommand</div>
+</div>
+<div class="paragraph">
+<p>The process of copying a password value is as follows:</p>
+</div>
+<div class="paragraph">
+<p>1) PasswordBookParser creates CopyPasswordCommandParser and depending on the command word after <code>copy</code>, different copy commands will be created.</p>
+</div>
+<div class="paragraph">
+<p>2) In this case, the index is a valid index and <code>CopyPasswordValueCommand</code> is created.</p>
+</div>
+<div class="paragraph">
+<p>3) The <code>Password</code> object is retrieved from the filtered password list using the index and the password value is copied via
+<code>ClipboardUtil#copyToClipboard()</code> method</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations:</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-copypasswordcommand-code"><a class="link" href="#aspect-implementation-of-code-copypasswordcommand-code">Aspect: Implementation of <code>CopyPasswordCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> The <code>CopyPasswordCommand</code> class extends <code>Command</code> class. <code>CopyPasswordValueCommand</code> class, <code>CopyWebsiteCommand</code> class and <code>CopyUsernameCommand</code> class extend <code>CopyPasswordCommand</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: This follows closely to <strong>Polymorphism</strong> and <strong>Inheritance</strong> concepts as all three commands share the similar functionality.
+The common functionality is abstracted out and placed inside the <code>CopyPasswordCommand</code>.</p>
+</li>
+<li>
+<p>Cons: Any further enhancement of the child commands will have to follow <strong>Liskov Substitution Principle</strong> and it needs to be more restrictive than the parent command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> <code>CopyPasswordValueCommand</code>, <code>CopyWebsiteCommand</code> , <code>CopyUsernameCommand</code> will extend <code>Command</code> class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. <code>PasswordBookParser</code> can directly check for the command word instead of splitting into 2 command words.</p>
+</li>
+<li>
+<p>Cons: Does not adhere to <strong>DRY</strong> design principle.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose alternative 1 because it is more logical and follows the <strong>DRY</strong> design principle. The cons caused by the further enhancements of child
+commands will not be considered because of <strong>YAGNI</strong> design principle.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:06:27 UTC</div></div></div></body></html>

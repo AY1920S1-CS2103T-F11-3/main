@@ -1,0 +1,676 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Leow Jit Yong - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">SecureIT</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F11-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Leow Jit Yong - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-addressbook-level-3"><a class="link" href="#project-addressbook-level-3">PROJECT: AddressBook - Level 3</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="overview"><a class="link" href="#overview">Overview</a></h3>
+<div class="paragraph">
+<p>The purpose of this document is to showcase my contributions to SecureIT, a project developed by my team under the
+Software Engineering module (CS2103T) in NUS. In this module, my team and I were tasked to enhance a basic command line
+interface desktop application called <em>Address Book 3 (AB3)</em>. We have decided to morph AB3 to become our current product - SecureIT.</p>
+</div>
+<div class="paragraph">
+<p>Below is a snapshot of how SecureIT looks like!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SecureIT.png" alt="SecureIT" width="600">
+</div>
+<div class="title">Figure 1. The graphical user interface for SecureIT in its Notes component.</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="about-this-project"><a class="link" href="#about-this-project">About this Project</a></h3>
+<div class="paragraph">
+<p>SecureIT is a secure information management system that enables office workers to securely manage important data such as
+passwords, notes, files and credit card information completely offline.
+Users are able to interact with SecureIT via the Command-line Interface (CLI) which requires them to issue commands
+to the application in the form of successive lines of text.
+My role in this project was to design and implement all features related to notes within SecureIT.</p>
+</div>
+<div class="paragraph">
+<p>In this document, I will be providing detailed descriptions and explanations to showcase
+my contributions to SecureIT’s key features. I have also included the relevant documentations from the user and
+developer guide to aid in the illustration of the key features I have implemented.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 6.9767%;">
+<col style="width: 93.0233%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This symbol indicates some useful tips that help you understand the features.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock">
+<div class="content">
+<img src="../images/warning.png" alt="warning" width="20">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This symbol indicates important information that you have to take note of.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code>open</code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Monospaced font indicates that this is a command that can be inputted into the command box and executed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><code><strong>Note</strong></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bolded monospaced font indicates a component, class or object in this application.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor Enhancement</strong>: Added <strong>the ability to open note</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: gives users the ability to open a note and edit it through the UI.</p>
+</li>
+<li>
+<p>Justification: This feature helps reading and editing notes in the app much easier, which is useful for an enhanced
+user experience.</p>
+</li>
+<li>
+<p>Highlights: To implement this feature, an additional UI panel was created to display the note.
+This UI panel allows users to freely edit the note&#8217;s contents and save the changes back to the note.
+The implementation was challenging as it required changes to existing commands.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: gives users the ability to undo and redo commands one at a time.
+Preceding undo commands can be reversed by using the redo command.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects existing commands and commands to be added in future.
+The implementation was challenging as it required changes to existing commands.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=jityong&amp;tabRepo=AY1920S1-CS2103T-F11-3%2Fmain%5Bmaster%5D">Code</a></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Contributed to the implementation of the key encryption and decryption utility classes. (Pull request <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/36">#36</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated GUI with editable split planes. (Pull requests  <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/68">#68</a>)</p>
+</li>
+<li>
+<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#xxx</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated Model and UI components UML diagrams to accommodate new newly added components. (Pull request <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/57">#57</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): xxx</p>
+</li>
+<li>
+<p>Reported bugs and suggestions for teammates (examples:  <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/87">#87</a>, <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/184">#184</a>)</p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams (examples:  <a href="https://github.com/jityong/ped/issues/5">#5</a>, <a href="https://github.com/jityong/ped/issues/7">#7</a>, <a href="https://github.com/jityong/ped/issues/4">#4</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="accessing-a-note-code-open-code"><a class="link" href="#accessing-a-note-code-open-code">Accessing a note : <code>open</code></a></h4>
+<div class="paragraph">
+<p>Too much hassle to type out everything in the <code>edit</code> command to make a small change to your note?
+Want to read your note and edit your note easily?
+The <code>open</code> command is designed for this!</p>
+</div>
+<div class="paragraph">
+<p>The <code>open</code> command opens your note in a panel on the right for you to read and edit its contents easily.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>open INDEX</code></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Opening a note updates the number of times the notes is accessed.</p>
+</li>
+<li>
+<p><code>open</code> command is undoable.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example: <code>open 1</code></p>
+</div>
+<div class="paragraph">
+<p>Your note at index 1 will be opened, allowing you to read and edit it easily.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OpenNote2.png" alt="OpenNote2" width="500">
+</div>
+<div class="title">Figure 2. Note at index 1 opened on the right panel.</div>
+</div>
+<div class="paragraph">
+<p>You can click on the Save Note button after editing to save your changes made to the note.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OpenNote3.png" alt="OpenNote3" width="500">
+</div>
+<div class="title">Figure 3. Edits can be made to text and the Save Note button can be clicked.</div>
+</div>
+<div class="paragraph">
+<p>After clicking on the Save Note button, your edits made to the opened note will be saved!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OpenNote4.png" alt="OpenNote4" width="500">
+</div>
+<div class="title">Figure 4. Note at index 1 is updated via the corresponding <code>Edit</code> command after clicking on the Save Note button.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undo-notes-action-code-undo-code"><a class="link" href="#undo-notes-action-code-undo-code">Undo notes action: <code>undo</code></a></h4>
+<div class="paragraph">
+<p>Made a mistake in the notes feature?
+Worry not because you can <code>undo</code> your mistake!</p>
+</div>
+<div class="paragraph">
+<p>Using our <code>undo</code> command will not only undo your last undoable command, it will also inform you of exactly what action is being undone.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>undo</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>undo</code></p>
+</div>
+<div class="paragraph">
+<p>Here is what it would look like to <code>undo</code> a <code>clear</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Undo2.png" alt="Undo2" width="500">
+</div>
+<div class="title">Figure 5. All deleted notes from the previous <code>clear</code> command is added back into the note book.</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can only perform undo on undoable commands.
+Undoable commands are: <code>add</code>, <code>edit</code>, <code>delete</code>, <code>clear</code> and <code>open</code>.</p>
+</li>
+<li>
+<p>You can undo as many commands as you wish until there are no more commands that can be undone.</p>
+</li>
+<li>
+<p><code>open</code> command is undoable because it changes the number of times the notes is accessed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redo-notes-action-code-redo-code"><a class="link" href="#redo-notes-action-code-redo-code">Redo notes action: <code>redo</code></a></h4>
+<div class="paragraph">
+<p>Regret making that undo action?
+Once again, worry not because you can <code>redo</code> your action!</p>
+</div>
+<div class="paragraph">
+<p>Using our <code>redo</code> feature will not only redo your command, it will also inform you of exactly what action is being redone.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>Here is what it would look like to <code>redo</code> a <code>clear</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Redo1.png" alt="Redo1" width="500">
+</div>
+<div class="title">Figure 6. All notes are cleared from the note book from redoing the <code>clear</code> command.</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can only redo an undone command.</p>
+</li>
+<li>
+<p>You can redo as many commands as you wish until there are no more commands that can be redone.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you perform a new undoable command, all existing redoable commands will be cleared.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="notes-feature"><a class="link" href="#notes-feature">Notes Feature</a></h3>
+<div class="sect3">
+<h4 id="open-note"><a class="link" href="#open-note">Open Note</a></h4>
+<div class="paragraph">
+<p>The user is able to open a note in a separate panel to easily read and edit its contents.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates how the note is retrieved and edited through the UI via the <code>open</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OpenNoteSequenceDiagram.png" alt="OpenNoteSequenceDiagram" width="300">
+</div>
+<div class="title">Figure 7. Diagram illustrates how note is retrievable and editable through the UI.</div>
+</div>
+<div class="paragraph">
+<p>Below is the sub-diagram for retrieving the note through the <code>open</code> command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/OpenNoteSequenceDiagramRef.png" alt="OpenNoteSequenceDiagramRef" width="400">
+</div>
+<div class="title">Figure 8. Sub-diagram to illustrate how a note is retrieved through the <code>open</code> command.</div>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage of scenario of the <code>open</code> command in notes, where a user intends to open a note to read
+or edit its contents.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Through the <code>goto note</code> command, the user arrives at the notes component of the app. The user then executes the command
+<code>open 1</code>.</p>
+</li>
+<li>
+<p>The app recognises that it is an <code>open</code> command and proceeds to check if the index <code>1</code> given is a valid index using
+the <code>ParserUtil#parseIndex()</code> method.</p>
+</li>
+<li>
+<p>If the index given by the user is valid, the corresponding note will be retrieved. This note is shown to the user in a panel on the right
+within the app.</p>
+</li>
+<li>
+<p>The user proceeds to edit the Title, Description and Content field of the note through this panel and saves his
+edits using the save button. This executes the <code>Logic#EditNoteCommand()</code> which edits the note in the note book.</p>
+</li>
+<li>
+<p>The note book is now updated with the note edited by the user.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undo-redo"><a class="link" href="#undo-redo">Undo/Redo</a></h4>
+<div class="sect4">
+<h5 id="implementation"><a class="link" href="#implementation">Implementation</a></h5>
+<div class="paragraph">
+<p>The undo/redo mechanism is facilitated by the <code><strong>VersionedNoteBook</strong></code>, which extends <code><strong>NoteBook</strong></code> with a undo/redo history.
+This history is stored in two stacks - the <code><strong>UndoStack</strong></code> and the <code><strong>RedoStack</strong></code>. The <code><strong>UndoStack</strong></code> stores the states of note books
+before the current state while the <code><strong>RedoStack</strong></code> stores the states of note books after the current state.
+The key operations that support these mechanisms are:</p>
+</div>
+<div class="paragraph">
+<p><code>VersionedNoteBook#commit()</code> — Saves the current note book state and its corresponding command in the <code><strong>UndoStack</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p><code>VersionedNoteBook#undo()</code> — Restores the previous note book state from the <code><strong>UndoStack</strong></code> and returns its corresponding command
+to inform the user what command is undone. It also stores the current state of the note book into the <code><strong>RedoStack</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p><code>VersionedNoteBook#redo()</code> — Restores a previously undone note book state from the <code><strong>RedoStack</strong></code> and returns its corresponding
+command to inform the user what command is redone. It also stores the current state of the note book into the <code><strong>UndoStack</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>Below is a class diagram to illustrate how the classes mentioned above interact with one another.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/VersionedNoteBookClassDiagram.png" alt="VersionedNoteBookClassDiagram" width="350">
+</div>
+<div class="title">Figure 9. Class diagram of <code><strong>VersionedNoteBook</strong></code>, <code><strong>NoteBook</strong></code> and <code><strong>NoteBookWithCommand</strong></code>.</div>
+</div>
+<div class="paragraph">
+<p>Below is a comprehensive activity diagram to illustrate how the undo &amp; redo mechanism works.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram">
+</div>
+<div class="title">Figure 10. Activity diagram to illustrate how undo &amp; redo executes.</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
+</div>
+<div class="paragraph">
+<p>Not all commands are undoable. Undo-able commands are commands that modifies the note book. They include: <code>add</code>, <code>delete</code>,
+<code>clear</code>, <code>edit</code> and <code>open</code>.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Below is an example run through to illustrate how the undo command is executed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user launches the application for the first time. The <code><strong>VersionedNoteBook</strong></code> will be initialized with the initial
+note book state, with empty <code><strong>UndoStack</strong></code> and <code><strong>RedoStack</strong></code>.</p>
+</li>
+<li>
+<p>The user executes <code>delete 5</code> command to delete the 5th note in the note book. The delete command calls Model#commitNoteBook(),
+causing the state of the note book before the <code>delete 5</code> command executes to be saved in the <code><strong>UndoStack</strong></code>. The current state
+of the note book becomes the state of the note book after <code>delete 5</code> command executes.</p>
+</li>
+<li>
+<p>The user now decides that deleting the note was a mistake, and decides to undo that action by executing the <code>undo</code> command.</p>
+</li>
+<li>
+<p>This will call the <code>Model#undo()</code>, which will first check if the <code><strong>UndoStack</strong></code> is empty.</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code><strong>UndoStack</strong></code> will be empty if no undoable command were called prior
+to calling the <code>undo</code> command.</p>
+</li>
+<li>
+<p>The undo mechanism will proceed only if the <code><strong>UndoStack</strong></code> is not empty,
+else an error will be returned to the user rather than attempting to perform the undo.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The current state of the note book is then checked against the previous state of the note book.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In the event that they are the same, the
+previous note book state is popped from the <code><strong>UndoStack</strong></code> and the <code>undo</code> command is called recursively (starting from step 2).
+This recursive call is performed until either the current and previous note book state are different or until the <code><strong>UndoStack</strong></code> is empty.</p>
+</li>
+<li>
+<p>In the event that they are different, proceed on to step 4.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The current state of the note book is first stored in the <code><strong>RedoStack</strong></code>.</p>
+</li>
+<li>
+<p>The note book is then reverted to the previous note book state. This same previous note book state is removed from
+the <code><strong>UndoStack</strong></code>.</p>
+</li>
+<li>
+<p>Undo command is complete.</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 3 is to prevent users from being able to perform <code>undo</code> actions when there is no change to be undone.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For the redo command, a key point to note is that it is not logical to redo a command from the <code><strong>RedoStack</strong></code> when an undoable
+command is executed. Therefore, anytime an undoable command is executed, the <code><strong>RedoStack</strong></code> is purged. This behavior is follows
+that of most modern desktop applications as well.</p>
+</div>
+<div class="paragraph">
+<p>As the rest of the mechanisms of the <code>redo</code> command is similar to that of the <code>undo</code> command but opposite,
+its details are omitted.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+
+</div>
+<div class="sect4">
+<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Saves the entire note book.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less complex and easier to implement.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Individual command knows how to undo/redo by itself.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Makes use of lesser memory.</p>
+</li>
+<li>
+<p>Cons: More complex to implement and more prone to bugs as each individual command must be correct to work correctly.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The reason why we chose alternative 1:</strong>
+By adopting a simpler implementation, we are able to introduce less bugs into system. Furthermore, this implementation better
+supports future extensions as undoable commands can be added much easier.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Use two stacks to store the history of note book states - one for undo, and the other for redo.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Very easy to implement.</p>
+</li>
+<li>
+<p>Cons: Using two data structures may incur additional overhead in terms of memory.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Use a single linked list to store the history of note book states which supports both undo and redo.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: May incur less overhead in terms of memory usage as only one data structure is used.</p>
+</li>
+<li>
+<p>Cons: More complex to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The reason why we chose alternative 1:</strong>
+It is less complex to implement and the code is much cleaner for better readability which also helps in future extensions.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:06:27 UTC</div></div></div></body></html>
