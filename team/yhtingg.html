@@ -11,7 +11,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/CardOverview.png" alt="CardOverview" width="790">
+<img src="../images/CardOverview.png" alt="CardOverview" width="600">
 </div>
 </div>
 <div class="paragraph">
@@ -72,10 +72,10 @@
 <p><strong>Minor enhancement</strong>: Refactored <code>CommandResult</code> constructors to use the <code>Builder</code> class, to allow us to customise our constructors, thus minimizing the amount of code required for various constructors.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=yhtingg&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=yhtingg&amp;tabRepo=AY1920S1-CS2103T-F11-3%2Fmain%5Bmaster%5D">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=yhtingg&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=yhtingg&amp;tabRepo=AY1920S1-CS2103T-F11-3%2Fmain%5Bmaster%5D">Functional code</a>]</p>
 </li>
 <li>
-<p><strong>Other contributions</strong>:</p>
+<p><strong>Other contributions</strong></p>
 <div class="ulist">
 <ul>
 <li>
@@ -109,22 +109,12 @@
 <div class="ulist">
 <ul>
 <li>
-<p>User Guide:</p>
-<div class="ulist">
-<ul>
-<li>
 <p>Updated Quick Start to address users better: <a href="https://github.com">#14</a></p>
 </li>
-</ul>
-</div>
-</li>
-<li>
-<p>Developer Guide:</p>
-<div class="ulist">
-<ul>
 <li>
 <p>Updated Use Case and Non-Functional Requirements (Pull Request: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/9">#9</a>)</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p>Updated UML diagrams (Pull Request: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/54">#54</a>)</p>
 </li>
@@ -160,7 +150,7 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Since we had morphed the original addressbook application, we had to update the User Guide accordingly to match our app. Given below are sections that I have contributed to the User Guide, with additions regarding the card feature that I had implemented. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections that I have contributed to the updated User Guide, with additions regarding the card feature that I had implemented. They showcase my ability to write documentation targeting end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -188,7 +178,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AddCard1.png" alt="AddCard1" width="790">
+<img src="../images/AddCard1.png" alt="AddCard1" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -202,7 +192,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AddCard2.png" alt="AddCard2" width="790">
+<img src="../images/AddCard2.png" alt="AddCard2" width="400">
 </div>
 </div>
 <div class="exampleblock">
@@ -245,10 +235,6 @@
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
 <div class="openblock">
 <div class="content">
 <div class="imageblock" style="float: left">
@@ -271,10 +257,6 @@
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
 <div class="openblock">
 <div class="content">
 <div class="imageblock" style="float: left">
@@ -285,7 +267,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Tip</strong></p>
+<p><strong>Tip:</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -306,29 +288,20 @@
 <div class="sect3">
 <h4 id="reading-a-card-code-read-code"><a class="link" href="#reading-a-card-code-read-code">Reading a card : <code>read</code></a></h4>
 <div class="paragraph">
-<p>If you already have a card in mind and want to view its details, you can easily do so by entering the card description and its CVC.</p>
+<p>If you already have a card in mind and want to view its details, you can easily do so by entering the card description and its CVC. You can also obtain the same result by using a card&#8217;s index in the list with the correct CVC.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>read d/DESCRIPTION v/CVC</code></p>
+<p>Format: <code>read d/DESCRIPTION v/CVC</code> OR <code>read INDEX v/CVC</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>read d/VisaPOSB v/456</code></p>
-</div>
-<div class="paragraph">
-<p>You can also obtain the same result by using a card&#8217;s index in the list with the correct CVC.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>read INDEX v/CVC</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>read 1 v/456</code></p>
+<p>Example: <code>read d/VisaPOSB v/456</code> OR <code>read 1 v/456</code></p>
 </div>
 <div class="paragraph">
 <p>Type in the command.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ReadCard1.png" alt="ReadCard1" width="790">
+<img src="../images/ReadCard1.png" alt="ReadCard1" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -336,7 +309,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/ReadCard2.png" alt="ReadCard2" width="790">
+<img src="../images/ReadCard2.png" alt="ReadCard2" width="400">
 </div>
 </div>
 </div>
@@ -346,29 +319,20 @@
 <p>You can copy a specific card&#8217;s card number to your clipboard as well.</p>
 </div>
 <div class="paragraph">
-<p>You can choose to copy the card number using its description:</p>
+<p>You can choose to copy the card number using its description. Alternatively, you can also perform the command with the card&#8217;s index in the list:</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>copy d/DESCRIPTION v/CVC</code></p>
+<p>Format: <code>copy d/DESCRIPTION v/CVC</code> OR <code>copy INDEX v/CVC</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>copy d/VisaPOSB v/456</code></p>
-</div>
-<div class="paragraph">
-<p>Alternatively, you can also perform the command with the card&#8217;s index in the list.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>copy INDEX v/CVC</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>copy 1 v/456</code></p>
+<p>Example: <code>copy d/VisaPOSB v/456</code> OR <code>copy 1 v/456</code></p>
 </div>
 <div class="paragraph">
 <p>Type in the command.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/CopyCard1.png" alt="CopyCard1" width="790">
+<img src="../images/CopyCard1.png" alt="CopyCard1" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -376,7 +340,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/CopyCard2.png" alt="CopyCard2" width="790">
+<img src="../images/CopyCard2.png" alt="CopyCard2" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -384,7 +348,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/CopyCard3.png" alt="CopyCard3" width="790">
+<img src="../images/CopyCard3.png" alt="CopyCard3" width="400">
 </div>
 </div>
 <div class="exampleblock">
@@ -440,29 +404,20 @@
 <p>If your card has expired, you can easily remove it from the application.</p>
 </div>
 <div class="paragraph">
-<p>Again, you could do this by the card&#8217;s description:</p>
+<p>Again, you could do this by the card&#8217;s description or by its index:</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete DESCRIPTION</code></p>
+<p>Format: <code>delete DESCRIPTION</code> OR <code>delete INDEX</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>delete VisaPOSB</code></p>
-</div>
-<div class="paragraph">
-<p>Or by its index:</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>delete INDEX</code></p>
-</div>
-<div class="paragraph">
-<p>Example: <code>delete 1</code></p>
+<p>Example: <code>delete VisaPOSB</code> OR <code>delete 1</code></p>
 </div>
 <div class="paragraph">
 <p>Type in the command.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/DeleteCard1.png" alt="DeleteCard1" width="790">
+<img src="../images/DeleteCard1.png" alt="DeleteCard1" width="400">
 </div>
 </div>
 <div class="paragraph">
@@ -473,7 +428,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/DeleteCard2.png" alt="DeleteCard2" width="790">
+<img src="../images/DeleteCard2.png" alt="DeleteCard2" width="400">
 </div>
 </div>
 </div>
@@ -664,4 +619,4 @@ The main purpose of notifications is to remind users to take action and users ca
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:47:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:49:32 UTC</div></div></div></body></html>
