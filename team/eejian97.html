@@ -198,14 +198,23 @@ The generation of passwords leverages on the <code>java.security.SecureRandom</c
 <div class="ulist">
 <ul>
 <li>
-<p>Want to customise your password? Don&#8217;t worry, we&#8217;ve got that covered too. You can customise the following fields:</p>
+<p>Want to customise your password? Don&#8217;t worry, we&#8217;ve got that covered too. You can customise the following fields during generation:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Length of password (Between 4 and 25)</p>
 </li>
 <li>
-<p>Exclusion of lower alphabets | upper alphabets | numbers | special characters</p>
+<p>Exclusion of lower alphabets</p>
+</li>
+<li>
+<p>Exclusion of upper alphabets</p>
+</li>
+<li>
+<p>Exclusion of numbers</p>
+</li>
+<li>
+<p>Exclusion of special characters</p>
 </li>
 </ul>
 </div>
@@ -245,13 +254,25 @@ Please ensure <strong>at least one character set  is included</strong>.
 <p>Format: <code>generate [length/LENGTH] [lower/FALSE] [upper/FALSE] [num/FALSE] [special/FALSE]</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>generate</code> | <code>generate length/10</code> | <code>generate lower/false special/false</code></p>
+<p>Example: <code>generate</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>generate length/10</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>generate lower/false special/false</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/GeneratePassword.png" alt="GeneratePassword" width="700">
+<img src="../images/GeneratePasswordScreenShot0.png" alt="GeneratePasswordScreenShot0" width="500">
 </div>
-<div class="title">Figure 1. Example user input (left) and resultant output (right) for generate.</div>
+<div class="title">Figure 1. Example user input for generate password</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/GeneratePasswordScreenShot1.png" alt="GeneratePasswordScreenShot1" width="500">
+</div>
+<div class="title">Figure 2. Example outcome for generate password</div>
 </div>
 </div>
 <div class="sect3">
@@ -277,7 +298,20 @@ Please ensure <strong>at least one character set  is included</strong>.
 <div class="ulist">
 <ul>
 <li>
-<p>To view the detailed analysis of a particular password, simply add in the <code>strong</code> prefix with the <code>INDEX</code> of the password.</p>
+<p>You can opt to view:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A general, summary security report for <strong>all</strong> passwords, or</p>
+</li>
+<li>
+<p>A detailed security report for a <strong>specific</strong> password.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>To view the detailed analysis of a particular password, simply add in the <code>strong</code> prefix with the <code>INDEX</code></p>
 </li>
 </ul>
 </div>
@@ -306,19 +340,34 @@ Please ensure <strong>at least one character set  is included</strong>.
 <p>Format: <code>analyse [strong/INDEX]</code></p>
 </div>
 <div class="paragraph">
-<p>Example: <code>analyse</code> | <code>analyse strong/8</code></p>
+<p>Example: <code>analyse</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>analyse strong/8</code></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AnalysePassword.png" alt="AnalysePassword" width="700">
+<img src="../images/AnalysePasswordScreenShot0.png" alt="AnalysePasswordScreenShot0" width="500">
 </div>
-<div class="title">Figure 2. Example user input (left) and resultant output (right) for analyse.</div>
+<div class="title">Figure 3. Example user input for analyse</div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AnalyseStrongPassword.png" alt="AnalyseStrongPassword" width="700">
+<img src="../images/AnalysePasswordScreenShot1.png" alt="AnalysePasswordScreenShot1" width="500">
 </div>
-<div class="title">Figure 3. Example user input (left) and resultant output (right) for analyse strong.</div>
+<div class="title">Figure 4. Example outcome for analyse</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AnalyseStrongPasswordScreenShot0.png" alt="AnalyseStrongPasswordScreenShot0" width="500">
+</div>
+<div class="title">Figure 5. Example user input for analyse strong</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AnalyseStrongPasswordScreenShot1.png" alt="AnalyseStrongPasswordScreenShot1" width="500">
+</div>
+<div class="title">Figure 6. Example outcome for analyse strong</div>
 </div>
 </div>
 </div>
@@ -376,7 +425,7 @@ It provides a cryptographically strong random number generator (RNG) that will b
 <div class="content">
 <img src="../images/GeneratePasswordActivityDiagram.png" alt="GeneratePasswordActivityDiagram" width="400">
 </div>
-<div class="title">Figure 4. Summary flow of actions during password generation.</div>
+<div class="title">Figure 7. Summary flow of actions during password generation.</div>
 </div>
 <div class="paragraph">
 <p>The steps below outline explicity the generation of passwords :</p>
@@ -449,7 +498,7 @@ The <code>GeneratePasswordDescriptor</code> is an object that encapsulates the s
 <div class="content">
 <img src="../images/GenerateMethodActivityDiagram.png" alt="GenerateMethodActivityDiagram" width="500">
 </div>
-<div class="title">Figure 5. Summary flow of actions during the invokation of #generateRandomassword().</div>
+<div class="title">Figure 8. Summary flow of actions during the invokation of #generateRandomassword().</div>
 </div>
 </div>
 <div class="sect3">
@@ -564,7 +613,7 @@ Although less time efficient, the password generated is more random, and thus mo
 <div class="content">
 <img src="../images/AnalyserClassDiagram.png" alt="AnalyserClassDiagram" width="550">
 </div>
-<div class="title">Figure 6. Class diagram depicting the structure of the Analyser component.</div>
+<div class="title">Figure 9. Class diagram depicting the structure of the Analyser component.</div>
 </div>
 <div class="paragraph">
 <p>In summary,</p>
@@ -617,7 +666,7 @@ For the following sequence diagram, the other <code>Analysers</code> are instant
 <div class="content">
 <img src="../images/AnalysePasswordSequenceDiagram.png" alt="AnalysePasswordSequenceDiagram">
 </div>
-<div class="title">Figure 7. Sequence diagram depicting the flow of analysing the list of passwords, in the context of DictionaryAnalyser.</div>
+<div class="title">Figure 10. Sequence diagram depicting the flow of analysing the list of passwords, in the context of DictionaryAnalyser.</div>
 </div>
 <div class="paragraph">
 <p>In the following discussion, we will be reviewing how <code>Results</code> are produced for each password, in the context of the <code>DictionaryAnalyser</code>.</p>
@@ -656,7 +705,7 @@ The <code>Dictionary</code> is an object that maps commonly used passwords to th
 <div class="content">
 <img src="../images/GetAllMatchesSequence.png" alt="GetAllMatchesSequence" width="500">
 </div>
-<div class="title">Figure 8. Sequence diagram depicting the flow of getting all Match objects for a given password.</div>
+<div class="title">Figure 11. Sequence diagram depicting the flow of getting all Match objects for a given password.</div>
 </div>
 </div>
 <div class="sect3">
@@ -702,4 +751,4 @@ Also, considering the fact that each password is capped at a length of 25, time 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:42:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:03:57 UTC</div></div></div></body></html>

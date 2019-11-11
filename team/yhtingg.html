@@ -1,0 +1,667 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Yang Hui Ting - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">SecureIT</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F11-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Yang Hui Ting - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-secureit"><a class="link" href="#project-secureit">PROJECT: SecureIT</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My team of 4 software engineering students and I were tasked with enhancing a basic command line interface desktop addressbook application for our Software Engineering project. We chose to morph it into a password manager, SecureIT. Our app allows businesses to securely store and manage their confidential information, allowing employees to easily retrieve such information if required.</p>
+</div>
+<div class="paragraph">
+<p>My role was to implement the cards management feature of our app. This is how the cards mode looks like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CardOverview.png" alt="CardOverview" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the following symbols and formatting used in this documents:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 6.9767%;">
+<col style="width: 93.0233%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Icon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Meaning</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Some tips for you to familiarise with the commands</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="imageblock">
+<div class="content">
+<img src="../images/warning.png" alt="warning" width="20">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Warning! Danger zone. Make sure you know what you are doing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>card features</strong> to the app</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to store credit card details securely and retrieve them easily in the app</p>
+</li>
+<li>
+<p>Justification: In an app that stores confidential data, credit card details are definitely data that users need to keep secure. The cards feature allows users to easily retrieve their card details and take the necessary actions when their card is about to expire.</p>
+</li>
+<li>
+<p>Highlights: This feature also sends notifications to users when their cards are about to expire. There is also an automatic tagging system displayed in the cards list when cards have expired or are about to expire.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Refactored <code>CommandResult</code> constructors to use the <code>Builder</code> class, to allow us to customise our constructors, thus minimizing the amount of code required for various constructors.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=yhtingg&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=yhtingg&amp;tabRepo=AY1920S1-CS2103T-F11-3%2Fmain%5Bmaster%5D">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated website heading and github URL (Pull request <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/7">#7</a>)</p>
+</li>
+<li>
+<p>Maintained the team repository by managing issue tracking, issue assignment and milestones.</p>
+</li>
+<li>
+<p>Reported bugs and suggestions to teammates (examples:  <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/187">1</a>, <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/186">2</a>, <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/issues/117">3</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Refactor CommandResult class (Pull request <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/73">#73</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User Guide:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated Quick Start to address users better: <a href="https://github.com">#14</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Developer Guide:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated Use Case and Non-Functional Requirements (Pull Request: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/9">#9</a>)</p>
+</li>
+<li>
+<p>Updated UML diagrams (Pull Request: <a href="https://github.com/AY1920S1-CS2103T-F11-3/main/pull/54">#54</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/yhtingg/ped/issues/1">1</a>, <a href="https://github.com/yhtingg/ped/issues/4">2</a>, <a href="https://github.com/yhtingg/ped/issues/3">3</a>, <a href="https://github.com/yhtingg/ped/issues/5">4</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Since we had morphed the original addressbook application, we had to update the User Guide accordingly to match our app. Given below are sections that I have contributed to the User Guide, with additions regarding the card feature that I had implemented. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="card"><a class="link" href="#card">Card</a></h3>
+<div class="paragraph">
+<p>Too many credit cards to carry around? With SecureIT, you can easily manage your card information.</p>
+</div>
+<div class="paragraph">
+<p>To access your cards, simply enter <code>goto card</code> in the command box.</p>
+</div>
+<div class="paragraph">
+<p>For the following commands, simply follow the format given and type the command into the command box. Press <code>Enter</code> to execute it.</p>
+</div>
+<div class="sect3">
+<h4 id="creating-a-card-code-add-code"><a class="link" href="#creating-a-card-code-add-code">Creating a card : <code>add</code></a></h4>
+<div class="paragraph">
+<p>You can easily adds cards to the application.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say that you have just gotten a fresh new credit card from the bank and you want to add it into your cards list.</p>
+</div>
+<div class="paragraph">
+<p>You can type in the command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddCard1.png" alt="AddCard1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Format: <code>add d/DESCRIPTION c/CARDNUMBER v/CVC e/EXPIRY [t/TAG]</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>add d/VisaPOSB c/5203123458392748 v/456 e/12/25 t/groceries</code></p>
+</div>
+<div class="paragraph">
+<p>The result box will display the message as shown. You can see that your card has been successfully added into the list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddCard2.png" alt="AddCard2" width="790">
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Description entered is <strong>case sensitive</strong>.</p>
+</li>
+<li>
+<p>Card numbers can be entered with or without dashes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>With dashes: 1234-5678-1234-5678</p>
+</li>
+<li>
+<p>Without dashes: 1234567812345678</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Card expiry is of the format MM/YY.</p>
+</li>
+<li>
+<p>You can include up to 5 tags.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SecureIT does not support cards types that are not MasterCard or Visa.</p>
+</li>
+<li>
+<p>All card numbers entered must have 16 digits.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Tip</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>After adding your cards, a card&#8217;s description and its index in the list are interchangeable with each other. In other words, the following commands accept either <strong>description</strong> or <strong>index</strong>, but not both.</p>
+</li>
+<li>
+<p>If you know exactly which card you need, you can easily type the description without needing to scroll through the list.</p>
+</li>
+<li>
+<p>When your card is about the expire, SecureIT warns you with a notification upon start up. On top of that, you can easily see which cards are expiring or expired in the cards list.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reading-a-card-code-read-code"><a class="link" href="#reading-a-card-code-read-code">Reading a card : <code>read</code></a></h4>
+<div class="paragraph">
+<p>If you already have a card in mind and want to view its details, you can easily do so by entering the card description and its CVC.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>read d/DESCRIPTION v/CVC</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>read d/VisaPOSB v/456</code></p>
+</div>
+<div class="paragraph">
+<p>You can also obtain the same result by using a card&#8217;s index in the list with the correct CVC.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>read INDEX v/CVC</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>read 1 v/456</code></p>
+</div>
+<div class="paragraph">
+<p>Type in the command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ReadCard1.png" alt="ReadCard1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>The result box will display the message as shown. You can see a new panel that contains your desired credit card details appearing at the side.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ReadCard2.png" alt="ReadCard2" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="copying-a-card-code-copy-code"><a class="link" href="#copying-a-card-code-copy-code">Copying a card : <code>copy</code></a></h4>
+<div class="paragraph">
+<p>You can copy a specific card&#8217;s card number to your clipboard as well.</p>
+</div>
+<div class="paragraph">
+<p>You can choose to copy the card number using its description:</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>copy d/DESCRIPTION v/CVC</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>copy d/VisaPOSB v/456</code></p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can also perform the command with the card&#8217;s index in the list.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>copy INDEX v/CVC</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>copy 1 v/456</code></p>
+</div>
+<div class="paragraph">
+<p>Type in the command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CopyCard1.png" alt="CopyCard1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>The result box will display the message as shown.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CopyCard2.png" alt="CopyCard2" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Upon pasting from your clipboard, the card number of your desired card should appear.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CopyCard3.png" alt="CopyCard3" width="790">
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/tip.png" alt="tip" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>This command <strong>only</strong> copies the specified card number, and not the CVC. This is because users are expected to remember their CVC so that their card security is not compromised.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-card-code-delete-code"><a class="link" href="#deleting-a-card-code-delete-code">Deleting a card: <code>delete</code></a></h4>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="imageblock" style="float: left">
+<div class="content">
+<img src="../images/warning.png" alt="warning" width="20">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Warning</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deleted cards are not recoverable</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If your card has expired, you can easily remove it from the application.</p>
+</div>
+<div class="paragraph">
+<p>Again, you could do this by the card&#8217;s description:</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete DESCRIPTION</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>delete VisaPOSB</code></p>
+</div>
+<div class="paragraph">
+<p>Or by its index:</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example: <code>delete 1</code></p>
+</div>
+<div class="paragraph">
+<p>Type in the command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteCard1.png" alt="DeleteCard1" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>The result box will display the message as shown.</p>
+</div>
+<div class="paragraph">
+<p>You can see that your card is no longer visible from the list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteCard2.png" alt="DeleteCard2" width="790">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="cards-feature"><a class="link" href="#cards-feature">Cards Feature</a></h3>
+<div class="sect3">
+<h4 id="expiry-validations"><a class="link" href="#expiry-validations">Expiry Validations</a></h4>
+<div class="paragraph">
+<p>When a user tries to add a card, there are various checks to ensure that the expiry entered is valid.  As the name suggests, expiry validations are implemented within <code>Expiry</code>. Additionally, it implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ExpiryDate#isValidDate(String test)</code>&#8201;&#8212;&#8201;Checks the string against the provided regex to make sure it is a match.</p>
+</li>
+<li>
+<p><code>ExpiryDate#isValidExpiryDate(String test)</code>&#8201;&#8212;&#8201;Checks to ensure that it has not past the given expiry date.</p>
+</li>
+<li>
+<p><code>ExpiryUtil#getMonthToExp(String expiry)</code>&#8201;&#8212;&#8201;Returns the number of months left until the given expiry.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>ExpiryDate#isValidExpiryDate(String test)</code> is implemented using <code>ExpiryUtil#getMonthToExp(String expiry)</code> to ensure that the number of months left is positive.</p>
+</div>
+<div class="paragraph">
+<p>The other operations are used in <code>ParserUtil#parseExpiryDate(String expiryDate)</code> to ensure that user input passes these validations, before allowing the card to be added to the list. Upon startup of the app, the repopulation of data also checks against these validations to ensure that there are no illegal values stored in the list.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the validations behave at each step. The following sequence diagram shows how the expiry validations work.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CardExpiryValidation.png" alt="Diagram" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 1. The user executes <code>add d/VisaPOSB v/4291728395018293 c/256 e/12/15</code> command to add a new card named 'VisaPOSB' in the card book. The <code>CardBookParser#parseCommand(String userInput)</code> calls <code>AddCardCommandParser#parse(String args)</code> and the command parser tries to breakdown the string in to various parameters.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. The <code>AddCardCommandParser</code> calls <code>ParserUtil#parseExpiryDate(String expiryDate)</code>, which first calls <code>ExpiryDate#isValidDate(String test)</code> to check its validity, which returns true.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>ParserUtil#parseExpiryDate(String expiry)</code> then calls <code>ExpiryDate#isValidExpiryDate(String test)</code>, which calls <code>ExpiryUtil#getMonthToExp(String expiry)</code>. However, <code>-47</code> is returned and the condition in <code>ExpiryDate#isValidExpiryDate</code> returns <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. A <code>ParseException</code> is thrown from <code>ParserUtil#parseExpiryDate(String expiryDate)</code> and the error message is shown on the result box.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="expiry-notification"><a class="link" href="#expiry-notification">Expiry Notification</a></h4>
+<div class="paragraph">
+<p>The expiry notification is facilitated by <code>ExpiryDisplay</code>. It exists as an attribute within <code>MainWindow</code> and obtains the required expiring cards list from <code>LogicManager</code>. This is internally stored as <code>expiringCards</code>. Additionally, it implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>LogicManager#getExpiringCardList()</code>&#8201;&#8212;&#8201;Returns the list of expiring cards.</p>
+</li>
+<li>
+<p><code>ExpiringCard#of(Card card)</code>&#8201;&#8212;&#8201;Creates an ExpiringCard given card details.</p>
+</li>
+<li>
+<p><code>ExpiryDisplay#hasCards()</code>&#8201;&#8212;&#8201;Returns true if there are expiring cards.</p>
+</li>
+<li>
+<p><code>MainWindow#handleExpiry()</code>&#8201;&#8212;&#8201;Pops up a notification if there are expiring cards upon startup of the app.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the expiry notification shows up.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ExpiryNotification.png" alt="Diagram" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 1. The user opens the app and a new <code>MainWindow</code> is created. The <code>logic</code> in MainWindow` calls <code>LogicManager#getExpiringCardList()</code> to obtain a list of expiring cards.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. <code>MainWindow</code> creates a new instance of <code>ExpiryDisplay</code> using the list of expiring cards.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>UiManager</code> calls <code>MainWindow#handleExpiry()</code>, and the <code>MainWindow</code> checks if there are expiring cards with <code>ExpiryDisplay#hasCards()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The call returns <code>true</code> and <code>MainWindow</code> checks if the notification is showing with the call <code>ExpiryDisplay#isShowing()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. This call returns <code>false</code> and <code>MainWindow</code> does a final call <code>ExpiryDisplay#show()</code> to render the expiry notification.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h3>
+<div class="sect4">
+<h5 id="aspect-implementation-of-expiry-tagging-system"><a class="link" href="#aspect-implementation-of-expiry-tagging-system">Aspect: Implementation of expiry tagging system</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Check for expiring and expired cards and add respective tags upon startup.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Adds the tag in real time on startup, removing the concern of updating tags.</p>
+</li>
+<li>
+<p>Cons: Startup time may take longer due to extra processing of information.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Add respective expiring and expired tags upon detection of nearing expiry.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Users can visibly see the addition of expiry tags when cards are expiring.</p>
+</li>
+<li>
+<p>Cons: There will be a need to update expiring tags to expired tags, after the card has expired. This may lead to potential bugs.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The reason why we chose alternative 1:</strong>
+It is much easier to code, and it is less susceptible to unforeseen circumstances such as a card having both expiring and expired tags.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-deciding-when-the-expiry-notification-should-appear"><a class="link" href="#aspect-deciding-when-the-expiry-notification-should-appear">Aspect: Deciding when the expiry notification should appear</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative 1 (current choice): Notification should appear upon startup.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User is immediately warned of their expiring cards and is able to take the necessary actions required.</p>
+</li>
+<li>
+<p>Cons: Potentially disruptive as notification would appear every time the user starts up the app, as long as expiring cards exists.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Alternative 2: Notification should appear upon navigating to card book.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User can immediately tell which cards are in need of attention.</p>
+</li>
+<li>
+<p>Cons: Expiring cards may be left unnoticed if user does not explicitly navigate to the card book.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The reason why we chose alternative 1:</strong>
+The main purpose of notifications is to remind users to take action and users can subsequently delete the card so that the notification stops appearing.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:03:57 UTC</div></div></div></body></html>

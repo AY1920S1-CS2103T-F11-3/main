@@ -1005,6 +1005,29 @@ Also, considering the fact that each password is capped at a length of 25, time 
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the expiry notification shows up.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ExpiryNotification.png" alt="Diagram" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 1. The user opens the app and a new <code>MainWindow</code> is created. The <code>logic</code> in MainWindow` calls <code>LogicManager#getExpiringCardList()</code> to obtain a list of expiring cards.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. <code>MainWindow</code> creates a new instance of <code>ExpiryDisplay</code> using the list of expiring cards.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>UiManager</code> calls <code>MainWindow#handleExpiry()</code>, and the <code>MainWindow</code> checks if there are expiring cards with <code>ExpiryDisplay#hasCards()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The call returns <code>true</code> and <code>MainWindow</code> checks if the notification is showing with the call <code>ExpiryDisplay#isShowing()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. This call returns <code>false</code> and <code>MainWindow</code> does a final call <code>ExpiryDisplay#show()</code> to render the expiry notification.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1123,17 +1146,17 @@ Also, considering the fact that each password is capped at a length of 25, time 
 <div class="title">Figure 18. Sub-diagram to illustrate how a note is retrieved through the <code>open</code> command.</div>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage of scenario of the <code>open</code> command in notes, where a user intends to open a note to read
+<p>Given below is an example usage of the <code>open</code> command in notes, where a user intends to open a note to read
 or edit its contents.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Through the <code>goto note</code> command, the user arrives at the notes component of the app. The user then executes the command
+<p>Through the <code>goto note</code> command, the user arrives at the notes component of the app. The user can then executes the command
 <code>open 1</code>.</p>
 </li>
 <li>
-<p>The app recognises that it is an <code>open</code> command and proceeds to check if the index <code>1</code> given is a valid index using
+<p>This invokes the <code>Model#OpenNoteCommand()</code> command which proceeds to check if the index <code>1</code> given is a valid index using
 the <code>ParserUtil#parseIndex()</code> method.</p>
 </li>
 <li>
@@ -1141,7 +1164,7 @@ the <code>ParserUtil#parseIndex()</code> method.</p>
 within the app.</p>
 </li>
 <li>
-<p>The user proceeds to edit the Title, Description and Content field of the note through this panel and saves his
+<p>The user can then proceeds to edit the Title, Description and Content field of the note through this panel and saves his
 edits using the save button. This executes the <code>Logic#EditNoteCommand()</code> which edits the note in the note book.</p>
 </li>
 <li>
@@ -1210,7 +1233,7 @@ command to inform the user what command is redone. It also stores the current st
 </div>
 </div>
 <div class="paragraph">
-<p>Below is an example run through to illustrate how the undo command is executed:</p>
+<p>Below is an example to illustrate how the undo command is executed:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1219,25 +1242,17 @@ command to inform the user what command is redone. It also stores the current st
 note book state, with empty <code><strong>UndoStack</strong></code> and <code><strong>RedoStack</strong></code>.</p>
 </li>
 <li>
-<p>The user executes <code>delete 5</code> command to delete the 5th note in the note book. The delete command calls Model#commitNoteBook(),
-causing the state of the note book before the <code>delete 5</code> command executes to be saved in the <code><strong>UndoStack</strong></code>. The current state
-of the note book becomes the state of the note book after <code>delete 5</code> command executes.</p>
+<p>The user executes <code>delete 5</code> command to delete the 5th note in the note book. The delete command invokes the <code>Model#commitNoteBook()</code>,
+causing the state of the note book before the <code>delete 5</code> command is executed to be saved in the <code><strong>UndoStack</strong></code>. The current state
+of the note book is then updated to the state after the <code>delete 5</code> command executes.</p>
 </li>
 <li>
-<p>The user now decides that deleting the note was a mistake, and decides to undo that action by executing the <code>undo</code> command.</p>
+<p>The user now decides that deleting the note was a mistake, and wants to undo that action by executing the <code>undo</code> command.</p>
 </li>
 <li>
 <p>This will call the <code>Model#undo()</code>, which will first check if the <code><strong>UndoStack</strong></code> is empty.</p>
-</li>
-</ol>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>The <code><strong>UndoStack</strong></code> will be empty if no undoable command were called prior
 to calling the <code>undo</code> command.</p>
@@ -1248,10 +1263,7 @@ else an error will be returned to the user rather than attempting to perform the
 </li>
 </ol>
 </div>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>The current state of the note book is then checked against the previous state of the note book.</p>
 <div class="olist loweralpha">
@@ -1262,20 +1274,20 @@ previous note book state is popped from the <code><strong>UndoStack</strong></co
 This recursive call is performed until either the current and previous note book state are different or until the <code><strong>UndoStack</strong></code> is empty.</p>
 </li>
 <li>
-<p>In the event that they are different, proceed on to step 4.</p>
+<p>In the event that they are different, proceed on to step 6.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>The current state of the note book is first stored in the <code><strong>RedoStack</strong></code>.</p>
+<p>The current state of the note book is stored in the <code><strong>RedoStack</strong></code>.</p>
 </li>
 <li>
-<p>The note book is then reverted to the previous note book state. This same previous note book state is removed from
+<p>The note book is then reverted to the previous note book state. This same previous note book state is popped from
 the <code><strong>UndoStack</strong></code>.</p>
 </li>
 <li>
-<p>Undo command is complete.</p>
+<p>The undo command is complete.</p>
 </li>
 </ol>
 </div>
@@ -1294,8 +1306,8 @@ the <code><strong>UndoStack</strong></code>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For the redo command, a key point to note is that it is not logical to redo a command from the <code><strong>RedoStack</strong></code> when an undoable
-command is executed. Therefore, anytime an undoable command is executed, the <code><strong>RedoStack</strong></code> is purged. This behavior is follows
+<p>For the redo command, a key point to note is that it is not logical to redo a command from the <code><strong>RedoStack</strong></code> after an undoable
+command is executed. Therefore, anytime an undoable command is executed, the <code><strong>RedoStack</strong></code> is purged. This behavior follows
 that of most modern desktop applications as well.</p>
 </div>
 <div class="paragraph">
@@ -1341,7 +1353,8 @@ its details are omitted.</p>
 </div>
 <div class="paragraph">
 <p><strong>The reason why we chose alternative 1:</strong>
-By adopting a simpler implementation, we are able to introduce less bugs into system. Furthermore, this implementation better
+By adopting a simpler implementation, we are able improve testability of the command.
+This helps in introducing less bugs into system. Furthermore, this implementation better
 supports future extensions as undoable commands can be added much easier.</p>
 </div>
 </div>
@@ -1379,7 +1392,8 @@ supports future extensions as undoable commands can be added much easier.</p>
 </div>
 <div class="paragraph">
 <p><strong>The reason why we chose alternative 1:</strong>
-It is less complex to implement and the code is much cleaner for better readability which also helps in future extensions.</p>
+It is easier to visualize the implementation of this method and is less complex to implement.
+As the code is much cleaner, it is more readable which also helps in improving testability and future extensions as well.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2743,4 +2757,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:42:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:03:57 UTC</div></div></div></body></html>
