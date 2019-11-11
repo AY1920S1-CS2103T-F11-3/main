@@ -2,8 +2,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">SecureIT</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F11-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Lee Ee Jian - Project Portfolio</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>This portfolio outlines my contributions to the project SecureIT.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">image</dt>
+<dd>
+<p>[<a href="https://github.com/eejian97">github</a>]
+Role: Developer, Analyst<br>
+Responsibilities: Code Quality</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -21,24 +28,165 @@ The project was completed in November 2019 as part of a Software Engineering mod
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>SecureIT is your all-in-one management tool for confidential information. The idea of creating SecureIT came about because
-my group and I felt that&#8230;&#8203;</p>
+<p>Nowadays, digital is just how business gets done. Employees are more connected, and on more apps and websites than ever before.
+However, this transformation has also made managing thier digital life that much more complex.
+Many times, workers end up practicing bad and unsafe security habits (e.g. reusing the same password for all their various accounts).</p>
+</div>
+<div class="paragraph">
+<p>My group and I realised this problem, and hence set out to tackle this issue by creating <strong>SecureIT</strong>.</p>
+</div>
+<div class="paragraph">
+<p>SecureIT is designed to be your all-in-one management tool for all confidential information, and boasts management capabilities for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Passwords</p>
+</li>
+<li>
+<p>Secret Files</p>
+</li>
+<li>
+<p>Secret Notes</p>
+</li>
+<li>
+<p>Credit cards</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>SecureIT targets workers in small and medium enterprises, as well as those in startups, where security enforcement tends to be looser.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>This section acts as a summary of my contributions to SecureIT.</p>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>This section acts as a summary of my contributions to SecureIT.</em></p></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <ul>
 <li>
-<p>Major enhancement: I added the ability to analyse passwords.
-**</p>
+<p><strong>Major enhancement: the ability to analyse the level of security of the users' passwords.</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The password analysis feature provides the ability to evaluate the security level of each of the user&#8217;s passwords from six unique aspects. Following which, users are able to view a either (i) a <strong>summary report</strong> for <strong>all</strong> passwords, or (ii) a <strong>detailed report</strong> for a <strong>specific</strong> password.
+The six aspects are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Unique Analysis: Checks that passwords are not the same.</p>
+</li>
+<li>
+<p>Similarity Analysis: Checks that passwords are not at least 70% similar.</p>
+</li>
+<li>
+<p>Strength Analysis: Checks that passwords are complex (length, character types.)</p>
+</li>
+<li>
+<p>Dictionary Analysis: Checks that passwords do not contain known commonly-used passwords.(e.g."password")</p>
+</li>
+<li>
+<p>Sequence Analysis: Checks that passwords do not contain commonly-used sequences. (e.g."ABC")</p>
+</li>
+<li>
+<p>Keyboard Analysis: Checks that passwords do not contain commonly-used keyboard patterns. (e.g."ASD")</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification: This feature greatly improves the utility of SecureIT because it can provide users with insight as to how secure their passwords really are in, and in a simple, hassle-free, human-readable way.
+Each analysis aspect allows the user to identify different weaknesses in their password and thereby make the necessary corrections to ensure the security of each account.</p>
+</li>
+<li>
+<p>Highlights: It was highly challenging to implement the analysis feature. Some of the key highlights include:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Design: The design of the entire analysis component follows that of a <strong>Command Pattern</strong>. This greatly increases the extensibility of the analysis feature to accommodate even more types of analysis aspects in the future.
+Also, careful consideration was needed to design and encapsulate the various objects used in the entire analysis feature. (e.g. Analyser, Result, Match, AnalysisReport)</p>
+</li>
+<li>
+<p>Data structure and algorithms: The implementation of the various analysis aspects proved highly complex. Algorithms included the use of more complex concepts such as recursion and multiple pointers.
+The implementation also required knowledge on the use of more complex data structures such as TreeMaps and HashMaps in order to help boost the efficiency of the product.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement: the ability to generate random passwords.</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What is does: The password generation feature provides the ability to generate truly random and complex passwords to use whenever they need a new password.
+Users are also allowed to customise the configuration of the password generation in order to better suit thier needs. (e.g. length, character sets required)</p>
+</li>
+<li>
+<p>Justification: This feature greatly improves the utility of SecureIT because it alleviates the user of needing to think of a password, and guarantees that the password provided is random and thereby secure.</p>
+</li>
+<li>
+<p>Highlights: In-depth research was required on how best to generate truly random passwords, as even pseudo-random passwords would still be easily cracked.
+The generation of passwords leveraged on the Java &#8230;&#8203;. API to encrypt&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed:</strong></p>
+</li>
+<li>
+<p><strong>Other contributions:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Team contributions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ClipboardUtil</p>
+</li>
+<li>
+<p>Reported bugs and offered suggestions for teammates (examples: 1, 2, 3)</p>
+</li>
+<li>
+<p>Reviewed Pull Requests (with non-trivial review comments):</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Helped decide the timeline for the project what to acheive in various stages</p>
+</li>
+<li>
+<p>Created and assigned issues to achieve for each milestone in the lead up to the project submission.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 08:31:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:25:53 UTC</div></div></div></body></html>
